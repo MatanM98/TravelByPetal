@@ -2348,18 +2348,74 @@ body.dark-mode .author-avatar {
 }
 
 /* --- High Contrast --- */
-body.high-contrast {
-    --text: #000000;
-    --text-light: #000000;
-    --bg: #ffffff;
-    --bg-alt: #f0f0f0;
+body.high-contrast,
+body.high-contrast .services,
+body.high-contrast .quiz-section,
+body.high-contrast .testimonials,
+body.high-contrast .contact,
+body.high-contrast .form-section {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.high-contrast .destinations,
+body.high-contrast .calculator-section,
+body.high-contrast .about {
+    background: #f0f0f0 !important;
+    color: #000000 !important;
+}
+
+body.high-contrast * {
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+body.high-contrast .navbar {
+    background: #ffffff !important;
+    border-bottom: 2px solid #000 !important;
+}
+
+body.high-contrast .btn-primary,
+body.high-contrast .nav-cta {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.high-contrast .hero * {
+    color: #ffffff !important;
+}
+
+body.high-contrast .hero .btn-primary {
+    background: #ffffff !important;
+    color: #000000 !important;
 }
 
 body.high-contrast .service-card,
 body.high-contrast .dest-card-back,
 body.high-contrast .testimonial-card,
-body.high-contrast .affiliate-card {
-    border: 2px solid #000;
+body.high-contrast .affiliate-card,
+body.high-contrast .quiz-container,
+body.high-contrast .calc-result,
+body.high-contrast .form-wrapper {
+    border: 2px solid #000 !important;
+    background: #ffffff !important;
+}
+
+body.high-contrast .stat-number {
+    color: #ffffff !important;
+    text-shadow: none !important;
+}
+
+body.high-contrast .section-title::after {
+    background: #000 !important;
+}
+
+body.high-contrast .footer {
+    background: #000000 !important;
+}
+
+body.high-contrast .footer * {
+    color: #ffffff !important;
 }
 
 /* --- Highlight Links --- */
