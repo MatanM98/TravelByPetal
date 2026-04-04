@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://travelbypetal.com/sitemap.xml
+Sitemap: https://matanm98.github.io/TravelByPetal/sitemap.xml
