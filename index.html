@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel By Petal | Your Dream Vacation Starts Here | Ra'anana, Israel</title>
+    <meta name="description" content="Travel By Petal - Your boutique travel agency in Ra'anana, Israel. Personalized vacation packages, honeymoons, family trips, and adventure travel worldwide. Contact us on WhatsApp!">
+    <meta name="keywords" content="Travel By Petal, travel agency, Ra'anana, Israel, vacation packages, honeymoon, family travel, adventure travel, flight deals">
+    <meta name="author" content="Travel By Petal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://travelbypetal.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Travel By Petal | Your Dream Vacation Starts Here">
+    <meta property="og:description" content="Boutique travel agency in Ra'anana, Israel. Personalized vacation packages worldwide.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://travelbypetal.com/">
+    <meta property="og:locale" content="en_IL">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        "name": "Travel By Petal",
+        "description": "Boutique travel agency offering personalized vacation packages worldwide.",
+        "url": "https://travelbypetal.com",
+        "telephone": "+972545581269",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ra'anana",
+            "addressCountry": "IL"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "32.1849",
+            "longitude": "34.8708"
+        },
+        "areaServed": "Worldwide",
+        "priceRange": "$$",
+        "openingHours": "Su-Th 09:00-18:00",
+        "sameAs": []
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Floating Petals Animation -->
+    <div class="petals-container" id="petalsContainer" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
+                    <g transform="translate(20,20)">
+                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#e8917a" opacity="0.9" transform="rotate(0)"/>
+                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#f4a993" opacity="0.85" transform="rotate(60)"/>
+                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#e8917a" opacity="0.8" transform="rotate(120)"/>
+                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#f4a993" opacity="0.85" transform="rotate(180)"/>
+                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#e8917a" opacity="0.9" transform="rotate(240)"/>
+                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#f4a993" opacity="0.85" transform="rotate(300)"/>
+                        <circle cx="0" cy="0" r="4" fill="#f7c948"/>
+                    </g>
+                </svg>
+                <span>Travel By Petal</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#destinations" data-i18n="nav.destinations">Destinations</a></li>
+                <li><a href="#quiz" data-i18n="nav.quiz">Find My Trip</a></li>
+                <li><a href="#calculator" data-i18n="nav.calculator">Budget Planner</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact Us</a></li>
+                <li>
+                    <button class="lang-toggle" id="langToggle" aria-label="Switch language" onclick="toggleLanguage()">
+                        <span class="lang-flag" id="langFlag">&#127470;&#127473;</span>
+                        <span class="lang-label" id="langLabel">עברית</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-sub">Welcome to</span>
+                Travel By Petal
+            </h1>
+            <p class="hero-text">Where every journey blooms into an unforgettable adventure. Your boutique travel agency in Ra'anana, crafting personalized dream vacations worldwide.</p>
+            <div class="hero-buttons">
+                <a href="#quiz" class="btn btn-primary">Find My Dream Trip</a>
+                <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20planning%20a%20trip%20with%20Travel%20By%20Petal!" class="btn btn-secondary" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                    Chat on WhatsApp
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number" data-target="500">0</span>+ <span class="stat-label">Happy Travelers</span></div>
+                <div class="stat"><span class="stat-number" data-target="50">0</span>+ <span class="stat-label">Destinations</span></div>
+                <div class="stat"><span class="stat-number" data-target="8">0</span> <span class="stat-label">Years Experience</span></div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Tailored travel experiences for every kind of adventurer</p>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M32 12 L35 28 L32 52 L29 28Z" fill="#e8917a" opacity="0.7"/><path d="M12 32 L28 29 L52 32 L28 35Z" fill="#f4a993" opacity="0.7"/><circle cx="32" cy="32" r="4" fill="#f7c948"/></svg>
+                    </div>
+                    <h3>Vacation Packages</h3>
+                    <p>Curated all-inclusive packages to the world's most stunning destinations. Flights, hotels, and experiences — all taken care of.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M22 44 C22 34 32 20 32 20 C32 20 42 34 42 44" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M32 20 L32 44" stroke="#f4a993" stroke-width="1.5"/><circle cx="32" cy="38" r="3" fill="#f7c948"/></svg>
+                    </div>
+                    <h3>Honeymoon Getaways</h3>
+                    <p>Romantic escapes designed for newlyweds. From Maldives beaches to Santorini sunsets — we make it magical.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><circle cx="24" cy="28" r="5" fill="none" stroke="#e8917a" stroke-width="2"/><circle cx="40" cy="28" r="5" fill="none" stroke="#f4a993" stroke-width="2"/><circle cx="32" cy="40" r="4" fill="none" stroke="#f7c948" stroke-width="2"/></svg>
+                    </div>
+                    <h3>Family Adventures</h3>
+                    <p>Kid-friendly destinations with activities for all ages. Create lasting memories with your loved ones.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M20 44 L28 24 L32 32 L36 22 L44 44" fill="none" stroke="#e8917a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="32" cy="18" r="3" fill="#f7c948"/></svg>
+                    </div>
+                    <h3>Adventure Travel</h3>
+                    <p>For thrill-seekers — hiking, diving, safari tours, and extreme sports destinations around the globe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">Click to flip and discover more about each destination</p>
+            <div class="destinations-grid">
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #667eea33, #764ba233), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Romantic</span>
+                                <h3>Paris, France</h3>
+                                <p>From $899</p>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Paris, France</h3>
+                            <ul>
+                                <li>5 nights at boutique hotel</li>
+                                <li>Eiffel Tower skip-the-line</li>
+                                <li>Seine River cruise</li>
+                                <li>Louvre Museum guided tour</li>
+                                <li>Daily breakfast included</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Paris%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f093fb33, #f5576c33), url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Beach</span>
+                                <h3>Santorini, Greece</h3>
+                                <p>From $1,199</p>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Santorini, Greece</h3>
+                            <ul>
+                                <li>6 nights caldera-view hotel</li>
+                                <li>Sunset catamaran cruise</li>
+                                <li>Wine tasting tour</li>
+                                <li>Volcano hot springs visit</li>
+                                <li>Airport transfers included</li>
+                            </ul>
+                            <p class="dest-weather">Best time: May-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Santorini%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #4facfe33, #00f2fe33), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Luxury</span>
+                                <h3>Dubai, UAE</h3>
+                                <p>From $1,499</p>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Dubai, UAE</h3>
+                            <ul>
+                                <li>5 nights 5-star resort</li>
+                                <li>Desert safari & BBQ dinner</li>
+                                <li>Burj Khalifa observation deck</li>
+                                <li>Dubai Mall shopping tour</li>
+                                <li>Dhow cruise dinner</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Nov-Mar</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Dubai%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #a18cd133, #fbc2eb33), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Adventure</span>
+                                <h3>Bali, Indonesia</h3>
+                                <p>From $999</p>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Bali, Indonesia</h3>
+                            <ul>
+                                <li>7 nights villa with pool</li>
+                                <li>Temple tour & rice terraces</li>
+                                <li>Snorkeling excursion</li>
+                                <li>Traditional cooking class</li>
+                                <li>Spa treatment included</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Apr-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Bali%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #ffecd233, #fcb69f33), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Culture</span>
+                                <h3>Rome, Italy</h3>
+                                <p>From $849</p>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Rome, Italy</h3>
+                            <ul>
+                                <li>5 nights central hotel</li>
+                                <li>Colosseum & Vatican tour</li>
+                                <li>Trastevere food walk</li>
+                                <li>Day trip to Amalfi Coast</li>
+                                <li>Gelato tasting included</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Rome%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #89f7fe33, #66a6ff33), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Tropical</span>
+                                <h3>Maldives</h3>
+                                <p>From $1,899</p>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Maldives</h3>
+                            <ul>
+                                <li>5 nights overwater villa</li>
+                                <li>All-inclusive meals</li>
+                                <li>Scuba diving trip</li>
+                                <li>Sunset dolphin cruise</li>
+                                <li>Couples spa package</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Nov-Apr</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Maldives%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dream Trip Quiz -->
+    <section class="quiz-section" id="quiz">
+        <div class="container">
+            <h2 class="section-title">Find Your Dream Trip</h2>
+            <p class="section-subtitle">Answer 4 quick questions and we'll match you with your perfect destination</p>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgress"></div>
+                </div>
+                <div class="quiz-step active" data-step="1">
+                    <h3>What's your travel vibe?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="relax" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🏖️</span>
+                            <span>Relax & Unwind</span>
+                        </button>
+                        <button class="quiz-option" data-value="adventure" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🏔️</span>
+                            <span>Adventure & Thrills</span>
+                        </button>
+                        <button class="quiz-option" data-value="culture" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🏛️</span>
+                            <span>Culture & History</span>
+                        </button>
+                        <button class="quiz-option" data-value="romance" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💕</span>
+                            <span>Romance & Luxury</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="2">
+                    <h3>What's your ideal climate?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="tropical" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">☀️</span>
+                            <span>Hot & Tropical</span>
+                        </button>
+                        <button class="quiz-option" data-value="mild" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🌤️</span>
+                            <span>Warm & Mild</span>
+                        </button>
+                        <button class="quiz-option" data-value="cool" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🍂</span>
+                            <span>Cool & Breezy</span>
+                        </button>
+                        <button class="quiz-option" data-value="cold" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">❄️</span>
+                            <span>Cold & Snowy</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="3">
+                    <h3>Who are you traveling with?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="solo" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🧳</span>
+                            <span>Solo Explorer</span>
+                        </button>
+                        <button class="quiz-option" data-value="couple" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💑</span>
+                            <span>With My Partner</span>
+                        </button>
+                        <button class="quiz-option" data-value="family" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">👨‍👩‍👧‍👦</span>
+                            <span>Family Trip</span>
+                        </button>
+                        <button class="quiz-option" data-value="friends" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">👯</span>
+                            <span>With Friends</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="4">
+                    <h3>What's your budget per person?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="budget" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💰</span>
+                            <span>Under $1,000</span>
+                        </button>
+                        <button class="quiz-option" data-value="mid" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💰💰</span>
+                            <span>$1,000 - $2,000</span>
+                        </button>
+                        <button class="quiz-option" data-value="premium" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💰💰💰</span>
+                            <span>$2,000 - $4,000</span>
+                        </button>
+                        <button class="quiz-option" data-value="luxury" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">👑</span>
+                            <span>$4,000+ (Luxury)</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-result" id="quizResult" style="display:none">
+                    <div class="result-card">
+                        <h3>Your Perfect Match</h3>
+                        <div id="resultContent"></div>
+                        <a id="resultWhatsApp" href="#" class="btn btn-primary" target="_blank" rel="noopener">Book This Trip on WhatsApp</a>
+                        <button class="btn btn-outline" onclick="resetQuiz()">Retake Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Calculator -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <h2 class="section-title">Trip Budget Planner</h2>
+            <p class="section-subtitle">Slide the controls to estimate your dream trip cost</p>
+            <div class="calc-container">
+                <div class="calc-inputs">
+                    <div class="calc-group">
+                        <label>Destination Region</label>
+                        <select id="calcRegion" onchange="calculateBudget()">
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="americas">Americas</option>
+                            <option value="africa">Africa</option>
+                            <option value="oceania">Oceania</option>
+                            <option value="middleeast">Middle East</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Number of Travelers: <span id="travelersValue">2</span></label>
+                        <input type="range" id="calcTravelers" min="1" max="8" value="2" oninput="calculateBudget()">
+                    </div>
+                    <div class="calc-group">
+                        <label>Trip Duration: <span id="daysValue">7</span> days</label>
+                        <input type="range" id="calcDays" min="3" max="21" value="7" oninput="calculateBudget()">
+                    </div>
+                    <div class="calc-group">
+                        <label>Hotel Level</label>
+                        <select id="calcHotel" onchange="calculateBudget()">
+                            <option value="budget">Budget (2-3 star)</option>
+                            <option value="mid" selected>Mid-Range (3-4 star)</option>
+                            <option value="premium">Premium (4-5 star)</option>
+                            <option value="luxury">Luxury (5 star+)</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Activities Level</label>
+                        <select id="calcActivities" onchange="calculateBudget()">
+                            <option value="light">Light (mostly self-guided)</option>
+                            <option value="moderate" selected>Moderate (some tours)</option>
+                            <option value="full">Full (daily activities)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <div class="calc-total">
+                        <span class="calc-label">Estimated Total</span>
+                        <span class="calc-amount" id="calcTotal">$4,200</span>
+                        <span class="calc-per-person">(<span id="calcPerPerson">$2,100</span> per person)</span>
+                    </div>
+                    <div class="calc-breakdown">
+                        <div class="breakdown-item">
+                            <span>Flights</span>
+                            <span id="breakFlights">$1,200</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Hotels</span>
+                            <span id="breakHotels">$1,680</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Activities</span>
+                            <span id="breakActivities">$560</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Food & Transport</span>
+                            <span id="breakFood">$760</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/972545581269?text=Hi!%20I%20used%20the%20budget%20planner%20and%20I'm%20interested%20in%20a%20trip.%20Can%20you%20help?" class="btn btn-primary calc-cta" target="_blank" rel="noopener">Get an Exact Quote on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Travelers Say</h2>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p>"Travel By Petal made our honeymoon absolutely magical. Every detail was perfect — from the surprise room upgrade to the sunset dinner on the beach. We'll never book with anyone else!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">S&D</div>
+                            <div>
+                                <strong>Sarah & David</strong>
+                                <span>Honeymoon in Maldives</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p>"Took my family of 5 to Bali and everything was organized flawlessly. The kids loved every activity, and we parents actually got to relax! Best family vacation ever."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MK</div>
+                            <div>
+                                <strong>Michael K.</strong>
+                                <span>Family Trip to Bali</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p>"I was on a tight budget but still wanted an amazing European trip. Petal found me incredible deals and created an itinerary I never could have planned myself. Beyond impressed!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">RL</div>
+                            <div>
+                                <strong>Rachel L.</strong>
+                                <span>Budget Trip to Europe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-btn" onclick="slideTestimonial(-1)" aria-label="Previous">&#10094;</button>
+                    <button class="testimonial-btn" onclick="slideTestimonial(1)" aria-label="Next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2 class="section-title" style="text-align:left">About Travel By Petal</h2>
+                    <p>Based in the heart of <strong>Ra'anana, Israel</strong>, Travel By Petal is a boutique travel agency that believes every journey should bloom into something extraordinary.</p>
+                    <p>We don't just book trips — we craft personalized travel experiences. Whether you're dreaming of a romantic getaway, a family adventure, or a solo exploration, our team takes the time to understand your unique wishes and designs every detail around you.</p>
+                    <p>Our name says it all: like petals unfolding, we reveal the beauty of the world one trip at a time.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <span class="feature-check">✓</span>
+                            <span>Personalized itineraries</span>
+                        </div>
+                        <div class="about-feature">
+                            <span class="feature-check">✓</span>
+                            <span>24/7 WhatsApp support</span>
+                        </div>
+                        <div class="about-feature">
+                            <span class="feature-check">✓</span>
+                            <span>Best price guarantee</span>
+                        </div>
+                        <div class="about-feature">
+                            <span class="feature-check">✓</span>
+                            <span>Local insider knowledge</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="about-img-wrapper">
+                        <svg viewBox="0 0 400 400" width="100%" height="100%">
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#e8917a;stop-opacity:0.3"/>
+                                    <stop offset="100%" style="stop-color:#f7c948;stop-opacity:0.3"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="200" cy="200" r="180" fill="url(#grad1)"/>
+                            <g transform="translate(200,140)">
+                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#e8917a" opacity="0.8" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#f4a993" opacity="0.7" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#e8917a" opacity="0.8" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#f4a993" opacity="0.7" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#e8917a" opacity="0.8" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="12" fill="#f7c948"/>
+                            </g>
+                            <text x="200" y="250" text-anchor="middle" font-family="Playfair Display" font-size="22" fill="#3d3d3d">Travel By Petal</text>
+                            <text x="200" y="278" text-anchor="middle" font-family="Inter" font-size="13" fill="#777">Ra'anana, Israel</text>
+                            <text x="200" y="310" text-anchor="middle" font-family="Inter" font-size="12" fill="#e8917a">Every journey blooms</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Plan Your Trip</h2>
+            <p class="section-subtitle">Reach out on WhatsApp — we usually reply within minutes!</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8917a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Ra'anana, Israel</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8917a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                        </div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/972545581269" target="_blank" rel="noopener">054-558-1269</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8917a"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Sun-Thu: 9:00 - 18:00<br>Fri: 9:00 - 13:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta">
+                    <div class="whatsapp-big-btn">
+                        <a href="https://wa.me/972545581269?text=Hi!%20I'd%20like%20to%20plan%20a%20trip%20with%20Travel%20By%20Petal!" class="btn-whatsapp-large" target="_blank" rel="noopener">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                            <span>Start Planning on WhatsApp</span>
+                        </a>
+                    </div>
+                    <p class="contact-note">We typically respond within 15 minutes during business hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Travel By Petal</h3>
+                    <p>Your boutique travel agency in Ra'anana, Israel. Crafting unforgettable journeys since 2018.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#quiz">Find My Trip</a></li>
+                        <li><a href="#calculator">Budget Planner</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Popular Trips</h4>
+                    <ul>
+                        <li><a href="#destinations">Paris, France</a></li>
+                        <li><a href="#destinations">Santorini, Greece</a></li>
+                        <li><a href="#destinations">Dubai, UAE</a></li>
+                        <li><a href="#destinations">Bali, Indonesia</a></li>
+                        <li><a href="#destinations">Maldives</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>Ra'anana, Israel</p>
+                    <p><a href="https://wa.me/972545581269" target="_blank" rel="noopener">WhatsApp: 054-558-1269</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Travel By Petal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20booking%20a%20trip!" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contact us on WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+    </a>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat assistant">
+            <svg class="chatbot-icon-open" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/><circle cx="8" cy="10" r="1.2"/><circle cx="12" cy="10" r="1.2"/><circle cx="16" cy="10" r="1.2"/></svg>
+            <svg class="chatbot-icon-close" width="28" height="28" viewBox="0 0 24 24" fill="white" style="display:none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+            <span class="chatbot-badge" id="chatbotBadge">1</span>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <svg viewBox="0 0 40 40" width="36" height="36">
+                            <circle cx="20" cy="20" r="18" fill="#e8917a" opacity="0.2"/>
+                            <g transform="translate(20,20)">
+                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#e8917a" opacity="0.9" transform="rotate(0)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#f4a993" opacity="0.85" transform="rotate(72)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#e8917a" opacity="0.8" transform="rotate(144)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#f4a993" opacity="0.85" transform="rotate(216)"/>
+                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#e8917a" opacity="0.9" transform="rotate(288)"/>
+                                <circle cx="0" cy="0" r="3" fill="#f7c948"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>Petal Assistant</strong>
+                        <span class="chatbot-status">Online</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <!-- Messages will be injected by JS -->
+            </div>
+            <div class="chatbot-quick-replies" id="quickReplies">
+                <!-- Quick reply buttons injected by JS -->
+            </div>
+            <div class="chatbot-input-area">
+                <input type="text" id="chatbotInput" placeholder="Type your message..." autocomplete="off">
+                <button id="chatbotSend" aria-label="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
