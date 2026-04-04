@@ -20,8 +20,8 @@ const translations = {
 
         // Hero
         'hero.welcome': 'ברוכים הבאים ל',
-        'hero.text': 'כאשר כל מסע פורח להרפתקה בלתי נשכחת. סוכנות התיירות הבוטיק שלכם ברעננה, מעצבת חופשות חלומיות מותאמות אישית ברחבי העולם.',
-        'hero.cta1': 'מצאו את הטיול המושלם',
+        'hero.text': 'כולם יכולים להזמין באינטרנט — אבל כשמשהו משתבש, צריכים סוכנת נסיעות אמיתית. מישהי שמכירה את כל החוקים והתקנות, ויש לה את הגב שלכם. אני איתכם בכל צעד בדרך.',
+        'hero.cta1': 'התחילו לתכנן את הטיול',
         'hero.cta2': 'שוחחו בוואטסאפ',
         'hero.stat1': 'מטיילים מרוצים',
         'hero.stat2': 'יעדים',
@@ -50,7 +50,7 @@ const translations = {
         'dest.culture': 'תרבות',
         'dest.tropical': 'טרופי',
         'dest.from': 'החל מ-',
-        'dest.book': 'הזמינו בוואטסאפ',
+        'dest.book': 'תכננו את הטיול שלי',
         'dest.besttime': 'הזמן הטוב ביותר:',
 
         'dest.paris.title': 'פריז, צרפת',
@@ -69,13 +69,29 @@ const translations = {
         'dest.santorini.5': 'הסעות משדה התעופה כלולות',
         'dest.santorini.time': 'הזמן הטוב ביותר: מאי-אוק',
 
-        'dest.dubai.title': 'דובאי, איחוד האמירויות',
-        'dest.dubai.1': '5 לילות באתר נופש 5 כוכבים',
-        'dest.dubai.2': 'ספארי מדברי וארוחת ערב BBQ',
-        'dest.dubai.3': 'תצפית בורג\' חליפה',
-        'dest.dubai.4': 'סיור קניות בדובאי מול',
-        'dest.dubai.5': 'ארוחת ערב בשייט דאו',
+        'dest.dubai.title': 'דובאי',
+        'dest.dubai.1': 'ספארי מדברי וארוחת ערב BBQ',
+        'dest.dubai.2': 'תצפית בורג\' חליפה',
+        'dest.dubai.3': 'דובאי מול ושוקים',
+        'dest.dubai.4': 'שייט דאו לארוחת ערב',
+        'dest.dubai.5': 'אתרי נופש וחופים',
         'dest.dubai.time': 'הזמן הטוב ביותר: נוב-מרץ',
+
+        'dest.india.title': 'הודו',
+        'dest.india.1': 'טאג\' מאהל ומשולש הזהב',
+        'dest.india.2': 'שייט בתעלות קראלה',
+        'dest.india.3': 'סיורי ארמונות רג\'סטאן',
+        'dest.india.4': 'חוויות אוכל רחוב',
+        'dest.india.5': 'ריטריטים רוחניים ויוגה',
+        'dest.india.time': 'הזמן הטוב ביותר: אוק-מרץ',
+
+        'dest.athens.title': 'אתונה, יוון',
+        'dest.athens.1': 'סיור אקרופוליס ופרתנון',
+        'dest.athens.2': 'סיור ברובע פלאקה',
+        'dest.athens.3': 'טיולי יום לאיים יווניים',
+        'dest.athens.4': 'ארוחות בטברנה מסורתית',
+        'dest.athens.5': 'חקירת האגורה העתיקה',
+        'dest.athens.time': 'הזמן הטוב ביותר: אפר-יוני, ספט-אוק',
 
         'dest.bali.title': 'באלי, אינדונזיה',
         'dest.bali.1': '7 לילות בווילה עם בריכה',
@@ -86,12 +102,36 @@ const translations = {
         'dest.bali.time': 'הזמן הטוב ביותר: אפר-אוק',
 
         'dest.rome.title': 'רומא, איטליה',
-        'dest.rome.1': '5 לילות מלון מרכזי',
-        'dest.rome.2': 'סיור קולוסיאום והוותיקן',
-        'dest.rome.3': 'סיור אוכל בטרסטווארה',
-        'dest.rome.4': 'טיול יום לחוף אמלפי',
-        'dest.rome.5': 'טעימת ג\'לאטו כלולה',
+        'dest.rome.1': 'סיור קולוסיאום והוותיקן',
+        'dest.rome.2': 'סיור אוכל בטרסטווארה',
+        'dest.rome.3': 'טיול יום לחוף אמלפי',
+        'dest.rome.4': 'סדנת הכנת פסטה',
+        'dest.rome.5': 'מזרקת טרווי והפיאצות',
         'dest.rome.time': 'הזמן הטוב ביותר: אפר-יוני, ספט-אוק',
+
+        'dest.barcelona.title': 'ברצלונה, ספרד',
+        'dest.barcelona.1': 'סגרדה פמיליה וסיור גאודי',
+        'dest.barcelona.2': 'ביקור בשוק לה בוקריה',
+        'dest.barcelona.3': 'סיור הליכה ברובע הגותי',
+        'dest.barcelona.4': 'חוף וחוויית טאפאס',
+        'dest.barcelona.5': 'טיול יום למונסראט',
+        'dest.barcelona.time': 'הזמן הטוב ביותר: מאי-יוני, ספט-אוק',
+
+        'dest.london.title': 'לונדון',
+        'dest.london.1': 'סיור ביג בן והפרלמנט',
+        'dest.london.2': 'ביקור במגדל לונדון',
+        'dest.london.3': 'הצגה בווסט אנד',
+        'dest.london.4': 'שוקי קמדן ובורו',
+        'dest.london.5': 'טיול יום לסטונהנג\'',
+        'dest.london.time': 'הזמן הטוב ביותר: מאי-ספט',
+
+        'dest.vietnam.title': 'וייטנאם',
+        'dest.vietnam.1': 'שייט במפרץ הא לונג',
+        'dest.vietnam.2': 'סיור ברובע העתיק של האנוי',
+        'dest.vietnam.3': 'סיור בהו צ\'י מין סיטי',
+        'dest.vietnam.4': 'טיול סירה בדלתא המקונג',
+        'dest.vietnam.5': 'סדנת בישול וייטנאמית',
+        'dest.vietnam.time': 'הזמן הטוב ביותר: פבר-אפר, אוק-דצמ',
 
         'dest.maldives.title': 'האיים המלדיביים',
         'dest.maldives.1': '5 לילות בווילה מעל המים',
@@ -172,13 +212,13 @@ const translations = {
 
         // About
         'about.title': 'אודות Travel By Petal',
-        'about.p1': 'הממוקמים בלב <strong>רעננה, ישראל</strong>, Travel By Petal היא סוכנות תיירות בוטיק שמאמינה שכל מסע צריך לפרוח למשהו יוצא דופן.',
-        'about.p2': 'אנחנו לא רק מזמינים טיולים — אנחנו מעצבים חוויות נסיעה מותאמות אישית. בין אם אתם חולמים על בריחה רומנטית, הרפתקה משפחתית, או גילוי עצמי — הצוות שלנו לוקח את הזמן להבין את המשאלות הייחודיות שלכם ומעצב כל פרט סביבכם.',
-        'about.p3': 'השם שלנו אומר הכל: כמו עלי כותרת הנפתחים, אנחנו חושפים את יופי העולם טיול אחרי טיול.',
-        'about.f1': 'מסלולים מותאמים אישית',
+        'about.p1': 'ממוקמת ב<strong>רעננה, ישראל</strong> — אני מאמינה שכולם יכולים להזמין באינטרנט, אבל כשמשהו משתבש, אז באמת צריכים סוכנת נסיעות. מישהי שמכירה את כל החוקים והתקנות.',
+        'about.p2': 'תחשבו על זה כמו לאכול במסעדה — אתם יכולים לבשל בעצמכם, אבל לפעמים רוצים שמקצוענית תטפל בזה כדי שתוכלו פשוט לשבת ולהנות.',
+        'about.p3': 'אני איתכם לאורך כל הטיול, בכל צעד בדרך. מהרעיון הראשון ועד הטיסה האחרונה הביתה.',
+        'about.f1': 'איתכם בכל צעד בדרך',
         'about.f2': 'תמיכה 24/7 בוואטסאפ',
-        'about.f3': 'הבטחת מחיר הטוב ביותר',
-        'about.f4': 'ידע מקומי מקצועי',
+        'about.f3': 'מכירה את החוקים והתקנות',
+        'about.f4': 'תכנון מותאם אישית יום אחרי יום',
 
         // Contact
         'contact.title': 'בואו נתכנן את הטיול שלכם',
@@ -199,9 +239,79 @@ const translations = {
         'footer.copyright': '© 2026 Travel By Petal. כל הזכויות שמורות.',
 
         // Chatbot
-        'chat.name': 'העוזר של פטל',
-        'chat.status': 'מחובר',
+        'chat.name': 'העוזרת של פטל',
+        'chat.status': 'מחוברת',
         'chat.placeholder': 'הקלידו הודעה...',
+
+        // Services (updated)
+        'services.title': 'איך אני יכולה לעזור',
+        'services.subtitle': 'אתם יכולים לבשל בבית — אבל לפעמים רוצים שף. אותו דבר עם טיולים. תנו למקצוענית לטפל בפרטים בזמן שאתם נהנים.',
+        'services.1.title': 'הזמנה א-לה קארט',
+        'services.1.desc': 'אזמין בדיוק מה שאתם צריכים — שילוב של כל מה שתרצו:',
+        'services.2.title': 'תכנון מסלול מלא',
+        'services.2.desc': 'כל הטיול שלכם, מתוכנן יום אחרי יום. כל בוקר, צהריים וערב מאורגנים כדי שלא תצטרכו לחשוב על כלום. אני מטפלת בכל ההזמנות, הלוגיסטיקה והתזמון — אתם פשוט נהנים.',
+
+        // Updated destinations
+        'dest.luxury': 'יוקרה',
+        'dest.adventure': 'הרפתקה',
+        'dest.history': 'היסטוריה',
+        'dest.culture': 'תרבות',
+        'dest.vibrant': 'תוסס',
+        'dest.classic': 'קלאסי',
+        'dest.exotic': 'אקזוטי',
+
+        'dest.dubai.title': 'דובאי',
+        'dest.india.title': 'הודו',
+        'dest.athens.title': 'אתונה, יוון',
+        'dest.rome.title': 'רומא, איטליה',
+        'dest.barcelona.title': 'ברצלונה, ספרד',
+        'dest.london.title': 'לונדון',
+        'dest.vietnam.title': 'וייטנאם',
+
+        // Booking form section
+        'form.title': 'ספרו לי על הטיול שלכם',
+        'form.subtitle': 'מלאו את הטופס הקצר ואחזור אליכם עם הצעת מחיר מותאמת אישית',
+    }
+};
+
+// Hebrew chatbot knowledge
+const hebrewChatbot = {
+    greetings: [
+        "שלום! ברוכים הבאים ל-Travel By Petal! אני פטל, העוזרת האישית שלכם. איך אפשר לעזור?",
+        "היי! רוצים לתכנן את הטיול המושלם? אני כאן בשבילכם!",
+        "שלום! כולם יכולים להזמין באינטרנט, אבל כשצריך מקצוענית אמיתית — אני כאן. איך אפשר לעזור?"
+    ],
+    quickReplies: ['יעדים פופולריים', 'אילו שירותים?', 'מסלול מלא', 'הצעת מחיר'],
+    responses: {
+        destinations: "היעדים הפופולריים שלנו: דובאי, הודו, אתונה, רומא, ברצלונה, לונדון ווייטנאם. אני יכולה להזמין טיסות, מלונות, העברות, סיורים — או לתכנן מסלול מלא. מה מעניין אתכם?",
+        services: "אני מציעה שני שירותים:<br><br><strong>1. הזמנה א-לה קארט</strong> — אזמין בדיוק מה שאתם צריכים: טיסות, מלונות, העברות משדה תעופה, רכבות, שייטים, מסעדות, סיורים מודרכים, אטרקציות או השכרת רכב.<br><br><strong>2. תכנון מסלול מלא</strong> — כל הטיול שלכם מתוכנן יום אחרי יום!<br><br>מה מתאים לכם?",
+        itinerary: "אני מתכננת מסלולים מלאים יום אחרי יום! כל בוקר, צהריים וערב מתוכננים. כל ההזמנות, הלוגיסטיקה והתזמון — אני מטפלת בהכל. אתם פשוט נהנים. רוצים להתחיל?",
+        quote: "מלאו את טופס בקשת הטיול שלנו ואחזור אליכם עם הצעת מחיר מותאמת! <a href='https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header' target='_blank' style='color:var(--primary);font-weight:600'>לחצו כאן למילוי הטופס</a>",
+        whatsapp: "בטח! אפשר לדבר ישירות בוואטסאפ: <a href='https://wa.me/972545581269?text=היי!%20אני%20מעוניין/ת%20לתכנן%20טיול!' target='_blank' rel='noopener' style='color:#25D366;font-weight:600'>לחצו כאן לוואטסאפ</a>. אני בדרך כלל עונה תוך 15 דקות!",
+        dubai: "דובאי זה מדהים! ספארי מדברי, קניות יוקרה, בורג' חליפה ואוכל מטורף. הזמן הטוב ביותר: נוב-מרץ. אני יכולה להזמין הכל. גם אפשר <a href='https://tic.dubai.co.il/affiliate/' target='_blank' style='color:var(--primary);font-weight:600'>לצפות באטרקציות דובאי כאן</a> (בעברית, בשקלים, בתשלומים!)",
+        india: "הודו זו חוויה משנה חיים! טאג' מאהל, קראלה, ארמונות רג'סטאן ואוכל מדהים. הזמן הטוב ביותר: אוק-מרץ. אני יכולה לתכנן מסלול מלא יום אחרי יום!",
+        rome: "רומא היא מוזיאון חי! קולוסיאום, הוותיקן, סיורי אוכל בטרסטווארה וחוף אמלפי בקרבת מקום. הזמן הטוב ביותר: אפר-יוני, ספט-אוק.",
+        athens: "אתונה היא המקום שבו ההיסטוריה חיה! אקרופוליס, פרתנון, אוכל יווני מדהים וטיולי יום לאיים. הזמן הטוב ביותר: אפר-יוני, ספט-אוק.",
+        barcelona: "ברצלונה תוססת! האדריכלות של גאודי, חופים, טאפאס וחיי לילה. הזמן הטוב ביותר: מאי-יוני, ספט-אוק.",
+        london: "לונדון קלאסית! ביג בן, מגדל לונדון, הצגות בווסט אנד ושוקי אוכל מדהימים. הזמן הטוב ביותר: מאי-ספט.",
+        vietnam: "וייטנאם אקזוטית ומדהימה! מפרץ הא לונג, האנוי, הו צ'י מין וסדנת בישול וייטנאמית. הזמן הטוב ביותר: פבר-אפר, אוק-דצמ.",
+        thanks: "בשמחה! אם תצטרכו עוד משהו, אני כאן. גם אפשר לדבר ישירות בוואטסאפ!",
+        about: "Travel By Petal ממוקמת ברעננה, ישראל. כולם יכולים להזמין באינטרנט, אבל כשמשהו משתבש — אז באמת צריכים סוכנת נסיעות אמיתית. אני מכירה את כל החוקים והתקנות, ואני איתכם בכל צעד. אני יכולה להזמין טיסות, מלונות, העברות, רכבות, שייטים, מסעדות, סיורים, אטרקציות והשכרת רכב — או לתכנן מסלול מלא יום אחרי יום!",
+        fallback: "שאלה מעולה! אשמח לעזור לכם אישית. דברו איתי בוואטסאפ או <a href='https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header' target='_blank' style='color:var(--primary);font-weight:600'>מלאו את טופס הטיול</a>!"
+    },
+    quickReplyMap: {
+        'יעדים פופולריים': 'destinations',
+        'אילו שירותים?': 'services',
+        'מסלול מלא': 'itinerary',
+        'הצעת מחיר': 'quote',
+        'דובאי': 'dubai',
+        'הודו': 'india',
+        'רומא': 'rome',
+        'אתונה': 'athens',
+        'ברצלונה': 'barcelona',
+        'לונדון': 'london',
+        'וייטנאם': 'vietnam',
+        'וואטסאפ': 'whatsapp',
     }
 };
 
@@ -280,6 +390,18 @@ function applyHebrewTranslations() {
         const p = card.querySelector('p');
         if (h3 && t[`services.${num}.title`]) h3.textContent = t[`services.${num}.title`];
         if (p && t[`services.${num}.desc`]) p.textContent = t[`services.${num}.desc`];
+
+        // Translate service list items
+        const listItems = card.querySelectorAll('.service-list li');
+        const hebrewItems = ['טיסות', 'מלונות', 'העברות משדה תעופה', 'רכבות', 'שייטים', 'מסעדות', 'סיורים מודרכים', 'אטרקציות', 'השכרת רכב'];
+        listItems.forEach((li, j) => {
+            if (hebrewItems[j]) li.textContent = hebrewItems[j];
+        });
+
+        // Translate buttons
+        const btn = card.querySelector('.btn-small');
+        if (btn && num === 1) btn.textContent = 'קבלו הצעת מחיר';
+        if (btn && num === 2) btn.textContent = 'תכננו את הטיול שלי';
     });
 
     // Destinations
@@ -288,7 +410,7 @@ function applyHebrewTranslations() {
     if (destTitle) destTitle.textContent = t['dest.title'];
     if (destSubtitle) destSubtitle.textContent = t['dest.subtitle'];
 
-    const destKeys = ['paris', 'santorini', 'dubai', 'bali', 'rome', 'maldives'];
+    const destKeys = ['dubai', 'india', 'athens', 'rome', 'barcelona', 'london', 'vietnam'];
     const destCards = document.querySelectorAll('.dest-card');
     destCards.forEach((card, i) => {
         const key = destKeys[i];
@@ -317,7 +439,7 @@ function applyHebrewTranslations() {
 
     // Tags
     const tags = document.querySelectorAll('.dest-tag');
-    const tagKeys = ['dest.romantic', 'dest.beach', 'dest.luxury', 'dest.adventure', 'dest.culture', 'dest.tropical'];
+    const tagKeys = ['dest.luxury', 'dest.adventure', 'dest.history', 'dest.culture', 'dest.vibrant', 'dest.classic', 'dest.exotic'];
     tags.forEach((tag, i) => {
         if (t[tagKeys[i]]) tag.textContent = t[tagKeys[i]];
     });
@@ -469,6 +591,35 @@ function applyHebrewTranslations() {
     if (chatName) chatName.textContent = t['chat.name'];
     if (chatStatus) chatStatus.textContent = t['chat.status'];
     if (chatInput) chatInput.placeholder = t['chat.placeholder'];
+
+    // Affiliate section
+    const affTitle = document.querySelector('.affiliate-tools .section-title');
+    const affSubtitle = document.querySelector('.affiliate-tools .section-subtitle');
+    if (affTitle) affTitle.textContent = 'כלים לשירות עצמי';
+    if (affSubtitle) affSubtitle.textContent = 'רוצים לחפש בעצמכם? השתמשו בכלים השימושיים האלה';
+
+    const affCards = document.querySelectorAll('.affiliate-card');
+    if (affCards[0]) {
+        affCards[0].querySelector('strong').textContent = 'אטרקציות בדובאי';
+        affCards[0].querySelector('span:last-child').textContent = 'גלשו והזמינו בעברית, שלמו בשקלים עם תשלומים';
+    }
+    if (affCards[1]) {
+        affCards[1].querySelector('strong').textContent = 'חיפוש מלונות';
+        affCards[1].querySelector('span:last-child').textContent = 'מצאו והשוו מלונות ברחבי העולם בעברית ובשקלים';
+    }
+    if (affCards[2]) {
+        affCards[2].querySelector('strong').textContent = 'הזמנת אטרקציות';
+        affCards[2].querySelector('span:last-child').textContent = 'סיורים, כרטיסים וחוויות בכל עיר בעולם';
+    }
+
+    // Form section
+    const formTitle = document.querySelector('.form-section .section-title');
+    const formSubtitle = document.querySelector('.form-section .section-subtitle');
+    if (formTitle) formTitle.textContent = t['form.title'];
+    if (formSubtitle) formSubtitle.textContent = t['form.subtitle'];
+
+    // Reset chatbot to Hebrew
+    switchChatbotLanguage('he');
 
     document.body.classList.add('lang-he');
 }

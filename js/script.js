@@ -335,6 +335,29 @@ function initChatbot() {
     });
 }
 
+let chatLang = 'en';
+
+function switchChatbotLanguage(lang) {
+    chatLang = lang;
+    // Clear messages and show new welcome
+    const messages = document.getElementById('chatbotMessages');
+    if (messages) messages.innerHTML = '';
+    clearQuickReplies();
+
+    if (lang === 'he' && typeof hebrewChatbot !== 'undefined') {
+        setTimeout(() => {
+            addBotMessage(hebrewChatbot.greetings[Math.floor(Math.random() * hebrewChatbot.greetings.length)]);
+            showQuickReplies(hebrewChatbot.quickReplies);
+        }, 300);
+    } else {
+        chatLang = 'en';
+        setTimeout(() => {
+            addBotMessage(chatbotKnowledge.greetings[Math.floor(Math.random() * chatbotKnowledge.greetings.length)]);
+            showQuickReplies(['Popular destinations', 'What services?', 'Full itinerary', 'Get a quote']);
+        }, 300);
+    }
+}
+
 function handleUserMessage() {
     const input = document.getElementById('chatbotInput');
     const text = input.value.trim();
@@ -350,10 +373,14 @@ function handleUserMessage() {
     // Process and respond after delay
     setTimeout(() => {
         removeTyping();
-        const response = generateResponse(text);
-        addBotMessage(response.message);
-        if (response.quickReplies) {
-            showQuickReplies(response.quickReplies);
+        if (chatLang === 'he') {
+            const response = generateHebrewResponse(text);
+            addBotMessage(response.message);
+            if (response.quickReplies) showQuickReplies(response.quickReplies);
+        } else {
+            const response = generateResponse(text);
+            addBotMessage(response.message);
+            if (response.quickReplies) showQuickReplies(response.quickReplies);
         }
     }, 800 + Math.random() * 700);
 }
@@ -623,4 +650,92 @@ function showQuickReplies(replies) {
 
 function clearQuickReplies() {
     document.getElementById('quickReplies').innerHTML = '';
+}
+
+/* --- Hebrew Chatbot Responses --- */
+function generateHebrewResponse(input) {
+    const text = input.trim();
+    const hc = typeof hebrewChatbot !== 'undefined' ? hebrewChatbot : null;
+    if (!hc) return { message: 'שגיאה', quickReplies: [] };
+
+    const r = hc.responses;
+    const qr = hc.quickReplies;
+
+    // Check quick reply map first (exact match)
+    for (const [label, key] of Object.entries(hc.quickReplyMap)) {
+        if (text === label) {
+            const replies = key === 'destinations'
+                ? ['דובאי', 'הודו', 'אתונה', 'רומא', 'ברצלונה', 'לונדון', 'וייטנאם']
+                : key === 'services' ? ['מסלול מלא', 'הצעת מחיר', 'וואטסאפ']
+                : qr;
+            return { message: r[key], quickReplies: replies };
+        }
+    }
+
+    // Greeting
+    if (/^(שלום|היי|הי|בוקר טוב|ערב טוב|אהלן)/i.test(text)) {
+        return { message: hc.greetings[Math.floor(Math.random() * hc.greetings.length)], quickReplies: qr };
+    }
+
+    // Thanks
+    if (/תודה|תנקיו|thanks/i.test(text)) {
+        return { message: r.thanks, quickReplies: ['וואטסאפ', 'יעדים פופולריים'] };
+    }
+
+    // WhatsApp
+    if (/וואטסאפ|whatsapp|טלפון|צור קשר|אדם אמיתי/i.test(text)) {
+        return { message: r.whatsapp, quickReplies: ['יעדים פופולריים', 'הצעת מחיר'] };
+    }
+
+    // Destinations
+    const destMap = {
+        'דובאי': 'dubai', 'dubai': 'dubai',
+        'הודו': 'india', 'india': 'india', 'טאג': 'india',
+        'רומא': 'rome', 'rome': 'rome', 'איטליה': 'rome', 'קולוסיאום': 'rome',
+        'אתונה': 'athens', 'athens': 'athens', 'יוון': 'athens', 'אקרופוליס': 'athens',
+        'ברצלונה': 'barcelona', 'barcelona': 'barcelona', 'ספרד': 'barcelona',
+        'לונדון': 'london', 'london': 'london', 'אנגליה': 'london',
+        'וייטנאם': 'vietnam', 'vietnam': 'vietnam', 'האנוי': 'vietnam',
+    };
+
+    for (const [keyword, dest] of Object.entries(destMap)) {
+        if (text.includes(keyword)) {
+            return { message: r[dest], quickReplies: ['וואטסאפ', 'יעדים פופולריים', 'הצעת מחיר'] };
+        }
+    }
+
+    // Topics
+    if (/שירות|מה את עושה|מה את מציע|עוזר/i.test(text)) {
+        return { message: r.services, quickReplies: ['מסלול מלא', 'הצעת מחיר', 'וואטסאפ'] };
+    }
+    if (/מסלול|יום אחרי יום|תכנון מלא|תכנני/i.test(text)) {
+        return { message: r.itinerary, quickReplies: ['הצעת מחיר', 'יעדים פופולריים', 'וואטסאפ'] };
+    }
+    if (/הצעת מחיר|מחיר|כמה עולה|טופס|התחל/i.test(text)) {
+        return { message: r.quote, quickReplies: ['יעדים פופולריים', 'וואטסאפ'] };
+    }
+    if (/יעד|לאן|פופולר|מומלץ|להמליץ/i.test(text)) {
+        return { message: r.destinations, quickReplies: ['דובאי', 'הודו', 'רומא', 'ברצלונה', 'וייטנאם'] };
+    }
+    if (/מי את|על פטל|על החברה|אודות/i.test(text)) {
+        return { message: r.about, quickReplies: ['אילו שירותים?', 'יעדים פופולריים', 'וואטסאפ'] };
+    }
+    if (/טיסה|טיסות|לטוס/i.test(text)) {
+        return { message: 'אני מחפשת את הטיסות הכי טובות בכל חברות התעופה! גם שדרוגים לביזנס. לאן אתם טסים?', quickReplies: ['יעדים פופולריים', 'הצעת מחיר'] };
+    }
+    if (/מלון|מלונות|לינה/i.test(text)) {
+        return { message: 'אני מוצאת ומזמינה את המלון המושלם! או שאפשר <a href="https://www.zenhotels.com/?cur=ILS&lang=he&partner_extra=Website&partner_slug=108573.affiliate.3022" target="_blank" style="color:var(--primary);font-weight:600">לחפש מלונות בעצמכם</a> (בעברית, בשקלים).', quickReplies: ['הצעת מחיר', 'וואטסאפ'] };
+    }
+    if (/סיור|אטרקצי|פעילות/i.test(text)) {
+        return { message: 'אני מארגנת סיורים מודרכים ואטרקציות בכל העולם! או שאפשר <a href="https://www.getyourguide.com/?partner_id=BGGPE3N" target="_blank" style="color:var(--primary);font-weight:600">לחפש אטרקציות ב-GetYourGuide</a>.', quickReplies: ['הצעת מחיר', 'וואטסאפ'] };
+    }
+    if (/ירח דבש|חתונה|רומנטי/i.test(text)) {
+        return { message: 'מזל טוב! אני מתמחה בטיולי ירח דבש רומנטיים! אתכנן כל פרט — ארוחות ערב הפתעה, חבילות ספא, שדרוגי חדר. מה היעד החלום שלכם?', quickReplies: ['דובאי', 'רומא', 'ברצלונה', 'הצעת מחיר'] };
+    }
+    if (/משפחה|ילדים|משפחתי/i.test(text)) {
+        return { message: 'טיולי משפחה זה ההתמחות שלי! אני ממליצה על דובאי, ברצלונה, לונדון ורומא למשפחות. כמה אתם?', quickReplies: ['דובאי', 'לונדון', 'הצעת מחיר'] };
+    }
+
+    // Fallback
+    return { message: r.fallback, quickReplies: ['יעדים פופולריים', 'וואטסאפ', 'הצעת מחיר'] };
 }
