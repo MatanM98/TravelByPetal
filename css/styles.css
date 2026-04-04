@@ -1970,10 +1970,13 @@ img { max-width: 100%; display: block; }
 [dir="rtl"] .breakdown-item { flex-direction: row-reverse; }
 [dir="rtl"] .calc-total { direction: rtl; }
 
-/* Testimonials */
+/* Testimonials - force LTR on slider track so translateX works, but RTL on card content */
+[dir="rtl"] .testimonial-slider { direction: ltr; }
+[dir="rtl"] .testimonial-track { direction: ltr; }
 [dir="rtl"] .testimonial-card { text-align: right; direction: rtl; }
 [dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
 [dir="rtl"] .testimonial-author div { text-align: right; }
+[dir="rtl"] .testimonial-nav { direction: ltr; }
 
 /* Contact */
 [dir="rtl"] .contact-item {

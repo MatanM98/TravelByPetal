@@ -478,6 +478,18 @@ function applyHebrewTranslations() {
 
     const calcLabels = document.querySelectorAll('.calc-group label');
     if (calcLabels[0]) calcLabels[0].textContent = t['calc.region'];
+    if (calcLabels[1]) {
+        const tv = document.getElementById('travelersValue');
+        const tvVal = tv ? tv.textContent : '2';
+        calcLabels[1].innerHTML = t['calc.travelers'] + ' <span id="travelersValue">' + tvVal + '</span>';
+    }
+    if (calcLabels[2]) {
+        const dv = document.getElementById('daysValue');
+        const dvVal = dv ? dv.textContent : '7';
+        calcLabels[2].innerHTML = t['calc.duration'] + ' <span id="daysValue">' + dvVal + '</span> ' + t['calc.days'];
+    }
+    if (calcLabels[3]) calcLabels[3].textContent = t['calc.hotel'];
+    if (calcLabels[4]) calcLabels[4].textContent = t['calc.activities'];
     // Update region options
     const regionSelect = document.getElementById('calcRegion');
     if (regionSelect) {
@@ -509,6 +521,13 @@ function applyHebrewTranslations() {
     // Calc result labels
     const calcLabel = document.querySelector('.calc-label');
     if (calcLabel) calcLabel.textContent = t['calc.estimated'];
+
+    const calcPerPerson = document.querySelector('.calc-per-person');
+    if (calcPerPerson) {
+        const ppVal = document.getElementById('calcPerPerson');
+        const ppAmount = ppVal ? ppVal.textContent : '$0';
+        calcPerPerson.innerHTML = '(<span id="calcPerPerson">' + ppAmount + '</span> ' + t['calc.perperson'] + ')';
+    }
 
     const breakItems = document.querySelectorAll('.breakdown-item span:first-child');
     if (breakItems[0]) breakItems[0].textContent = t['calc.flights'];
