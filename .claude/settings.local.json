@@ -18,7 +18,13 @@
       "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/google4b618563b64968c2.html\")",
       "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/sitemap.xml\")",
       "WebFetch(domain:linktr.ee)",
-      "WebFetch(domain:www.google.com)"
+      "WebFetch(domain:www.google.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://matanm98.github.io/TravelByPetal/js/i18n.js\")",
+      "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/js/i18n.js\")",
+      "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/js/script.js\")",
+      "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/index.html\")",
+      "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/css/styles.css\")",
+      "WebFetch(domain:docs.google.com)"
     ]
   }
 }

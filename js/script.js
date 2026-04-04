@@ -335,6 +335,47 @@ function initChatbot() {
     });
 }
 
+/* --- Custom Form Multi-Step --- */
+function nextFormStep(step) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    document.querySelector(`.form-step[data-form-step="${step}"]`).classList.add('active');
+
+    document.querySelectorAll('.step-dot').forEach(dot => {
+        const dotStep = parseInt(dot.dataset.step);
+        dot.classList.remove('active', 'completed');
+        if (dotStep === step) dot.classList.add('active');
+        else if (dotStep < step) dot.classList.add('completed');
+    });
+
+    // Scroll form into view
+    document.getElementById('trip-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function submitTripForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('tripForm');
+    const formData = new FormData(form);
+
+    // Submit to Google Forms
+    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/formResponse';
+
+    fetch(googleFormUrl, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors'
+    }).then(() => {
+        // Show success
+        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+        document.querySelector('.form-steps-indicator').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    }).catch(() => {
+        // Still show success (no-cors won't return readable response)
+        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+        document.querySelector('.form-steps-indicator').style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    });
+}
+
 let chatLang = 'en';
 
 function switchChatbotLanguage(lang) {

@@ -702,7 +702,214 @@
             <h2 class="section-title">Tell Me About Your Trip</h2>
             <p class="section-subtitle">Fill out this quick form and I'll get back to you with a personalized quote</p>
             <div class="form-wrapper">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0" loading="lazy" title="Trip Request Form">Loading...</iframe>
+                <form id="tripForm" class="custom-form" dir="rtl" onsubmit="submitTripForm(event)">
+                    <!-- Step indicators -->
+                    <div class="form-steps-indicator">
+                        <div class="step-dot active" data-step="1">1</div>
+                        <div class="step-line"></div>
+                        <div class="step-dot" data-step="2">2</div>
+                        <div class="step-line"></div>
+                        <div class="step-dot" data-step="3">3</div>
+                        <div class="step-line"></div>
+                        <div class="step-dot" data-step="4">4</div>
+                    </div>
+
+                    <!-- Step 1: Personal Details -->
+                    <div class="form-step active" data-form-step="1">
+                        <h3 class="form-step-title">פרטים אישיים</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>שם מלא *</label>
+                                <input type="text" name="entry.1883151446" required placeholder="הכניסו שם מלא">
+                            </div>
+                            <div class="form-field">
+                                <label>מספר טלפון *</label>
+                                <input type="tel" name="entry.195224141" required placeholder="050-000-0000">
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>אימייל *</label>
+                            <input type="email" name="emailAddress" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>גילאים בזמן הנסיעה</label>
+                                <input type="text" name="entry.1984006419" placeholder="לדוגמה: 35, 33, 8, 5">
+                            </div>
+                            <div class="form-field">
+                                <label>תוקף דרכון מעל 6 חודשים?</label>
+                                <select name="entry.1643179041">
+                                    <option value="כן">כן</option>
+                                    <option value="לא">לא</option>
+                                    <option value="לא בטוח/ה">לא בטוח/ה</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary form-next" onclick="nextFormStep(2)">המשך &larr;</button>
+                    </div>
+
+                    <!-- Step 2: Trip Details -->
+                    <div class="form-step" data-form-step="2">
+                        <h3 class="form-step-title">פרטי הטיול</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>לאן אתם רוצים לטוס? *</label>
+                                <input type="text" name="entry.1749388622" required placeholder="יעד הנסיעה">
+                            </div>
+                            <div class="form-field">
+                                <label>תאריכי נסיעה מבוקשים</label>
+                                <input type="text" name="entry.1056874049" placeholder="לדוגמה: 15-22 ביולי">
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>גמישות בתאריכים</label>
+                            <div class="radio-group">
+                                <label class="radio-option"><input type="radio" name="entry.1499261677" value="אין גמישות"><span>אין גמישות</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1499261677" value="גמישות של כמה ימים" checked><span>גמישות של כמה ימים</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1499261677" value="פתוח להצעות"><span>פתוח להצעות</span></label>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>שירות נדרש *</label>
+                            <div class="radio-group">
+                                <label class="radio-option"><input type="radio" name="entry.1169236923" value="טיסה בלבד"><span>טיסה בלבד</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1169236923" value="מלון בלבד"><span>מלון בלבד</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1169236923" value="טיסה + מלון"><span>טיסה + מלון</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1169236923" value="תכנון מסלול"><span>תכנון מסלול</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1169236923" value="טיסה + מלון + תכנון" checked><span>טיסה + מלון + תכנון</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1169236923" value="אחר"><span>אחר</span></label>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>תקציב משוער</label>
+                                <input type="text" name="entry.617714780" placeholder="לדוגמה: 10,000 ש״ח לזוג">
+                            </div>
+                            <div class="form-field">
+                                <label>רמת ליווי</label>
+                                <select name="entry.953177635">
+                                    <option value="עזרה בהזמנות בלבד">עזרה בהזמנות בלבד</option>
+                                    <option value="תכנון מסלול מלא" selected>תכנון מסלול מלא</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-nav-buttons">
+                            <button type="button" class="btn btn-outline form-prev" onclick="nextFormStep(1)">&rarr; חזרה</button>
+                            <button type="button" class="btn btn-primary form-next" onclick="nextFormStep(3)">המשך &larr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Flight & Hotel Preferences -->
+                    <div class="form-step" data-form-step="3">
+                        <h3 class="form-step-title">העדפות טיסה ומלון</h3>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>העדפת טיסות</label>
+                                <select name="entry.1864061787">
+                                    <option value="ישירות בלבד">ישירות בלבד</option>
+                                    <option value="קונקשן קצר מקובל" selected>קונקשן קצר מקובל</option>
+                                    <option value="המחיר הכי טוב">המחיר הכי טוב</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label>העדפת חברת תעופה</label>
+                                <input type="text" name="entry.741895817" placeholder="אין העדפה / אל-על וכו׳">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>סוג מטען</label>
+                                <select name="entry.1085495667">
+                                    <option value="מזוודה 23 ק״ג">מזוודה 23 ק״ג</option>
+                                    <option value="עלייה למטוס 8-10 ק״ג">עלייה למטוס 8-10 ק״ג</option>
+                                    <option value="שניהם" selected>שניהם</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label>תנאי ביטול גמישים</label>
+                                <select name="entry.776037380">
+                                    <option value="חשוב מאוד">חשוב מאוד</option>
+                                    <option value="עדיף" selected>עדיף</option>
+                                    <option value="מחיר בעדיפות">מחיר בעדיפות</option>
+                                    <option value="לא צריך">לא צריך</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>רמת מלון</label>
+                                <select name="entry.11084784">
+                                    <option value="הטוב ביותר בתקציב" selected>הטוב ביותר בתקציב</option>
+                                    <option value="4-5 כוכבים">4-5 כוכבים</option>
+                                    <option value="3 כוכבים">3 כוכבים</option>
+                                    <option value="דירה/צימר">דירה/צימר</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label>סוג מיטות</label>
+                                <select name="entry.935151483">
+                                    <option value="ללא העדפה" selected>ללא העדפה</option>
+                                    <option value="מיטה זוגית">מיטה זוגית</option>
+                                    <option value="מיטות נפרדות">מיטות נפרדות</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label>ארוחות במלון</label>
+                                <select name="entry.611868580">
+                                    <option value="הכל כלול">הכל כלול</option>
+                                    <option value="פנסיון מלא">פנסיון מלא</option>
+                                    <option value="חצי פנסיון" selected>חצי פנסיון</option>
+                                    <option value="ארוחת בוקר בלבד">ארוחת בוקר בלבד</option>
+                                    <option value="לינה בלבד">לינה בלבד</option>
+                                    <option value="תלוי תקציב">תלוי תקציב</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label>ביטול חינם במלון?</label>
+                                <select name="entry.1421429188">
+                                    <option value="כן" selected>כן</option>
+                                    <option value="לא">לא</option>
+                                    <option value="רק אם לא יקר">רק אם לא יקר</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-nav-buttons">
+                            <button type="button" class="btn btn-outline form-prev" onclick="nextFormStep(2)">&rarr; חזרה</button>
+                            <button type="button" class="btn btn-primary form-next" onclick="nextFormStep(4)">המשך &larr;</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Special Preferences & Submit -->
+                    <div class="form-step" data-form-step="4">
+                        <h3 class="form-step-title">העדפות מיוחדות ושליחה</h3>
+                        <div class="form-field">
+                            <label>שבת / כשרות</label>
+                            <div class="radio-group">
+                                <label class="radio-option"><input type="radio" name="entry.1036689062" value="כשר בלבד"><span>כשר בלבד</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1036689062" value="לא לטוס בשבת"><span>לא לטוס בשבת</span></label>
+                                <label class="radio-option"><input type="radio" name="entry.1036689062" value="מעדיפים אבל לא חובה" checked><span>מעדיפים אבל לא חובה</span></label>
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label>משהו נוסף שחשוב לך לציין?</label>
+                            <textarea name="entry.180413487" rows="4" placeholder="בקשות מיוחדות, העדפות, הערות..."></textarea>
+                        </div>
+                        <div class="form-nav-buttons">
+                            <button type="button" class="btn btn-outline form-prev" onclick="nextFormStep(3)">&rarr; חזרה</button>
+                            <button type="submit" class="btn btn-primary form-submit">שלחו בקשה</button>
+                        </div>
+                    </div>
+
+                    <!-- Success message -->
+                    <div class="form-success" id="formSuccess" style="display:none">
+                        <div class="success-icon">&#10003;</div>
+                        <h3>הבקשה נשלחה בהצלחה!</h3>
+                        <p>תודה רבה! אחזור אליכם בהקדם עם הצעת מחיר מותאמת אישית.</p>
+                        <a href="https://wa.me/972545581269?text=היי!%20שלחתי%20טופס%20בקשה%20באתר" class="btn btn-primary" target="_blank" rel="noopener">שלחו הודעה בוואטסאפ לזירוז</a>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
