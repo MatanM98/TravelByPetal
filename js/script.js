@@ -96,12 +96,38 @@ function initScrollAnimations() {
         });
     }
 
-    // Check on scroll (throttled)
+    // Check on scroll (throttled) + parallax effects
     let scrollTicking = false;
+    const heroContent = document.querySelector('.hero-content');
+    const heroSection = document.querySelector('.hero');
+
     window.addEventListener('scroll', () => {
         if (!scrollTicking) {
             requestAnimationFrame(() => {
+                const scrollY = window.pageYOffset;
+
+                // Reveal elements
                 checkReveal();
+
+                // Hero parallax - content moves slower than scroll
+                if (heroContent && heroSection) {
+                    const heroBottom = heroSection.offsetHeight;
+                    if (scrollY < heroBottom) {
+                        heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+                        heroContent.style.opacity = 1 - (scrollY / heroBottom) * 0.6;
+                    }
+                }
+
+                // Navbar shrink
+                const navbar = document.getElementById('navbar');
+                if (navbar) {
+                    if (scrollY > 100) {
+                        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
+                    } else {
+                        navbar.style.boxShadow = '';
+                    }
+                }
+
                 scrollTicking = false;
             });
             scrollTicking = true;
@@ -110,6 +136,19 @@ function initScrollAnimations() {
 
     // Initial check after short delay
     setTimeout(checkReveal, 150);
+
+    // Tilt effect on destination cards (mouse move)
+    document.querySelectorAll('.dest-card-front').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
 }
 
 /* --- Floating Petals --- */

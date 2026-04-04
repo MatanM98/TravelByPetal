@@ -24,7 +24,8 @@
       "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/js/script.js\")",
       "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/index.html\")",
       "Bash(curl -s \"https://matanm98.github.io/TravelByPetal/css/styles.css\")",
-      "WebFetch(domain:docs.google.com)"
+      "WebFetch(domain:docs.google.com)",
+      "WebFetch(domain:mozinteractive.co.il)"
     ]
   }
 }
