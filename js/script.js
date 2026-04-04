@@ -82,22 +82,34 @@ function initScrollAnimations() {
         el.style.transitionDelay = (i * 0.1) + 's';
     });
 
-    // Observe all reveal elements
-    setTimeout(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.05
-        });
+    // Reveal elements on scroll (using scroll event for maximum compatibility)
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
-        const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
-        els.forEach(el => observer.observe(el));
-    }, 100);
+    function checkReveal() {
+        const windowHeight = window.innerHeight;
+        revealEls.forEach(el => {
+            if (el.classList.contains('visible')) return;
+            const rect = el.getBoundingClientRect();
+            if (rect.top < windowHeight - 50) {
+                el.classList.add('visible');
+            }
+        });
+    }
+
+    // Check on scroll (throttled)
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+            requestAnimationFrame(() => {
+                checkReveal();
+                scrollTicking = false;
+            });
+            scrollTicking = true;
+        }
+    });
+
+    // Initial check after short delay
+    setTimeout(checkReveal, 150);
 }
 
 /* --- Floating Petals --- */
