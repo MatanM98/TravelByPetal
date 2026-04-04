@@ -252,7 +252,7 @@ setInterval(() => slideTestimonial(1), 6000);
 
 const WHATSAPP_LINK = 'https://wa.me/972545581269';
 
-const BOOKING_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header';
+const BOOKING_FORM = '#trip-form';
 
 const chatbotKnowledge = {
     greetings: [
@@ -273,7 +273,7 @@ const chatbotKnowledge = {
     },
     topics: {
         service: "I offer two main services: <br><br><strong>1. A La Carte Booking</strong> — I book exactly what you need: flights, hotels, airport transfers, trains, cruises, restaurants, guided tours, excursions, or car rental.<br><br><strong>2. Full Itinerary Planning</strong> — Your entire trip planned day by day, every detail organized so you just enjoy!<br><br>Which sounds right for you?",
-        book: "I can book: flights, hotels, airport transfers, trains, cruises, restaurants, guided day tours, excursions, and car rental. Tell me what you need or <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>fill out our trip form</a>!",
+        book: "I can book: flights, hotels, airport transfers, trains, cruises, restaurants, guided day tours, excursions, and car rental. Tell me what you need or <a href='" + BOOKING_FORM + "' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>fill out our trip form</a>!",
         itinerary: "I create full day-by-day itineraries! Every morning, afternoon, and evening planned out. All bookings, logistics, and timing handled. You just show up and enjoy. Want to get started?",
         honeymoon: "Congratulations! I specialize in romantic honeymoon trips! I'll plan every detail — surprise dinners, spa packages, room upgrades. What's your dream destination?",
         family: "Family trips are my specialty! I recommend Dubai, Barcelona, London, and Rome for families. I handle kid-friendly activities, family rooms, and smooth logistics. How many are traveling?",
@@ -289,13 +289,13 @@ const chatbotKnowledge = {
         train: "I book train tickets across Europe and Asia — including high-speed trains! Planning a rail trip?",
         visa: "Visa requirements depend on your passport and destination. As Israeli passport holders, many countries offer visa-free entry. Tell me your destination and I'll check for you!",
         insurance: "I always recommend travel insurance! I can help you find affordable plans that cover cancellation, medical emergencies, and lost luggage.",
-        price: "Prices vary based on destination, dates, and preferences. Fill out our <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>trip request form</a> and I'll send you a personalized quote!",
+        price: "Prices vary based on destination, dates, and preferences. Fill out our <a href='" + BOOKING_FORM + "' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>trip request form</a> and I'll send you a personalized quote!",
         why: "Anyone can book online — but when something goes wrong, that's when you really need a travel agent. Someone who knows all the laws and regulations. Think of it like eating at a restaurant — you can cook at home, but sometimes you want a professional to handle it. I'm with you every step of the way!",
     },
     fallback: [
-        "Great question! I'd love to help you personally. Chat with me on WhatsApp or <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>fill out our trip form</a>!",
-        "I want to give you the perfect answer! Let's continue on WhatsApp or you can <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>submit a trip request</a>.",
-        "Interesting! Let me help you with that. Would you like to chat on WhatsApp or <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>fill out our form</a>?"
+        "Great question! I'd love to help you personally. Chat with me on WhatsApp or <a href='" + BOOKING_FORM + "' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>fill out our trip form</a>!",
+        "I want to give you the perfect answer! Let's continue on WhatsApp or you can <a href='" + BOOKING_FORM + "' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>submit a trip request</a>.",
+        "Interesting! Let me help you with that. Would you like to chat on WhatsApp or <a href='" + BOOKING_FORM + "' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>fill out our form</a>?"
     ]
 };
 
@@ -597,7 +597,7 @@ function generateResponse(input) {
 
     if (/quote|form|request|get started|start/i.test(text)) {
         return {
-            message: "Fill out our quick trip request form and I'll get back to you with a personalized quote! <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>Click here to fill out the form</a>",
+            message: "Fill out our quick trip request form and I'll get back to you with a personalized quote! <a href='" + BOOKING_FORM + "' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>Click here to fill out the form</a>",
             quickReplies: ['Popular destinations', 'Chat on WhatsApp']
         };
     }

@@ -286,7 +286,7 @@ const hebrewChatbot = {
         destinations: "היעדים הפופולריים שלנו: דובאי, הודו, אתונה, רומא, ברצלונה, לונדון ווייטנאם. אני יכולה להזמין טיסות, מלונות, העברות, סיורים — או לתכנן מסלול מלא. מה מעניין אתכם?",
         services: "אני מציעה שני שירותים:<br><br><strong>1. הזמנה א-לה קארט</strong> — אזמין בדיוק מה שאתם צריכים: טיסות, מלונות, העברות משדה תעופה, רכבות, שייטים, מסעדות, סיורים מודרכים, אטרקציות או השכרת רכב.<br><br><strong>2. תכנון מסלול מלא</strong> — כל הטיול שלכם מתוכנן יום אחרי יום!<br><br>מה מתאים לכם?",
         itinerary: "אני מתכננת מסלולים מלאים יום אחרי יום! כל בוקר, צהריים וערב מתוכננים. כל ההזמנות, הלוגיסטיקה והתזמון — אני מטפלת בהכל. אתם פשוט נהנים. רוצים להתחיל?",
-        quote: "מלאו את טופס בקשת הטיול שלנו ואחזור אליכם עם הצעת מחיר מותאמת! <a href='https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header' target='_blank' style='color:var(--primary);font-weight:600'>לחצו כאן למילוי הטופס</a>",
+        quote: "מלאו את טופס בקשת הטיול שלנו ואחזור אליכם עם הצעת מחיר מותאמת! <a href='#trip-form' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>לחצו כאן למילוי הטופס</a>",
         whatsapp: "בטח! אפשר לדבר ישירות בוואטסאפ: <a href='https://wa.me/972545581269?text=היי!%20אני%20מעוניין/ת%20לתכנן%20טיול!' target='_blank' rel='noopener' style='color:#25D366;font-weight:600'>לחצו כאן לוואטסאפ</a>. אני בדרך כלל עונה תוך 15 דקות!",
         dubai: "דובאי זה מדהים! ספארי מדברי, קניות יוקרה, בורג' חליפה ואוכל מטורף. הזמן הטוב ביותר: נוב-מרץ. אני יכולה להזמין הכל. גם אפשר <a href='https://tic.dubai.co.il/affiliate/' target='_blank' style='color:var(--primary);font-weight:600'>לצפות באטרקציות דובאי כאן</a> (בעברית, בשקלים, בתשלומים!)",
         india: "הודו זו חוויה משנה חיים! טאג' מאהל, קראלה, ארמונות רג'סטאן ואוכל מדהים. הזמן הטוב ביותר: אוק-מרץ. אני יכולה לתכנן מסלול מלא יום אחרי יום!",
@@ -297,7 +297,7 @@ const hebrewChatbot = {
         vietnam: "וייטנאם אקזוטית ומדהימה! מפרץ הא לונג, האנוי, הו צ'י מין וסדנת בישול וייטנאמית. הזמן הטוב ביותר: פבר-אפר, אוק-דצמ.",
         thanks: "בשמחה! אם תצטרכו עוד משהו, אני כאן. גם אפשר לדבר ישירות בוואטסאפ!",
         about: "Travel By Petal ממוקמת ברעננה, ישראל. כולם יכולים להזמין באינטרנט, אבל כשמשהו משתבש — אז באמת צריכים סוכנת נסיעות אמיתית. אני מכירה את כל החוקים והתקנות, ואני איתכם בכל צעד. אני יכולה להזמין טיסות, מלונות, העברות, רכבות, שייטים, מסעדות, סיורים, אטרקציות והשכרת רכב — או לתכנן מסלול מלא יום אחרי יום!",
-        fallback: "שאלה מעולה! אשמח לעזור לכם אישית. דברו איתי בוואטסאפ או <a href='https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header' target='_blank' style='color:var(--primary);font-weight:600'>מלאו את טופס הטיול</a>!"
+        fallback: "שאלה מעולה! אשמח לעזור לכם אישית. דברו איתי בוואטסאפ או <a href='#trip-form' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>מלאו את טופס הטיול</a>!"
     },
     quickReplyMap: {
         'יעדים פופולריים': 'destinations',
