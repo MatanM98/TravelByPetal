@@ -176,7 +176,7 @@ function initScrollAnimations() {
 /* --- Floating Petals --- */
 function initPetals() {
     const container = document.getElementById('petalsContainer');
-    const colors = ['#5ba4c9', '#89c4e1', '#c9a84c', '#a8d4ea', '#e8d590'];
+    const colors = ['#5ba4c9', '#89c4e1', '#c9a84c', '#3d8ab3', '#e8d590', '#4a93b8', '#d4b44a'];
 
     function createPetal() {
         const petal = document.createElement('div');
