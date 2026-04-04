@@ -8,7 +8,96 @@ document.addEventListener('DOMContentLoaded', () => {
     initStatCounter();
     initChatbot();
     calculateBudget();
+    initScrollAnimations();
 });
+
+/* --- Scroll Reveal Animations --- */
+function initScrollAnimations() {
+    // Add reveal classes to elements
+    document.querySelectorAll('.section-title').forEach(el => el.classList.add('reveal'));
+    document.querySelectorAll('.section-subtitle').forEach(el => el.classList.add('reveal'));
+
+    // Service cards - staggered
+    document.querySelectorAll('.service-card').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.setProperty('--i', i);
+        el.style.transitionDelay = (i * 0.15) + 's';
+    });
+
+    // Destination cards - staggered scale
+    document.querySelectorAll('.dest-card').forEach((el, i) => {
+        el.classList.add('reveal-scale');
+        el.style.transitionDelay = (i * 0.1) + 's';
+    });
+
+    // Affiliate cards
+    document.querySelectorAll('.affiliate-card').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 0.12) + 's';
+    });
+
+    // Quiz container
+    const quizContainer = document.querySelector('.quiz-container');
+    if (quizContainer) quizContainer.classList.add('reveal-scale');
+
+    // Calculator
+    const calcInputs = document.querySelector('.calc-inputs');
+    const calcResult = document.querySelector('.calc-result');
+    if (calcInputs) calcInputs.classList.add('reveal-left');
+    if (calcResult) calcResult.classList.add('reveal-right');
+
+    // Testimonial slider
+    const testSlider = document.querySelector('.testimonial-slider');
+    if (testSlider) testSlider.classList.add('reveal');
+
+    // About section
+    const aboutContent = document.querySelector('.about-content');
+    const aboutImage = document.querySelector('.about-image');
+    if (aboutContent) aboutContent.classList.add('reveal-left');
+    if (aboutImage) aboutImage.classList.add('reveal-right');
+
+    // Contact
+    const contactInfo = document.querySelector('.contact-info');
+    const contactCta = document.querySelector('.contact-cta');
+    if (contactInfo) contactInfo.classList.add('reveal-left');
+    if (contactCta) contactCta.classList.add('reveal-right');
+
+    // Form
+    const formWrapper = document.querySelector('.form-wrapper');
+    if (formWrapper) formWrapper.classList.add('reveal');
+
+    // Hero elements (animate on load with delay)
+    const heroTitle = document.querySelector('.hero-title');
+    const heroText = document.querySelector('.hero-text');
+    const heroButtons = document.querySelector('.hero-buttons');
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroTitle) { heroTitle.classList.add('reveal'); heroTitle.style.transitionDelay = '0.2s'; }
+    if (heroText) { heroText.classList.add('reveal'); heroText.style.transitionDelay = '0.4s'; }
+    if (heroButtons) { heroButtons.classList.add('reveal'); heroButtons.style.transitionDelay = '0.6s'; }
+    if (heroStats) { heroStats.classList.add('reveal'); heroStats.style.transitionDelay = '0.8s'; }
+
+    // Footer
+    document.querySelectorAll('.footer-grid > div').forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i * 0.1) + 's';
+    });
+
+    // Observe all reveal elements
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        observer.observe(el);
+    });
+}
 
 /* --- Floating Petals --- */
 function initPetals() {
