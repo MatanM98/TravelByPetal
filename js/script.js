@@ -437,6 +437,48 @@ function initChatbot() {
     });
 }
 
+/* --- Accessibility & Dark Mode --- */
+let fontSizeLevel = 0;
+
+function changeFontSize(dir) {
+    if (dir === 0) {
+        fontSizeLevel = 0;
+        document.documentElement.style.fontSize = '';
+    } else {
+        fontSizeLevel += dir;
+        fontSizeLevel = Math.max(-3, Math.min(5, fontSizeLevel));
+        document.documentElement.style.fontSize = (100 + fontSizeLevel * 10) + '%';
+    }
+}
+
+function toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+    // Turn off dark mode if enabling high contrast
+    if (document.body.classList.contains('high-contrast')) {
+        document.body.classList.remove('dark-mode');
+    }
+}
+
+function toggleHighlightLinks() {
+    document.body.classList.toggle('highlight-links');
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    // Turn off high contrast if enabling dark mode
+    if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('high-contrast');
+    }
+}
+
+// Close a11y panel when clicking outside
+document.addEventListener('click', (e) => {
+    const toolbar = document.getElementById('a11yToolbar');
+    if (toolbar && !toolbar.contains(e.target)) {
+        document.getElementById('a11yPanel')?.classList.remove('open');
+    }
+});
+
 /* --- Custom Form Multi-Step --- */
 function nextFormStep(step) {
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
