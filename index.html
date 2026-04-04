@@ -47,7 +47,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -60,18 +60,18 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#home" class="logo">
-                <svg class="logo-icon" viewBox="0 0 40 40" width="40" height="40">
-                    <g transform="translate(20,20)">
-                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#e8917a" opacity="0.9" transform="rotate(0)"/>
-                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#f4a993" opacity="0.85" transform="rotate(60)"/>
-                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#e8917a" opacity="0.8" transform="rotate(120)"/>
-                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#f4a993" opacity="0.85" transform="rotate(180)"/>
-                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#e8917a" opacity="0.9" transform="rotate(240)"/>
-                        <ellipse cx="0" cy="-8" rx="5" ry="10" fill="#f4a993" opacity="0.85" transform="rotate(300)"/>
-                        <circle cx="0" cy="0" r="4" fill="#f7c948"/>
+                <svg class="logo-icon" viewBox="0 0 200 55" width="200" height="55">
+                    <!-- Airplane -->
+                    <g transform="translate(155,8) rotate(-30)">
+                        <path d="M0,8 L20,0 L18,6 L26,4 L18,8 L18,12 L26,10 L18,14 L20,20 L0,12 L4,10 L0,8Z" fill="#c9a84c"/>
                     </g>
+                    <!-- Dotted trail -->
+                    <path d="M25,48 Q60,32 100,40 Q140,48 165,20" fill="none" stroke="#c9a84c" stroke-width="2" stroke-dasharray="3,4" stroke-linecap="round"/>
+                    <!-- Text -->
+                    <text x="10" y="36" font-family="'Dancing Script', cursive" font-size="28" font-weight="700" fill="#5ba4c9">Travel</text>
+                    <text x="85" y="36" font-family="'Dancing Script', cursive" font-size="20" font-weight="400" fill="#5ba4c9">by</text>
+                    <text x="110" y="36" font-family="'Dancing Script', cursive" font-size="30" font-weight="700" fill="#5ba4c9">Petal</text>
                 </svg>
-                <span>Travel By Petal</span>
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -101,9 +101,9 @@
                 <span class="hero-sub">Welcome to</span>
                 Travel By Petal
             </h1>
-            <p class="hero-text">Where every journey blooms into an unforgettable adventure. Your boutique travel agency in Ra'anana, crafting personalized dream vacations worldwide.</p>
+            <p class="hero-text">Anyone can book online — but when something goes wrong, you need a real travel agent. Someone who knows the laws, the regulations, and has your back. I'm with you every step of the way.</p>
             <div class="hero-buttons">
-                <a href="#quiz" class="btn btn-primary">Find My Dream Trip</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header" class="btn btn-primary" target="_blank" rel="noopener">Start Planning Your Trip</a>
                 <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20planning%20a%20trip%20with%20Travel%20By%20Petal!" class="btn btn-secondary" target="_blank" rel="noopener">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                     Chat on WhatsApp
@@ -124,36 +124,35 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Tailored travel experiences for every kind of adventurer</p>
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up">
+            <h2 class="section-title">How I Can Help</h2>
+            <p class="section-subtitle">You can cook at home — but sometimes you want a chef. Same with travel. Let a professional handle the details while you sit back and relax.</p>
+            <div class="services-grid services-two">
+                <div class="service-card">
                     <div class="service-icon">
-                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M32 12 L35 28 L32 52 L29 28Z" fill="#e8917a" opacity="0.7"/><path d="M12 32 L28 29 L52 32 L28 35Z" fill="#f4a993" opacity="0.7"/><circle cx="32" cy="32" r="4" fill="#f7c948"/></svg>
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#5ba4c9" stroke-width="2"/><path d="M18 38 L28 18 L32 28 L36 16 L46 38" fill="none" stroke="#5ba4c9" stroke-width="2" stroke-linejoin="round"/><path d="M18 38 L46 38" stroke="#89c4e1" stroke-width="1.5"/><circle cx="32" cy="44" r="3" fill="#c9a84c"/></svg>
                     </div>
-                    <h3>Vacation Packages</h3>
-                    <p>Curated all-inclusive packages to the world's most stunning destinations. Flights, hotels, and experiences — all taken care of.</p>
+                    <h3>A La Carte Booking</h3>
+                    <p>I'll book exactly what you need — mix and match any combination:</p>
+                    <ul class="service-list">
+                        <li>Flights</li>
+                        <li>Hotels</li>
+                        <li>Airport transfers</li>
+                        <li>Trains</li>
+                        <li>Cruises</li>
+                        <li>Restaurants</li>
+                        <li>Guided day tours</li>
+                        <li>Excursions</li>
+                        <li>Car rental</li>
+                    </ul>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header" class="btn btn-small" target="_blank" rel="noopener">Get a Quote</a>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card">
                     <div class="service-icon">
-                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M22 44 C22 34 32 20 32 20 C32 20 42 34 42 44" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M32 20 L32 44" stroke="#f4a993" stroke-width="1.5"/><circle cx="32" cy="38" r="3" fill="#f7c948"/></svg>
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#5ba4c9" stroke-width="2"/><rect x="20" y="16" width="24" height="32" rx="3" fill="none" stroke="#5ba4c9" stroke-width="2"/><line x1="24" y1="24" x2="40" y2="24" stroke="#89c4e1" stroke-width="1.5"/><line x1="24" y1="30" x2="40" y2="30" stroke="#89c4e1" stroke-width="1.5"/><line x1="24" y1="36" x2="40" y2="36" stroke="#89c4e1" stroke-width="1.5"/><circle cx="26" cy="24" r="1.5" fill="#c9a84c"/><circle cx="26" cy="30" r="1.5" fill="#c9a84c"/><circle cx="26" cy="36" r="1.5" fill="#c9a84c"/></svg>
                     </div>
-                    <h3>Honeymoon Getaways</h3>
-                    <p>Romantic escapes designed for newlyweds. From Maldives beaches to Santorini sunsets — we make it magical.</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><circle cx="24" cy="28" r="5" fill="none" stroke="#e8917a" stroke-width="2"/><circle cx="40" cy="28" r="5" fill="none" stroke="#f4a993" stroke-width="2"/><circle cx="32" cy="40" r="4" fill="none" stroke="#f7c948" stroke-width="2"/></svg>
-                    </div>
-                    <h3>Family Adventures</h3>
-                    <p>Kid-friendly destinations with activities for all ages. Create lasting memories with your loved ones.</p>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#e8917a" stroke-width="2"/><path d="M20 44 L28 24 L32 32 L36 22 L44 44" fill="none" stroke="#e8917a" stroke-width="2.5" stroke-linejoin="round"/><circle cx="32" cy="18" r="3" fill="#f7c948"/></svg>
-                    </div>
-                    <h3>Adventure Travel</h3>
-                    <p>For thrill-seekers — hiking, diving, safari tours, and extreme sports destinations around the globe.</p>
+                    <h3>Full Itinerary Planning</h3>
+                    <p>Your entire trip, planned day by day. Every morning, afternoon, and evening organized so you don't have to think about a thing. I handle all the bookings, logistics, and timing — you just enjoy.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header" class="btn btn-small" target="_blank" rel="noopener">Plan My Trip</a>
                 </div>
             </div>
         </div>
@@ -167,96 +166,69 @@
             <div class="destinations-grid">
                 <div class="dest-card" onclick="this.classList.toggle('flipped')">
                     <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #667eea33, #764ba233), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Romantic</span>
-                                <h3>Paris, France</h3>
-                                <p>From $899</p>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Paris, France</h3>
-                            <ul>
-                                <li>5 nights at boutique hotel</li>
-                                <li>Eiffel Tower skip-the-line</li>
-                                <li>Seine River cruise</li>
-                                <li>Louvre Museum guided tour</li>
-                                <li>Daily breakfast included</li>
-                            </ul>
-                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Paris%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" onclick="this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f093fb33, #f5576c33), url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Beach</span>
-                                <h3>Santorini, Greece</h3>
-                                <p>From $1,199</p>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Santorini, Greece</h3>
-                            <ul>
-                                <li>6 nights caldera-view hotel</li>
-                                <li>Sunset catamaran cruise</li>
-                                <li>Wine tasting tour</li>
-                                <li>Volcano hot springs visit</li>
-                                <li>Airport transfers included</li>
-                            </ul>
-                            <p class="dest-weather">Best time: May-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Santorini%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" onclick="this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
                         <div class="dest-card-front" style="background: linear-gradient(135deg, #4facfe33, #00f2fe33), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80') center/cover">
                             <div class="dest-info">
                                 <span class="dest-tag">Luxury</span>
                                 <h3>Dubai, UAE</h3>
-                                <p>From $1,499</p>
                             </div>
                         </div>
                         <div class="dest-card-back">
                             <h3>Dubai, UAE</h3>
                             <ul>
-                                <li>5 nights 5-star resort</li>
                                 <li>Desert safari & BBQ dinner</li>
                                 <li>Burj Khalifa observation deck</li>
-                                <li>Dubai Mall shopping tour</li>
+                                <li>Dubai Mall & souks</li>
                                 <li>Dhow cruise dinner</li>
+                                <li>Beach resorts & water parks</li>
                             </ul>
                             <p class="dest-weather">Best time: Nov-Mar</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Dubai%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                            <a href="https://tic.dubai.co.il/affiliate/" class="btn btn-small" target="_blank" rel="noopener">Browse Dubai Attractions</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="dest-card" onclick="this.classList.toggle('flipped')">
                     <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #a18cd133, #fbc2eb33), url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80') center/cover">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f5af1933, #f1293333), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80') center/cover">
                             <div class="dest-info">
                                 <span class="dest-tag">Adventure</span>
-                                <h3>Bali, Indonesia</h3>
-                                <p>From $999</p>
+                                <h3>India</h3>
                             </div>
                         </div>
                         <div class="dest-card-back">
-                            <h3>Bali, Indonesia</h3>
+                            <h3>India</h3>
                             <ul>
-                                <li>7 nights villa with pool</li>
-                                <li>Temple tour & rice terraces</li>
-                                <li>Snorkeling excursion</li>
-                                <li>Traditional cooking class</li>
-                                <li>Spa treatment included</li>
+                                <li>Taj Mahal & Golden Triangle</li>
+                                <li>Kerala backwaters cruise</li>
+                                <li>Rajasthan palace tours</li>
+                                <li>Street food experiences</li>
+                                <li>Spiritual & yoga retreats</li>
                             </ul>
-                            <p class="dest-weather">Best time: Apr-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Bali%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                            <p class="dest-weather">Best time: Oct-Mar</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20India!" class="btn btn-small" target="_blank" rel="noopener">Plan My India Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #667eea33, #764ba233), url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">History</span>
+                                <h3>Athens, Greece</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Athens, Greece</h3>
+                            <ul>
+                                <li>Acropolis & Parthenon tour</li>
+                                <li>Plaka neighborhood walk</li>
+                                <li>Greek island day trips</li>
+                                <li>Traditional taverna dining</li>
+                                <li>Ancient Agora exploration</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Athens!" class="btn btn-small" target="_blank" rel="noopener">Plan My Athens Trip</a>
                         </div>
                     </div>
                 </div>
@@ -267,46 +239,113 @@
                             <div class="dest-info">
                                 <span class="dest-tag">Culture</span>
                                 <h3>Rome, Italy</h3>
-                                <p>From $849</p>
                             </div>
                         </div>
                         <div class="dest-card-back">
                             <h3>Rome, Italy</h3>
                             <ul>
-                                <li>5 nights central hotel</li>
                                 <li>Colosseum & Vatican tour</li>
                                 <li>Trastevere food walk</li>
                                 <li>Day trip to Amalfi Coast</li>
-                                <li>Gelato tasting included</li>
+                                <li>Pasta making class</li>
+                                <li>Trevi Fountain & Piazzas</li>
                             </ul>
                             <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Rome%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Rome!" class="btn btn-small" target="_blank" rel="noopener">Plan My Rome Trip</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="dest-card" onclick="this.classList.toggle('flipped')">
                     <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #89f7fe33, #66a6ff33), url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80') center/cover">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f093fb33, #f5576c33), url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80') center/cover">
                             <div class="dest-info">
-                                <span class="dest-tag">Tropical</span>
-                                <h3>Maldives</h3>
-                                <p>From $1,899</p>
+                                <span class="dest-tag">Vibrant</span>
+                                <h3>Barcelona, Spain</h3>
                             </div>
                         </div>
                         <div class="dest-card-back">
-                            <h3>Maldives</h3>
+                            <h3>Barcelona, Spain</h3>
                             <ul>
-                                <li>5 nights overwater villa</li>
-                                <li>All-inclusive meals</li>
-                                <li>Scuba diving trip</li>
-                                <li>Sunset dolphin cruise</li>
-                                <li>Couples spa package</li>
+                                <li>Sagrada Familia & Gaudi tour</li>
+                                <li>La Boqueria market visit</li>
+                                <li>Gothic Quarter walking tour</li>
+                                <li>Beach & tapas experience</li>
+                                <li>Montserrat day trip</li>
                             </ul>
-                            <p class="dest-weather">Best time: Nov-Apr</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20the%20Maldives%20package!" class="btn btn-small" target="_blank" rel="noopener">Book via WhatsApp</a>
+                            <p class="dest-weather">Best time: May-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Barcelona!" class="btn btn-small" target="_blank" rel="noopener">Plan My Barcelona Trip</a>
                         </div>
                     </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #a18cd133, #6190e833), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Classic</span>
+                                <h3>London, UK</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>London, UK</h3>
+                            <ul>
+                                <li>Big Ben & Parliament tour</li>
+                                <li>Tower of London visit</li>
+                                <li>West End theatre show</li>
+                                <li>Camden & Borough markets</li>
+                                <li>Day trip to Stonehenge</li>
+                            </ul>
+                            <p class="dest-weather">Best time: May-Sep</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20London!" class="btn btn-small" target="_blank" rel="noopener">Plan My London Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" onclick="this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #11998e33, #38ef7d33), url('https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Exotic</span>
+                                <h3>Vietnam</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Vietnam</h3>
+                            <ul>
+                                <li>Ha Long Bay cruise</li>
+                                <li>Hanoi Old Quarter tour</li>
+                                <li>Ho Chi Minh City exploration</li>
+                                <li>Mekong Delta boat trip</li>
+                                <li>Vietnamese cooking class</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Feb-Apr, Oct-Dec</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Vietnam!" class="btn btn-small" target="_blank" rel="noopener">Plan My Vietnam Trip</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Affiliate Tools -->
+            <div class="affiliate-tools">
+                <h3 class="section-title" style="font-size:1.6rem; margin-top:48px">Self-Service Tools</h3>
+                <p class="section-subtitle">Want to browse on your own? Use these helpful tools</p>
+                <div class="affiliate-grid">
+                    <a href="https://tic.dubai.co.il/affiliate/" class="affiliate-card" target="_blank" rel="noopener">
+                        <span class="affiliate-emoji">🏙️</span>
+                        <strong>Dubai Attractions</strong>
+                        <span>Browse & book in Hebrew, pay in Shekels with Tashlumim</span>
+                    </a>
+                    <a href="https://www.zenhotels.com/?cur=ILS&lang=he&partner_extra=Website&partner_slug=108573.affiliate.3022&utm_campaign=he-he%2C+deeplink%2C+affiliate&utm_medium=api2&utm_source=108573.affiliate.3022&utm_term=None" class="affiliate-card" target="_blank" rel="noopener">
+                        <span class="affiliate-emoji">🏨</span>
+                        <strong>Search Hotels</strong>
+                        <span>Find and compare hotels worldwide in Hebrew & Shekels</span>
+                    </a>
+                    <a href="https://www.getyourguide.com/?partner_id=BGGPE3N&utm_medium=online_publisher" class="affiliate-card" target="_blank" rel="noopener">
+                        <span class="affiliate-emoji">🎫</span>
+                        <strong>Book Attractions</strong>
+                        <span>Tours, tickets & experiences in every city worldwide</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -545,13 +584,13 @@
             <div class="about-grid">
                 <div class="about-content">
                     <h2 class="section-title" style="text-align:left">About Travel By Petal</h2>
-                    <p>Based in the heart of <strong>Ra'anana, Israel</strong>, Travel By Petal is a boutique travel agency that believes every journey should bloom into something extraordinary.</p>
-                    <p>We don't just book trips — we craft personalized travel experiences. Whether you're dreaming of a romantic getaway, a family adventure, or a solo exploration, our team takes the time to understand your unique wishes and designs every detail around you.</p>
-                    <p>Our name says it all: like petals unfolding, we reveal the beauty of the world one trip at a time.</p>
+                    <p>Based in <strong>Ra'anana, Israel</strong> — I believe that everyone can book online, but when something goes wrong, that's when you really need a travel agent. Someone who knows all the laws and regulations.</p>
+                    <p>Think of it like dining out — you can cook for yourself, but sometimes you want a professional to handle it so you can just sit back and relax. That's exactly what I do for your travels.</p>
+                    <p>I'm with you through the whole trip, every step of the way. From the first idea to the last flight home.</p>
                     <div class="about-features">
                         <div class="about-feature">
                             <span class="feature-check">✓</span>
-                            <span>Personalized itineraries</span>
+                            <span>With you every step of the way</span>
                         </div>
                         <div class="about-feature">
                             <span class="feature-check">✓</span>
@@ -559,12 +598,19 @@
                         </div>
                         <div class="about-feature">
                             <span class="feature-check">✓</span>
-                            <span>Best price guarantee</span>
+                            <span>Knows the laws & regulations</span>
                         </div>
                         <div class="about-feature">
                             <span class="feature-check">✓</span>
-                            <span>Local insider knowledge</span>
+                            <span>Personalized day-by-day planning</span>
                         </div>
+                    </div>
+                    <div class="social-links" style="margin-top:24px; display:flex; gap:16px; align-items:center">
+                        <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; background:#E1306C; color:white; padding:10px 20px; border-radius:50px; font-weight:600; font-size:0.9rem">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            @Travel.by.petal
+                        </a>
+                        <a href="https://linktr.ee/travel.by.petal" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; background:#43E660; color:white; padding:10px 20px; border-radius:50px; font-weight:600; font-size:0.9rem">Linktree</a>
                     </div>
                 </div>
                 <div class="about-image">
@@ -572,22 +618,21 @@
                         <svg viewBox="0 0 400 400" width="100%" height="100%">
                             <defs>
                                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#e8917a;stop-opacity:0.3"/>
-                                    <stop offset="100%" style="stop-color:#f7c948;stop-opacity:0.3"/>
+                                    <stop offset="0%" style="stop-color:#5ba4c9;stop-opacity:0.15"/>
+                                    <stop offset="100%" style="stop-color:#c9a84c;stop-opacity:0.15"/>
                                 </linearGradient>
                             </defs>
                             <circle cx="200" cy="200" r="180" fill="url(#grad1)"/>
-                            <g transform="translate(200,140)">
-                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#e8917a" opacity="0.8" transform="rotate(0)"/>
-                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#f4a993" opacity="0.7" transform="rotate(72)"/>
-                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#e8917a" opacity="0.8" transform="rotate(144)"/>
-                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#f4a993" opacity="0.7" transform="rotate(216)"/>
-                                <ellipse cx="0" cy="-30" rx="18" ry="35" fill="#e8917a" opacity="0.8" transform="rotate(288)"/>
-                                <circle cx="0" cy="0" r="12" fill="#f7c948"/>
+                            <!-- Large airplane -->
+                            <g transform="translate(240,100) rotate(-25)">
+                                <path d="M0,20 L50,0 L45,15 L65,10 L45,20 L45,30 L65,25 L45,35 L50,50 L0,30 L10,25 L0,20Z" fill="#c9a84c" opacity="0.85"/>
                             </g>
-                            <text x="200" y="250" text-anchor="middle" font-family="Playfair Display" font-size="22" fill="#3d3d3d">Travel By Petal</text>
-                            <text x="200" y="278" text-anchor="middle" font-family="Inter" font-size="13" fill="#777">Ra'anana, Israel</text>
-                            <text x="200" y="310" text-anchor="middle" font-family="Inter" font-size="12" fill="#e8917a">Every journey blooms</text>
+                            <!-- Dotted trail -->
+                            <path d="M60,280 Q120,210 200,240 Q280,270 330,140" fill="none" stroke="#c9a84c" stroke-width="3.5" stroke-dasharray="6,8" stroke-linecap="round" opacity="0.6"/>
+                            <!-- Text -->
+                            <text x="200" y="240" text-anchor="middle" font-family="'Dancing Script', cursive" font-size="38" font-weight="700" fill="#5ba4c9">Travel by Petal</text>
+                            <text x="200" y="275" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#777">Ra'anana, Israel</text>
+                            <text x="200" y="305" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#5ba4c9">With you every step of the way</text>
                         </svg>
                     </div>
                 </div>
@@ -604,7 +649,7 @@
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8917a"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#5ba4c9"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                         </div>
                         <div>
                             <h4>Location</h4>
@@ -613,7 +658,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8917a"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#5ba4c9"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.359 0-4.542-.809-6.271-2.164l-.438-.348-2.845.953.953-2.845-.348-.438A9.948 9.948 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
                         </div>
                         <div>
                             <h4>WhatsApp</h4>
@@ -622,7 +667,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e8917a"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#5ba4c9"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
                         </div>
                         <div>
                             <h4>Hours</h4>
@@ -664,17 +709,21 @@
                 <div class="footer-links">
                     <h4>Popular Trips</h4>
                     <ul>
-                        <li><a href="#destinations">Paris, France</a></li>
-                        <li><a href="#destinations">Santorini, Greece</a></li>
                         <li><a href="#destinations">Dubai, UAE</a></li>
-                        <li><a href="#destinations">Bali, Indonesia</a></li>
-                        <li><a href="#destinations">Maldives</a></li>
+                        <li><a href="#destinations">India</a></li>
+                        <li><a href="#destinations">Athens, Greece</a></li>
+                        <li><a href="#destinations">Rome, Italy</a></li>
+                        <li><a href="#destinations">Barcelona, Spain</a></li>
+                        <li><a href="#destinations">London, UK</a></li>
+                        <li><a href="#destinations">Vietnam</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
                     <p>Ra'anana, Israel</p>
                     <p><a href="https://wa.me/972545581269" target="_blank" rel="noopener">WhatsApp: 054-558-1269</a></p>
+                    <p><a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener">Instagram: @Travel.by.petal</a></p>
+                    <p><a href="https://linktr.ee/travel.by.petal" target="_blank" rel="noopener">Linktree</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -700,15 +749,11 @@
                 <div class="chatbot-header-info">
                     <div class="chatbot-avatar">
                         <svg viewBox="0 0 40 40" width="36" height="36">
-                            <circle cx="20" cy="20" r="18" fill="#e8917a" opacity="0.2"/>
-                            <g transform="translate(20,20)">
-                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#e8917a" opacity="0.9" transform="rotate(0)"/>
-                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#f4a993" opacity="0.85" transform="rotate(72)"/>
-                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#e8917a" opacity="0.8" transform="rotate(144)"/>
-                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#f4a993" opacity="0.85" transform="rotate(216)"/>
-                                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#e8917a" opacity="0.9" transform="rotate(288)"/>
-                                <circle cx="0" cy="0" r="3" fill="#f7c948"/>
+                            <circle cx="20" cy="20" r="18" fill="#5ba4c9" opacity="0.15"/>
+                            <g transform="translate(12,14) rotate(-30)">
+                                <path d="M0,5 L12,0 L11,4 L16,3 L11,5 L11,7 L16,6 L11,8 L12,12 L0,7 L2.5,6 L0,5Z" fill="#c9a84c"/>
                             </g>
+                            <path d="M8,32 Q16,26 24,28 Q30,30 34,22" fill="none" stroke="#c9a84c" stroke-width="1.2" stroke-dasharray="2,2.5" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <div>

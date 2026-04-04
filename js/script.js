@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* --- Floating Petals --- */
 function initPetals() {
     const container = document.getElementById('petalsContainer');
-    const colors = ['#e8917a', '#f4a993', '#f7c948', '#ffb3a7', '#ffd6cc'];
+    const colors = ['#5ba4c9', '#89c4e1', '#c9a84c', '#a8d4ea', '#e8d590'];
 
     function createPetal() {
         const petal = document.createElement('div');
@@ -252,43 +252,50 @@ setInterval(() => slideTestimonial(1), 6000);
 
 const WHATSAPP_LINK = 'https://wa.me/972545581269';
 
+const BOOKING_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/viewform?usp=header';
+
 const chatbotKnowledge = {
     greetings: [
-        "Hello! Welcome to Travel By Petal! I'm Petal, your travel assistant. How can I help you today?",
-        "Hi there! Ready to plan your dream vacation? I'm here to help!",
-        "Welcome! I'm Petal, your personal travel guide. What kind of trip are you dreaming of?"
+        "Hello! Welcome to Travel By Petal! I'm Petal, your travel assistant. How can I help you plan your next trip?",
+        "Hi there! Anyone can book online, but when you want a real professional handling your trip — that's where I come in. How can I help?",
+        "Welcome! I'm Petal, your personal travel guide. Whether you need just flights or a full day-by-day itinerary, I'm here to help!"
     ],
     destinations: {
-        paris: "Paris is magical! Our packages start from $899 and include flights, boutique hotels, and skip-the-line Eiffel Tower tickets. Best visited Apr-Jun or Sep-Oct. Want me to connect you with our team?",
-        santorini: "Santorini is pure romance! From $1,199 per person with caldera-view hotels, sunset catamaran cruises, and wine tasting. Best time: May-Oct. Shall I put you in touch with our agent?",
-        dubai: "Dubai is incredible! Starting at $1,499 — 5-star resorts, desert safaris, and Burj Khalifa access. Best visited Nov-Mar. Want details? I can connect you on WhatsApp!",
-        bali: "Bali is a tropical dream! From $999 with private pool villas, temple tours, and cooking classes. Best Apr-Oct. Would you like to book?",
-        rome: "Rome is a living museum! From $849 — central hotels, Colosseum tours, and food walks in Trastevere. Best Apr-Jun or Sep-Oct. Interested?",
-        maldives: "The Maldives is paradise! From $1,899 with overwater villas, all-inclusive meals, and diving trips. Best Nov-Apr. Want to make it happen?",
-        greece: "Greece is stunning! We offer packages for Santorini, Mykonos, Athens, and Crete. Prices start from $899. Which island interests you?",
-        italy: "Italy is perfect for food, culture, and romance! We have packages for Rome, Venice, Amalfi Coast, and Tuscany starting from $849. Where in Italy would you like to go?",
-        thailand: "Thailand is incredible value! Bangkok, Phuket, and Chiang Mai packages from $699. Amazing food, temples, and beaches. Want details?",
-        japan: "Japan is unforgettable! Tokyo, Kyoto, and Osaka packages from $1,299. Cherry blossoms, temples, and the best food in the world. Interested?",
+        dubai: "Dubai is incredible! Desert safaris, luxury shopping, Burj Khalifa, and amazing dining. Best Nov-Mar. I can book flights, hotels, transfers, and attractions. You can also <a href='https://tic.dubai.co.il/affiliate/' target='_blank' style='color:var(--primary);font-weight:600'>browse Dubai attractions here</a> (Hebrew, Shekels, Tashlumim!).",
+        india: "India is a life-changing experience! Taj Mahal, Kerala backwaters, Rajasthan palaces, and incredible food. Best Oct-Mar. I can plan your full itinerary day by day. Want me to help?",
+        athens: "Athens is where history comes alive! Acropolis, Parthenon, Greek islands, and amazing tavernas. Best Apr-Jun or Sep-Oct. I can handle flights, hotels, tours — everything!",
+        rome: "Rome is a living museum! Colosseum, Vatican, Trastevere food walks, and the Amalfi Coast nearby. Best Apr-Jun or Sep-Oct. Want me to plan your trip?",
+        barcelona: "Barcelona is vibrant! Gaudi's architecture, beaches, tapas, and nightlife. Best May-Jun or Sep-Oct. I can book everything from flights to guided tours!",
+        london: "London is a classic! Big Ben, Tower of London, West End shows, and incredible food markets. Best May-Sep. Let me plan your perfect London trip!",
+        vietnam: "Vietnam is exotic and amazing! Ha Long Bay, Hanoi, Ho Chi Minh City, and Mekong Delta. Best Feb-Apr or Oct-Dec. I can create a full itinerary for you!",
+        greece: "Greece is stunning! Athens, Santorini, Mykonos, and Crete. I can arrange island-hopping, flights, ferries, and hotels. Where in Greece interests you?",
+        italy: "Italy is perfect! Rome, Venice, Amalfi Coast, and Tuscany. I can plan a full itinerary with trains, restaurants, and tours. Where would you like to go?",
     },
     topics: {
-        honeymoon: "Congratulations! We specialize in romantic honeymoon getaways! Our top picks: Maldives, Santorini, Bali, and Paris. We handle every detail — surprise dinners, spa packages, room upgrades. What's your dream honeymoon destination?",
-        family: "Family trips are our specialty! We recommend Bali, Dubai, Cancun, and Orlando for families. All our packages include kid-friendly activities and family rooms. How many are traveling?",
-        adventure: "For adventure seekers, we love recommending: Iceland (Northern Lights!), New Zealand (bungee jumping!), Kenya (safari!), and Swiss Alps (skiing!). What kind of adventure excites you?",
-        budget: "Great trips don't have to break the bank! Thailand, Bali, and Eastern Europe offer amazing experiences from $699. Plus, we always find the best deals. What's your budget range?",
-        luxury: "For luxury travel, we recommend Maldives overwater villas, Dubai 5-star resorts, Swiss chalets, and Santorini cave suites. We can arrange VIP experiences, private tours, and more!",
-        flights: "We search across all airlines to find you the best deals on flights. We can also arrange business class upgrades! Where are you looking to fly?",
-        hotels: "We partner with amazing hotels worldwide — from cozy boutiques to 5-star resorts. Tell me your destination and I'll share our best picks!",
+        service: "I offer two main services: <br><br><strong>1. A La Carte Booking</strong> — I book exactly what you need: flights, hotels, airport transfers, trains, cruises, restaurants, guided tours, excursions, or car rental.<br><br><strong>2. Full Itinerary Planning</strong> — Your entire trip planned day by day, every detail organized so you just enjoy!<br><br>Which sounds right for you?",
+        book: "I can book: flights, hotels, airport transfers, trains, cruises, restaurants, guided day tours, excursions, and car rental. Tell me what you need or <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>fill out our trip form</a>!",
+        itinerary: "I create full day-by-day itineraries! Every morning, afternoon, and evening planned out. All bookings, logistics, and timing handled. You just show up and enjoy. Want to get started?",
+        honeymoon: "Congratulations! I specialize in romantic honeymoon trips! I'll plan every detail — surprise dinners, spa packages, room upgrades. What's your dream destination?",
+        family: "Family trips are my specialty! I recommend Dubai, Barcelona, London, and Rome for families. I handle kid-friendly activities, family rooms, and smooth logistics. How many are traveling?",
+        adventure: "For adventure seekers, I recommend Vietnam, India, and Dubai! From Ha Long Bay cruises to desert safaris — I'll plan every exciting day. What kind of adventure excites you?",
+        budget: "I find the best deals for every budget! Tell me your destination and budget range, and I'll create a package that works. Or use our <a href='#calculator' style='color:var(--primary);font-weight:600'>Budget Planner</a>!",
+        flights: "I search across all airlines to find the best flights for you. Business class upgrades available too! Where are you flying?",
+        hotels: "I can find and book the perfect hotel for you! Or if you prefer to browse yourself, try our <a href='https://www.zenhotels.com/?cur=ILS&lang=he&partner_extra=Website&partner_slug=108573.affiliate.3022' target='_blank' style='color:var(--primary);font-weight:600'>hotel search tool</a> (Hebrew, Shekels).",
+        transfer: "I book airport transfers, trains, and car rentals worldwide. Door-to-door logistics so you never have to worry. What's your destination?",
+        cruise: "I can book cruises of all kinds — Mediterranean, Caribbean, river cruises, and more! What region interests you?",
+        restaurant: "I book restaurants at your destination — from local gems to Michelin-starred dining. Just tell me your destination and preferences!",
+        tour: "I arrange guided day tours and excursions worldwide! Or you can browse tours yourself on <a href='https://www.getyourguide.com/?partner_id=BGGPE3N&utm_medium=online_publisher' target='_blank' style='color:var(--primary);font-weight:600'>GetYourGuide</a>.",
+        car: "I book car rentals at competitive rates worldwide. Manual or automatic, pick up at the airport or hotel. Where do you need a car?",
+        train: "I book train tickets across Europe and Asia — including high-speed trains! Planning a rail trip?",
         visa: "Visa requirements depend on your passport and destination. As Israeli passport holders, many countries offer visa-free entry. Tell me your destination and I'll check for you!",
-        insurance: "We always recommend travel insurance! We can help you find affordable plans that cover cancellation, medical emergencies, and lost luggage. Want me to include this in your quote?",
-        covid: "We stay updated on all travel requirements. Most destinations have returned to normal. Specific requirements vary by country — tell me where you're headed and I'll give you the latest info!",
-        price: "Our packages are competitively priced and we offer a best-price guarantee! Prices vary based on destination, dates, and preferences. Would you like a personalized quote? I can connect you with our team!",
-        when: "The best time to travel depends on your destination! Generally: Europe (Apr-Oct), Asia (Nov-Mar), Maldives (Nov-Apr), Caribbean (Dec-Apr). Where are you thinking of going?",
-        group: "We love organizing group trips! Whether it's a friends' getaway, corporate retreat, or family reunion, we offer special group rates and custom itineraries. How large is your group?",
+        insurance: "I always recommend travel insurance! I can help you find affordable plans that cover cancellation, medical emergencies, and lost luggage.",
+        price: "Prices vary based on destination, dates, and preferences. Fill out our <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>trip request form</a> and I'll send you a personalized quote!",
+        why: "Anyone can book online — but when something goes wrong, that's when you really need a travel agent. Someone who knows all the laws and regulations. Think of it like eating at a restaurant — you can cook at home, but sometimes you want a professional to handle it. I'm with you every step of the way!",
     },
     fallback: [
-        "That's a great question! For the best answer, I'd love to connect you with our travel expert. Want to chat on WhatsApp?",
-        "I want to make sure you get the perfect answer! Our team can help you in more detail on WhatsApp. Shall I connect you?",
-        "Interesting! Our travel specialists would love to help you with that. Would you like to continue this conversation on WhatsApp?"
+        "Great question! I'd love to help you personally. Chat with me on WhatsApp or <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>fill out our trip form</a>!",
+        "I want to give you the perfect answer! Let's continue on WhatsApp or you can <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>submit a trip request</a>.",
+        "Interesting! Let me help you with that. Would you like to chat on WhatsApp or <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>fill out our form</a>?"
     ]
 };
 
@@ -315,7 +322,7 @@ function initChatbot() {
             if (messages.children.length === 0) {
                 setTimeout(() => {
                     addBotMessage(chatbotKnowledge.greetings[Math.floor(Math.random() * chatbotKnowledge.greetings.length)]);
-                    showQuickReplies(['Popular destinations', 'Honeymoon packages', 'Family trips', 'Budget travel', 'Get a quote']);
+                    showQuickReplies(['Popular destinations', 'What services?', 'Full itinerary', 'Get a quote']);
                 }, 300);
             }
             setTimeout(() => input.focus(), 400);
@@ -390,13 +397,15 @@ function generateResponse(input) {
 
     // Country / city aliases
     const aliases = {
-        france: 'paris', french: 'paris', eiffel: 'paris',
-        greek: 'greece', mykonos: 'greece', athens: 'greece', crete: 'greece',
+        greek: 'greece', mykonos: 'greece', santorini: 'greece', crete: 'greece',
         uae: 'dubai', emirates: 'dubai',
-        indonesi: 'bali', ubud: 'bali',
         italian: 'italy', venice: 'italy', amalfi: 'italy', tuscany: 'italy', florence: 'italy',
-        thai: 'thailand', bangkok: 'thailand', phuket: 'thailand',
-        japanese: 'japan', tokyo: 'japan', kyoto: 'japan',
+        spanish: 'barcelona', spain: 'barcelona', gaudi: 'barcelona',
+        british: 'london', england: 'london', uk: 'london',
+        vietnamese: 'vietnam', hanoi: 'vietnam', saigon: 'vietnam',
+        indian: 'india', delhi: 'india', mumbai: 'india', goa: 'india', rajasthan: 'india', taj: 'india', kerala: 'india',
+        acropolis: 'athens', parthenon: 'athens',
+        colosseum: 'rome', vatican: 'rome',
     };
 
     for (const [alias, dest] of Object.entries(aliases)) {
@@ -449,15 +458,29 @@ function generateResponse(input) {
 
     if (/popular|recommend|suggest|best|top|where should/i.test(text)) {
         return {
-            message: "Our most popular destinations right now are: 1) Santorini for couples, 2) Bali for adventure, 3) Dubai for luxury, 4) Thailand for budget travel, and 5) Maldives for honeymoons. Which one catches your eye?",
-            quickReplies: ['Santorini', 'Bali', 'Dubai', 'Maldives']
+            message: "Our most popular destinations right now: 1) Dubai for luxury, 2) India for adventure, 3) Athens & Rome for culture, 4) Barcelona for vibes, 5) London for classics, 6) Vietnam for exotic experiences. Which catches your eye?",
+            quickReplies: ['Dubai', 'India', 'Rome', 'Barcelona', 'Vietnam']
+        };
+    }
+
+    if (/what service|what do you|what can you|how do you|help me/i.test(text)) {
+        return {
+            message: chatbotKnowledge.topics.service,
+            quickReplies: ['A la carte booking', 'Full itinerary', 'Get a quote', 'Chat on WhatsApp']
         };
     }
 
     if (/how|what|tell me about|info|about|who/i.test(text) && /petal|you|company|agency/i.test(text)) {
         return {
-            message: "Travel By Petal is a boutique travel agency based in Ra'anana, Israel. We specialize in creating personalized vacation packages worldwide. Whether it's a honeymoon, family trip, adventure, or luxury getaway — we craft every detail just for you. Our team is available on WhatsApp for instant support!",
-            quickReplies: ['Popular destinations', 'Chat on WhatsApp', 'Honeymoon packages']
+            message: "Travel By Petal is based in Ra'anana, Israel. Anyone can book online, but when something goes wrong — that's when you need a real travel agent. I know all the laws and regulations, and I'm with you every step of the way. I can book flights, hotels, transfers, trains, cruises, restaurants, tours, excursions, and car rentals — or plan your full itinerary day by day!",
+            quickReplies: ['What services?', 'Popular destinations', 'Chat on WhatsApp']
+        };
+    }
+
+    if (/why.*agent|why.*you|why not.*myself|book.*myself|do it.*myself/i.test(text)) {
+        return {
+            message: chatbotKnowledge.topics.why,
+            quickReplies: ['What services?', 'Popular destinations', 'Get a quote']
         };
     }
 
@@ -485,8 +508,29 @@ function generateResponse(input) {
     // Quick reply handlers
     if (/popular destination|other destination|more destination|back to destination/i.test(text)) {
         return {
-            message: "Here are our most loved destinations: Paris (from $899), Santorini (from $1,199), Dubai (from $1,499), Bali (from $999), Rome (from $849), and Maldives (from $1,899). Which one would you like to explore?",
-            quickReplies: ['Paris', 'Santorini', 'Dubai', 'Bali', 'Rome', 'Maldives']
+            message: "Our most popular destinations: Dubai, India, Athens, Rome, Barcelona, London, and Vietnam. I can book flights, hotels, transfers, tours — or plan your full itinerary. Which destination interests you?",
+            quickReplies: ['Dubai', 'India', 'Athens', 'Rome', 'Barcelona', 'London', 'Vietnam']
+        };
+    }
+
+    if (/a la carte|booking|just.*flight|just.*hotel|individual/i.test(text)) {
+        return {
+            message: chatbotKnowledge.topics.book,
+            quickReplies: ['Full itinerary', 'Get a quote', 'Chat on WhatsApp']
+        };
+    }
+
+    if (/full itinerary|day by day|plan.*whole|plan.*entire|complete.*plan/i.test(text)) {
+        return {
+            message: chatbotKnowledge.topics.itinerary,
+            quickReplies: ['Get a quote', 'Popular destinations', 'Chat on WhatsApp']
+        };
+    }
+
+    if (/quote|form|request|get started|start/i.test(text)) {
+        return {
+            message: "Fill out our quick trip request form and I'll get back to you with a personalized quote! <a href='" + BOOKING_FORM + "' target='_blank' style='color:var(--primary);font-weight:600'>Click here to fill out the form</a>",
+            quickReplies: ['Popular destinations', 'Chat on WhatsApp']
         };
     }
 
