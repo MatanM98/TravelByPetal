@@ -1607,14 +1607,64 @@ img { max-width: 100%; display: block; }
     font-size: 0.82rem;
 }
 
-/* --- RTL Support --- */
+/* --- RTL / Hebrew Support --- */
 [dir="rtl"] {
     direction: rtl;
     text-align: right;
+    --font-hebrew: 'Heebo', 'Rubik', 'Inter', -apple-system, sans-serif;
 }
 
-[dir="rtl"] .nav-links { direction: rtl; }
+/* Hebrew font for body text */
+[dir="rtl"] body { font-family: var(--font-hebrew); }
+[dir="rtl"] .btn,
+[dir="rtl"] select,
+[dir="rtl"] input,
+[dir="rtl"] .quiz-option,
+[dir="rtl"] .quick-reply,
+[dir="rtl"] .service-card p,
+[dir="rtl"] .service-card h3,
+[dir="rtl"] .service-list li,
+[dir="rtl"] .dest-card-back,
+[dir="rtl"] .contact-item,
+[dir="rtl"] .about-content p,
+[dir="rtl"] .about-feature,
+[dir="rtl"] .footer-brand p,
+[dir="rtl"] .footer-links,
+[dir="rtl"] .footer-contact,
+[dir="rtl"] .calc-group label,
+[dir="rtl"] .calc-label,
+[dir="rtl"] .calc-per-person,
+[dir="rtl"] .breakdown-item,
+[dir="rtl"] .contact-note,
+[dir="rtl"] .affiliate-card,
+[dir="rtl"] .testimonial-card p,
+[dir="rtl"] .testimonial-author {
+    font-family: var(--font-hebrew);
+}
 
+/* Section titles stay handwriting */
+[dir="rtl"] .section-title {
+    font-family: var(--font-display);
+}
+
+/* Logo - prevent scrambling in RTL */
+[dir="rtl"] .logo {
+    direction: ltr;
+    unicode-bidi: bidi-override;
+}
+
+[dir="rtl"] .logo svg {
+    direction: ltr;
+}
+
+/* Nav */
+[dir="rtl"] .nav-container { flex-direction: row-reverse; }
+[dir="rtl"] .nav-links {
+    direction: rtl;
+    flex-direction: row-reverse;
+}
+
+/* Hero - centered */
 [dir="rtl"] .hero-title,
 [dir="rtl"] .hero-text,
 [dir="rtl"] .section-title,
@@ -1622,41 +1672,99 @@ img { max-width: 100%; display: block; }
     text-align: center;
 }
 
-[dir="rtl"] .about-content .section-title { text-align: right !important; }
+[dir="rtl"] .hero-text {
+    font-family: var(--font-hebrew);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
 
+[dir="rtl"] .hero-buttons {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-stats {
+    direction: rtl;
+}
+
+[dir="rtl"] .stat-label {
+    font-family: var(--font-hebrew);
+}
+
+/* Services */
 [dir="rtl"] .service-card,
-[dir="rtl"] .testimonial-card,
 [dir="rtl"] .quiz-step h3 { text-align: center; }
 
-[dir="rtl"] .contact-item {
-    flex-direction: row-reverse;
+[dir="rtl"] .service-list {
     text-align: right;
 }
 
-[dir="rtl"] .about-feature {
+[dir="rtl"] .service-list li {
     flex-direction: row-reverse;
+}
+
+/* Destinations */
+[dir="rtl"] .dest-card-front { direction: rtl; }
+[dir="rtl"] .dest-card-back {
+    direction: rtl;
+    text-align: right;
 }
 
 [dir="rtl"] .dest-card-back ul li {
     flex-direction: row-reverse;
 }
 
+/* Affiliate */
+[dir="rtl"] .affiliate-grid { direction: rtl; }
+
+/* About */
+[dir="rtl"] .about-content .section-title { text-align: right !important; }
+[dir="rtl"] .about-grid { direction: rtl; }
+
+[dir="rtl"] .about-feature {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .social-links {
+    flex-direction: row-reverse !important;
+    justify-content: flex-end;
+}
+
+/* Calculator */
+[dir="rtl"] .calc-container { direction: rtl; }
+[dir="rtl"] .calc-group select { text-align: right; }
+[dir="rtl"] .breakdown-item { flex-direction: row-reverse; }
+[dir="rtl"] .calc-total { direction: rtl; }
+
+/* Testimonials */
+[dir="rtl"] .testimonial-card { text-align: right; direction: rtl; }
+[dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
+[dir="rtl"] .testimonial-author div { text-align: right; }
+
+/* Contact */
+[dir="rtl"] .contact-item {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+[dir="rtl"] .contact-grid { direction: rtl; }
+
+/* Footer */
 [dir="rtl"] .footer-grid { direction: rtl; }
 [dir="rtl"] .footer-links { text-align: right; }
+[dir="rtl"] .footer-bottom { direction: rtl; }
 
+/* Chatbot */
 [dir="rtl"] .chatbot-window { left: 0; right: auto; }
 [dir="rtl"] .chatbot { left: 24px; right: auto; }
 [dir="rtl"] .whatsapp-float { right: 24px; left: auto; }
 
 [dir="rtl"] .chatbot-header-info { flex-direction: row-reverse; }
+[dir="rtl"] .chatbot-messages { direction: rtl; }
+[dir="rtl"] .chat-message { font-family: var(--font-hebrew); }
 [dir="rtl"] .chat-message.bot { align-self: flex-end; border-bottom-left-radius: 16px; border-bottom-right-radius: 4px; }
 [dir="rtl"] .chat-message.user { align-self: flex-start; border-bottom-right-radius: 16px; border-bottom-left-radius: 4px; }
 
 [dir="rtl"] .chatbot-input-area { flex-direction: row-reverse; }
-[dir="rtl"] #chatbotInput { text-align: right; }
-
-[dir="rtl"] .breakdown-item { flex-direction: row-reverse; }
-[dir="rtl"] .calc-container { direction: rtl; }
-
-[dir="rtl"] .testimonial-author { flex-direction: row-reverse; }
-[dir="rtl"] .testimonial-author div { text-align: right; }
+[dir="rtl"] #chatbotInput { text-align: right; font-family: var(--font-hebrew); }
+[dir="rtl"] .chatbot-quick-replies { direction: rtl; }
+[dir="rtl"] .quick-reply { font-family: var(--font-hebrew); }
