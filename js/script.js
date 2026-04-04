@@ -9,6 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatbot();
     calculateBudget();
     initScrollAnimations();
+    // Apply Hebrew as default language (unless user switched to English)
+    const savedLang = sessionStorage.getItem('lang');
+    if (savedLang === 'en') {
+        currentLang = 'en';
+        chatLang = 'en';
+        document.documentElement.setAttribute('dir', 'ltr');
+        document.documentElement.setAttribute('lang', 'en');
+        document.getElementById('langFlag').innerHTML = '&#127470;&#127473;';
+        document.getElementById('langLabel').textContent = 'עברית';
+    } else if (typeof applyLanguage === 'function') {
+        applyLanguage('he');
+    }
 });
 
 /* --- Scroll Reveal Animations --- */
@@ -480,12 +492,17 @@ function initChatbot() {
         badge.style.display = 'none';
 
         if (isOpen) {
-            // Send welcome message on first open
+            // Send welcome message on first open (in current language)
             const messages = document.getElementById('chatbotMessages');
             if (messages.children.length === 0) {
                 setTimeout(() => {
-                    addBotMessage(chatbotKnowledge.greetings[Math.floor(Math.random() * chatbotKnowledge.greetings.length)]);
-                    showQuickReplies(['Popular destinations', 'What services?', 'Full itinerary', 'Get a quote']);
+                    if (chatLang === 'he' && typeof hebrewChatbot !== 'undefined') {
+                        addBotMessage(hebrewChatbot.greetings[Math.floor(Math.random() * hebrewChatbot.greetings.length)]);
+                        showQuickReplies(hebrewChatbot.quickReplies);
+                    } else {
+                        addBotMessage(chatbotKnowledge.greetings[Math.floor(Math.random() * chatbotKnowledge.greetings.length)]);
+                        showQuickReplies(['Popular destinations', 'What services?', 'Full itinerary', 'Get a quote']);
+                    }
                 }, 300);
             }
             setTimeout(() => input.focus(), 400);
@@ -581,7 +598,7 @@ function submitTripForm(e) {
     });
 }
 
-let chatLang = 'en';
+let chatLang = 'he';
 
 function switchChatbotLanguage(lang) {
     chatLang = lang;

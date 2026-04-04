@@ -2,7 +2,7 @@
    Travel By Petal - Language Switcher (EN/HE)
    ============================================ */
 
-let currentLang = 'en';
+let currentLang = 'he';
 
 const translations = {
     he: {
@@ -337,6 +337,7 @@ function applyLanguage(lang) {
     if (lang === 'he') {
         html.setAttribute('dir', 'rtl');
         html.setAttribute('lang', 'he');
+        sessionStorage.setItem('lang', 'he');
         applyHebrewTranslations();
     } else {
         html.setAttribute('dir', 'ltr');
@@ -657,8 +658,8 @@ function cacheEnglish() {
 }
 
 function restoreEnglish() {
-    // The simplest reliable way to restore English on a static site
-    // is to reload. We set a flag to prevent re-triggering.
+    // Set flag so on reload, Hebrew won't be re-applied
+    sessionStorage.setItem('lang', 'en');
     document.body.classList.remove('lang-he');
     location.reload();
 }
