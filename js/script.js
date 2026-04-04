@@ -137,6 +137,28 @@ function initScrollAnimations() {
     // Initial check after short delay
     setTimeout(checkReveal, 150);
 
+    // Cursor glow effect (follows mouse)
+    const cursorGlow = document.getElementById('cursorGlow');
+    if (cursorGlow && window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+    }
+
+    // Magnetic effect on primary buttons
+    document.querySelectorAll('.btn-primary, .btn-whatsapp-large').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.03)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+
     // Tilt effect on destination cards (mouse move)
     document.querySelectorAll('.dest-card-front').forEach(card => {
         card.addEventListener('mousemove', (e) => {
