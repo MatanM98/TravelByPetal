@@ -192,9 +192,9 @@ function initPetals() {
         setTimeout(() => petal.remove(), 22000);
     }
 
-    // Create petals periodically (gentle)
-    setInterval(createPetal, 5000);
-    for (let i = 0; i < 3; i++) setTimeout(createPetal, i * 1200);
+    // Create petals across the whole site
+    setInterval(createPetal, 2000);
+    for (let i = 0; i < 8; i++) setTimeout(createPetal, i * 500);
 }
 
 /* --- Navbar --- */
