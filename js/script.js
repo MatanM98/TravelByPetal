@@ -515,6 +515,143 @@ function initChatbot() {
     });
 }
 
+/* --- Travel Quotes Rotator --- */
+const travelQuotes = [
+    { en: '"The world is a book, and those who do not travel read only one page."', he: '"העולם הוא ספר, ומי שלא נוסע קורא רק עמוד אחד."' },
+    { en: '"Travel is the only thing you buy that makes you richer."', he: '"נסיעות הן הדבר היחיד שקונים שהופך אותך לעשיר יותר."' },
+    { en: '"Life is short and the world is wide."', he: '"החיים קצרים והעולם רחב."' },
+    { en: '"Adventure is worthwhile in itself."', he: '"הרפתקה שווה כשלעצמה."' },
+    { en: '"Not all who wander are lost."', he: '"לא כל מי שמשוטט הלך לאיבוד."' },
+    { en: '"Travel far enough, you meet yourself."', he: '"תסע מספיק רחוק, ותפגוש את עצמך."' },
+    { en: '"To travel is to live."', he: '"לנסוע זה לחיות."' },
+    { en: '"Collect moments, not things."', he: '"אספו רגעים, לא דברים."' },
+];
+
+let quoteIndex = 0;
+function rotateQuote() {
+    const el = document.getElementById('heroQuote');
+    if (!el) return;
+    el.style.opacity = '0';
+    setTimeout(() => {
+        quoteIndex = (quoteIndex + 1) % travelQuotes.length;
+        el.textContent = chatLang === 'he' ? travelQuotes[quoteIndex].he : travelQuotes[quoteIndex].en;
+        el.style.opacity = '0.75';
+    }, 500);
+}
+setInterval(rotateQuote, 6000);
+
+/* --- Weather Widget --- */
+function getWeather() {
+    const city = document.getElementById('weatherCity').value;
+    const result = document.getElementById('weatherResult');
+    if (!city) { result.innerHTML = ''; return; }
+
+    // Static weather data (no API needed = free)
+    const weatherData = {
+        'Dubai': { temp: 35, desc: 'Sunny & Hot', icon: '☀️', humidity: 45, wind: 15 },
+        'Delhi': { temp: 32, desc: 'Warm & Humid', icon: '🌤️', humidity: 65, wind: 10 },
+        'Athens': { temp: 24, desc: 'Sunny & Warm', icon: '☀️', humidity: 40, wind: 12 },
+        'Rome': { temp: 22, desc: 'Mild & Pleasant', icon: '🌤️', humidity: 50, wind: 8 },
+        'Barcelona': { temp: 23, desc: 'Warm & Breezy', icon: '⛅', humidity: 55, wind: 14 },
+        'London': { temp: 15, desc: 'Cloudy & Cool', icon: '☁️', humidity: 70, wind: 18 },
+        'Hanoi': { temp: 28, desc: 'Warm & Humid', icon: '🌤️', humidity: 75, wind: 8 },
+        'Paris': { temp: 18, desc: 'Mild & Partly Cloudy', icon: '⛅', humidity: 60, wind: 12 },
+        'Bangkok': { temp: 33, desc: 'Hot & Tropical', icon: '🌴', humidity: 80, wind: 6 },
+        'New York': { temp: 20, desc: 'Clear & Pleasant', icon: '🌤️', humidity: 50, wind: 15 },
+    };
+
+    const w = weatherData[city];
+    if (w) {
+        result.innerHTML = `
+            <div class="weather-data">
+                <div style="font-size:2.5rem">${w.icon}</div>
+                <div class="weather-temp">${w.temp}°C</div>
+                <div class="weather-desc">${w.desc}</div>
+                <div class="weather-details">
+                    <span>💧 ${w.humidity}%</span>
+                    <span>💨 ${w.wind} km/h</span>
+                </div>
+            </div>
+        `;
+    }
+}
+
+/* --- Currency Converter --- */
+function convertCurrency() {
+    const amount = parseFloat(document.getElementById('currencyAmount').value) || 0;
+    const to = document.getElementById('currencyTo').value;
+    const result = document.getElementById('currencyResult');
+
+    // Approximate rates from ILS
+    const rates = {
+        USD: 0.275, EUR: 0.252, GBP: 0.217, THB: 9.45,
+        AED: 1.01, INR: 22.9, JPY: 40.5, VND: 6850
+    };
+
+    const symbols = {
+        USD: '$', EUR: '€', GBP: '£', THB: '฿',
+        AED: 'د.إ', INR: '₹', JPY: '¥', VND: '₫'
+    };
+
+    const converted = (amount * rates[to]).toFixed(to === 'VND' || to === 'JPY' ? 0 : 2);
+    result.textContent = `≈ ${Number(converted).toLocaleString()} ${symbols[to]}`;
+}
+
+/* --- Packing Checklist Generator --- */
+function generatePackingList() {
+    const dest = document.getElementById('packDest').value;
+    const duration = document.getElementById('packDuration').value;
+    const result = document.getElementById('packingResult');
+
+    const essentials = ['דרכון + צילום', 'ביטוח נסיעות', 'כרטיסי אשראי', 'מטען + כבל', 'אוזניות', 'תרופות אישיות', 'משקפי שמש'];
+
+    const lists = {
+        beach: { title: 'חוף / טרופי', items: ['בגד ים', 'קרם הגנה SPF50', 'כפכפים', 'מגבת חוף', 'כובע', 'שמלת קיץ / מכנסיים קצרים', 'חולצות קלות', 'סנדלים'] },
+        city: { title: 'סיטי בריק', items: ['נעלי הליכה נוחות', 'מעיל קל', 'תיק גב יומי', 'מטריה מתקפלת', 'ג\'ינס', 'חולצות יפות', 'שמלה/חולצה לערב'] },
+        cold: { title: 'חורף / קור', items: ['מעיל חורף', 'צעיף + כפפות + כובע', 'שכבת בסיס תרמית', 'מגפיים חמים', 'סוודרים', 'גרביים עבות', 'קרם לחות'] },
+        adventure: { title: 'הרפתקה / טרקים', items: ['נעלי טרקים', 'תיק גב 30L+', 'בקבוק מים', 'פנס ראש', 'מכנסי דריי-פיט', 'חולצות מנדפות', 'מעיל רוח', 'ערכת עזרה ראשונה'] },
+    };
+
+    const multiplier = duration === 'short' ? 1 : duration === 'week' ? 1.5 : 2;
+    const clothingNote = duration === 'short' ? '(3-5 ימים)' : duration === 'week' ? '(6-10 ימים)' : '(11+ ימים)';
+
+    const list = lists[dest];
+    let html = `<h4>חובה ${clothingNote}</h4><ul>${essentials.map(i => '<li>' + i + '</li>').join('')}</ul>`;
+    html += `<h4>${list.title}</h4><ul>${list.items.map(i => '<li>' + i + '</li>').join('')}</ul>`;
+
+    result.innerHTML = html;
+}
+
+/* --- Exit-Intent Popup --- */
+let exitPopupShown = false;
+
+document.addEventListener('mouseout', (e) => {
+    if (e.clientY < 5 && !exitPopupShown && !sessionStorage.getItem('exitPopupClosed')) {
+        document.getElementById('exitPopup').style.display = 'block';
+        exitPopupShown = true;
+    }
+});
+
+function closeExitPopup() {
+    document.getElementById('exitPopup').style.display = 'none';
+    sessionStorage.setItem('exitPopupClosed', 'true');
+}
+
+/* --- Sticky Quote Bar --- */
+function initStickyBar() {
+    const bar = document.getElementById('stickyBar');
+    if (!bar) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+            bar.classList.add('visible');
+        } else {
+            bar.classList.remove('visible');
+        }
+    });
+}
+initStickyBar();
+
 /* --- Accessibility & Dark Mode --- */
 let fontSizeLevel = 0;
 
