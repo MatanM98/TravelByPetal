@@ -88,6 +88,7 @@
                 <li><a href="#quiz" data-i18n="nav.quiz">Find My Trip</a></li>
                 <li><a href="#calculator" data-i18n="nav.calculator">Budget Planner</a></li>
                 <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="dashboard.html" class="nav-account" data-i18n="nav.account">My Account</a></li>
                 <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact Us</a></li>
                 <li>
                     <button class="lang-toggle" id="langToggle" aria-label="Switch language" onclick="toggleLanguage()">
@@ -348,17 +349,17 @@
                 <h3 class="section-title" style="font-size:1.6rem; margin-top:48px">Self-Service Tools</h3>
                 <p class="section-subtitle">Want to browse on your own? Use these helpful tools</p>
                 <div class="affiliate-grid">
-                    <a href="https://tic.dubai.co.il/affiliate/" class="affiliate-card" target="_blank" rel="noopener">
+                    <a href="https://tic.dubai.co.il/affiliate/" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('dubai_attractions','https://tic.dubai.co.il/affiliate/')">
                         <span class="affiliate-emoji">🏙️</span>
                         <strong>Dubai Attractions</strong>
                         <span>Browse & book in Hebrew, pay in Shekels with Tashlumim</span>
                     </a>
-                    <a href="https://www.zenhotels.com/?cur=ILS&lang=he&partner_extra=Website&partner_slug=108573.affiliate.3022&utm_campaign=he-he%2C+deeplink%2C+affiliate&utm_medium=api2&utm_source=108573.affiliate.3022&utm_term=None" class="affiliate-card" target="_blank" rel="noopener">
+                    <a href="https://www.zenhotels.com/?cur=ILS&lang=he&partner_extra=Website&partner_slug=108573.affiliate.3022&utm_campaign=he-he%2C+deeplink%2C+affiliate&utm_medium=api2&utm_source=108573.affiliate.3022&utm_term=None" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('zenhotels','https://www.zenhotels.com')">
                         <span class="affiliate-emoji">🏨</span>
                         <strong>Search Hotels</strong>
                         <span>Find and compare hotels worldwide in Hebrew & Shekels</span>
                     </a>
-                    <a href="https://www.getyourguide.com/?partner_id=BGGPE3N&utm_medium=online_publisher" class="affiliate-card" target="_blank" rel="noopener">
+                    <a href="https://www.getyourguide.com/?partner_id=BGGPE3N&utm_medium=online_publisher" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('getyourguide','https://www.getyourguide.com')">
                         <span class="affiliate-emoji">🎫</span>
                         <strong>Book Attractions</strong>
                         <span>Tours, tickets & experiences in every city worldwide</span>

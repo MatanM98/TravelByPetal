@@ -60,6 +60,12 @@
                 <button class="nav-item" data-tab="analytics" onclick="switchTab('analytics')">
                     <span class="nav-icon">📈</span> Analytics
                 </button>
+                <button class="nav-item" data-tab="quotes" onclick="switchTab('quotes')">
+                    <span class="nav-icon">💰</span> Quotes
+                </button>
+                <button class="nav-item" data-tab="affiliates" onclick="switchTab('affiliates')">
+                    <span class="nav-icon">🔗</span> Affiliates
+                </button>
                 <button class="nav-item" data-tab="chatlog" onclick="switchTab('chatlog')">
                     <span class="nav-icon">💬</span> Chat Logs
                 </button>
@@ -237,6 +243,60 @@
                 <div class="dashboard-grid">
                     <div class="dash-card"><h3>Popular Destinations (searches)</h3><div id="analyticsDestinations"></div></div>
                     <div class="dash-card"><h3>Recent Events</h3><div id="analyticsEvents" class="table-container"></div></div>
+                </div>
+            </div>
+
+            <!-- Quotes Tab -->
+            <div class="tab-content" data-tab-content="quotes">
+                <div id="quotesTable" class="table-container"></div>
+                <div class="modal" id="quoteModal" style="display:none">
+                    <div class="modal-content modal-large">
+                        <button class="modal-close" onclick="closeModal('quoteModal')">&times;</button>
+                        <h3 id="quoteModalTitle">New Quote</h3>
+                        <form id="quoteForm" onsubmit="saveQuote(event)">
+                            <input type="hidden" id="quoteId">
+                            <input type="hidden" id="quoteRequestId">
+                            <div class="form-grid">
+                                <div class="form-group"><label>Customer Name</label><input id="quoteName" required></div>
+                                <div class="form-group"><label>Customer Email</label><input type="email" id="quoteEmail" required></div>
+                                <div class="form-group"><label>Customer Phone</label><input id="quotePhone"></div>
+                                <div class="form-group"><label>Valid Until</label><input type="date" id="quoteValid"></div>
+                                <div class="form-group full-width"><label>Description</label><textarea id="quoteDesc" rows="3" required></textarea></div>
+                                <div class="form-group full-width">
+                                    <label>Items (one per line: description | amount)</label>
+                                    <textarea id="quoteItems" rows="5" placeholder="Flight TLV-Dubai | 2500&#10;Hotel 5 nights | 4000&#10;Desert Safari | 500"></textarea>
+                                </div>
+                                <div class="form-group"><label>Total Amount (ILS)</label><input type="number" id="quoteTotal" step="0.01"></div>
+                                <div class="form-group"><label>Status</label>
+                                    <select id="quoteStatus">
+                                        <option value="draft">Draft</option>
+                                        <option value="sent">Sent</option>
+                                        <option value="accepted">Accepted</option>
+                                        <option value="rejected">Rejected</option>
+                                    </select>
+                                </div>
+                                <div class="form-group full-width"><label>Notes</label><textarea id="quoteNotes" rows="2"></textarea></div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-admin-primary">Save Quote</button>
+                                <button type="button" class="btn-admin-secondary" onclick="closeModal('quoteModal')">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Affiliates Tab -->
+            <div class="tab-content" data-tab-content="affiliates">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-card-icon">🔗</div><div class="stat-card-value" id="statTotalClicks">0</div><div class="stat-card-label">Total Clicks</div></div>
+                    <div class="stat-card"><div class="stat-card-icon">🏙️</div><div class="stat-card-value" id="statDubaiClicks">0</div><div class="stat-card-label">Dubai Attractions</div></div>
+                    <div class="stat-card"><div class="stat-card-icon">🏨</div><div class="stat-card-value" id="statHotelClicks">0</div><div class="stat-card-label">ZenHotels</div></div>
+                    <div class="stat-card"><div class="stat-card-icon">🎫</div><div class="stat-card-value" id="statGYGClicks">0</div><div class="stat-card-label">GetYourGuide</div></div>
+                </div>
+                <div class="dash-card">
+                    <h3>Click History (Last 30 Days)</h3>
+                    <div id="affiliateClicksTable" class="table-container"></div>
                 </div>
             </div>
 

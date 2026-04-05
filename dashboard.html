@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel By Petal — My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        body { background: #f0f4f8; }
+        .dashboard-container { max-width: 1000px; margin: 0 auto; padding: 24px; }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding: 24px; background: white; border-radius: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .dash-header-info { display: flex; align-items: center; gap: 16px; }
+        .dash-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #5ba4c9, #c9a84c); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; }
+        .dash-name { font-size: 1.3rem; font-weight: 700; }
+        .dash-email { font-size: 0.85rem; color: #718096; }
+        .dash-nav { display: flex; gap: 8px; margin-bottom: 24px; }
+        .dash-nav button { padding: 10px 20px; border: 2px solid #e2e8f0; border-radius: 10px; background: white; font-family: inherit; font-size: 0.9rem; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+        .dash-nav button.active { background: #5ba4c9; color: white; border-color: #5ba4c9; }
+        .dash-nav button:hover:not(.active) { border-color: #5ba4c9; }
+        .dash-tab { display: none; animation: fadeIn 0.3s ease; }
+        .dash-tab.active { display: block; }
+        .request-card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; }
+        .request-info h4 { font-size: 1rem; margin-bottom: 4px; }
+        .request-info p { font-size: 0.85rem; color: #718096; }
+        .request-status { padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .status-new { background: #ebf8ff; color: #2b6cb0; }
+        .status-contacted { background: #fefcbf; color: #975a16; }
+        .status-quoted { background: #e9d8fd; color: #6b46c1; }
+        .status-booked { background: #c6f6d5; color: #276749; }
+        .status-closed { background: #fed7d7; color: #9b2c2c; }
+        .saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+        .saved-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); transition: all 0.2s; }
+        .saved-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .saved-card img { width: 100%; height: 120px; object-fit: cover; }
+        .saved-card-info { padding: 12px; }
+        .saved-card-info h4 { font-size: 0.95rem; margin-bottom: 4px; }
+        .saved-card-info p { font-size: 0.8rem; color: #718096; }
+        .unsave-btn { background: #fed7d7; color: #9b2c2c; border: none; padding: 4px 12px; border-radius: 6px; font-family: inherit; font-size: 0.78rem; cursor: pointer; margin-top: 8px; }
+        .empty-state { text-align: center; padding: 48px; color: #718096; }
+        .empty-state p { margin-bottom: 16px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; color: #5ba4c9; font-weight: 600; text-decoration: none; margin-bottom: 16px; font-size: 0.9rem; }
+
+        /* Auth modal */
+        .auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f0f4f8, #e2e8f0); }
+        .auth-card { background: white; padding: 40px; border-radius: 20px; width: 100%; max-width: 420px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .auth-card h2 { font-size: 1.4rem; margin: 16px 0 8px; }
+        .auth-card p { color: #718096; font-size: 0.9rem; margin-bottom: 24px; }
+        .auth-card input { width: 100%; padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-family: inherit; font-size: 0.95rem; margin-bottom: 12px; direction: ltr; text-align: left; }
+        .auth-card input:focus { outline: none; border-color: #5ba4c9; }
+        .auth-tabs { display: flex; margin-bottom: 20px; border-radius: 10px; overflow: hidden; border: 2px solid #e2e8f0; }
+        .auth-tabs button { flex: 1; padding: 10px; border: none; background: white; font-family: inherit; font-size: 0.9rem; cursor: pointer; font-weight: 500; }
+        .auth-tabs button.active { background: #5ba4c9; color: white; }
+        .google-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 10px; background: white; font-family: inherit; font-size: 0.95rem; cursor: pointer; margin-bottom: 16px; transition: all 0.2s; }
+        .google-btn:hover { border-color: #5ba4c9; background: #f7fafc; }
+        .divider { display: flex; align-items: center; gap: 12px; margin: 16px 0; color: #a0aec0; font-size: 0.85rem; }
+        .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e2e8f0; }
+        .auth-error { color: #e53e3e; font-size: 0.85rem; min-height: 20px; margin-top: 8px; }
+        .auth-switch { margin-top: 16px; font-size: 0.85rem; color: #718096; }
+        .auth-switch a { color: #5ba4c9; cursor: pointer; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <!-- Auth Screen -->
+    <div class="auth-screen" id="authScreen">
+        <div class="auth-card">
+            <svg viewBox="0 0 200 55" width="160" height="45">
+                <g transform="translate(155,8) rotate(-30)"><path d="M0,8 L20,0 L18,6 L26,4 L18,8 L18,12 L26,10 L18,14 L20,20 L0,12 L4,10 L0,8Z" fill="#c9a84c"/></g>
+                <path d="M25,48 Q60,32 100,40 Q140,48 165,20" fill="none" stroke="#c9a84c" stroke-width="2" stroke-dasharray="3,4"/>
+                <text x="10" y="36" font-family="'Dancing Script',cursive" font-size="28" font-weight="700" fill="#5ba4c9">Travel</text>
+                <text x="85" y="36" font-family="'Dancing Script',cursive" font-size="20" fill="#5ba4c9">by</text>
+                <text x="110" y="36" font-family="'Dancing Script',cursive" font-size="30" font-weight="700" fill="#5ba4c9">Petal</text>
+            </svg>
+            <h2>My Account</h2>
+            <p>Login or register to manage your trips</p>
+
+            <button class="google-btn" onclick="signInWithGoogle()">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20" alt="Google">
+                Continue with Google
+            </button>
+
+            <div class="divider">or</div>
+
+            <div class="auth-tabs">
+                <button class="active" id="loginTab" onclick="switchAuthTab('login')">Login</button>
+                <button id="registerTab" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <form id="authForm" onsubmit="handleAuth(event)">
+                <input type="text" id="authName" placeholder="Full Name" style="display:none">
+                <input type="email" id="authEmail" placeholder="Email" required>
+                <input type="password" id="authPassword" placeholder="Password (min 6 chars)" required minlength="6">
+                <button type="submit" class="btn-admin-primary" id="authSubmitBtn">Login</button>
+            </form>
+            <p class="auth-error" id="authError"></p>
+            <p class="auth-switch" id="authSwitch">
+                Don't have an account? <a onclick="switchAuthTab('register')">Register</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container" id="dashboardApp" style="display:none">
+        <a href="index.html" class="back-link">→ Back to Website</a>
+
+        <div class="dash-header">
+            <div class="dash-header-info">
+                <div class="dash-avatar" id="dashAvatar">?</div>
+                <div>
+                    <div class="dash-name" id="dashName">Loading...</div>
+                    <div class="dash-email" id="dashEmail"></div>
+                </div>
+            </div>
+            <button class="btn-admin-secondary" onclick="userLogout()">Logout</button>
+        </div>
+
+        <div class="dash-nav">
+            <button class="active" onclick="switchDashTab('requests', this)">My Requests</button>
+            <button onclick="switchDashTab('saved', this)">Saved Destinations</button>
+            <button onclick="switchDashTab('profile', this)">Profile</button>
+        </div>
+
+        <!-- My Requests -->
+        <div class="dash-tab active" id="tab-requests">
+            <div id="myRequestsList"></div>
+        </div>
+
+        <!-- Saved Destinations -->
+        <div class="dash-tab" id="tab-saved">
+            <div class="saved-grid" id="savedDestGrid"></div>
+        </div>
+
+        <!-- Profile -->
+        <div class="dash-tab" id="tab-profile">
+            <div style="background:white;border-radius:12px;padding:24px;max-width:500px;box-shadow:0 1px 4px rgba(0,0,0,0.06)">
+                <h3 style="margin-bottom:16px">Profile Settings</h3>
+                <div class="form-group"><label>Full Name</label><input id="profileName" placeholder="Your name"></div>
+                <div class="form-group"><label>Phone</label><input id="profilePhone" placeholder="054-000-0000"></div>
+                <button class="btn-admin-primary" style="width:auto;margin-top:12px" onclick="saveProfile()">Save</button>
+                <p id="profileMsg" style="color:#48bb78;font-size:0.85rem;margin-top:8px;min-height:20px"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://audtbcwgkaybqvixfjnf.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1ZHRiY3dna2F5YnF2aXhmam5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzNDYzNDYsImV4cCI6MjA5MDkyMjM0Nn0.OlxAEW_3vt5ykzdU9_PIxJGZMC4QM9RIdf7ahVTMW84';
+        const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentUser = null;
+        let authMode = 'login';
+
+        // === INIT ===
+        document.addEventListener('DOMContentLoaded', async () => {
+            const { data: { session } } = await sb.auth.getSession();
+            if (session) {
+                currentUser = session.user;
+                showDashboard();
+            }
+        });
+
+        // === AUTH ===
+        function switchAuthTab(mode) {
+            authMode = mode;
+            document.getElementById('loginTab').classList.toggle('active', mode === 'login');
+            document.getElementById('registerTab').classList.toggle('active', mode === 'register');
+            document.getElementById('authName').style.display = mode === 'register' ? 'block' : 'none';
+            document.getElementById('authSubmitBtn').textContent = mode === 'login' ? 'Login' : 'Register';
+            document.getElementById('authSwitch').innerHTML = mode === 'login'
+                ? "Don't have an account? <a onclick=\"switchAuthTab('register')\">Register</a>"
+                : "Already have an account? <a onclick=\"switchAuthTab('login')\">Login</a>";
+            document.getElementById('authError').textContent = '';
+        }
+
+        async function handleAuth(e) {
+            e.preventDefault();
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            const name = document.getElementById('authName').value;
+            const error = document.getElementById('authError');
+
+            if (authMode === 'register') {
+                const { data, error: err } = await sb.auth.signUp({
+                    email, password,
+                    options: { data: { full_name: name } }
+                });
+                if (err) { error.textContent = err.message; return; }
+                if (data.user) {
+                    // Create profile
+                    await sb.from('user_profiles').upsert({
+                        id: data.user.id,
+                        full_name: name,
+                        role: 'customer'
+                    });
+                    currentUser = data.user;
+                    showDashboard();
+                }
+            } else {
+                const { data, error: err } = await sb.auth.signInWithPassword({ email, password });
+                if (err) { error.textContent = err.message; return; }
+                currentUser = data.user;
+                showDashboard();
+            }
+        }
+
+        async function signInWithGoogle() {
+            const { error } = await sb.auth.signInWithOAuth({
+                provider: 'google',
+                options: { redirectTo: window.location.href }
+            });
+            if (error) document.getElementById('authError').textContent = error.message;
+        }
+
+        async function userLogout() {
+            await sb.auth.signOut();
+            document.getElementById('dashboardApp').style.display = 'none';
+            document.getElementById('authScreen').style.display = 'flex';
+            currentUser = null;
+        }
+
+        // === DASHBOARD ===
+        async function showDashboard() {
+            document.getElementById('authScreen').style.display = 'none';
+            document.getElementById('dashboardApp').style.display = 'block';
+
+            // Load profile
+            const { data: profile } = await sb.from('user_profiles').select('*').eq('id', currentUser.id).single();
+            const name = profile?.full_name || currentUser.user_metadata?.full_name || currentUser.email.split('@')[0];
+            document.getElementById('dashName').textContent = name;
+            document.getElementById('dashEmail').textContent = currentUser.email;
+            document.getElementById('dashAvatar').textContent = name.charAt(0).toUpperCase();
+            document.getElementById('profileName').value = profile?.full_name || '';
+            document.getElementById('profilePhone').value = profile?.phone || '';
+
+            loadMyRequests();
+            loadSavedDests();
+        }
+
+        function switchDashTab(tab, btn) {
+            document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.dash-nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + tab).classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        // === MY REQUESTS ===
+        async function loadMyRequests() {
+            const { data } = await sb.from('trip_requests')
+                .select('*')
+                .eq('email', currentUser.email)
+                .order('created_at', { ascending: false });
+
+            const list = document.getElementById('myRequestsList');
+            if (!data || data.length === 0) {
+                list.innerHTML = '<div class="empty-state"><p>No trip requests yet</p><a href="index.html#trip-form" class="btn-admin-primary" style="text-decoration:none;display:inline-block">Plan a Trip</a></div>';
+                return;
+            }
+
+            const statusLabels = { new: 'New', contacted: 'In Progress', quoted: 'Quote Sent', booked: 'Booked!', closed: 'Closed' };
+            const statusLabelsHe = { new: 'חדש', contacted: 'בטיפול', quoted: 'נשלחה הצעה', booked: 'הוזמן!', closed: 'נסגר' };
+
+            list.innerHTML = data.map(r => `
+                <div class="request-card">
+                    <div class="request-info">
+                        <h4>${r.destination || 'Trip Request'}</h4>
+                        <p>${r.travel_dates || 'No dates specified'} • ${r.service_type || ''}</p>
+                        <p style="font-size:0.8rem;color:#a0aec0">${new Date(r.created_at).toLocaleDateString('he-IL')}</p>
+                    </div>
+                    <span class="request-status status-${r.status}">${statusLabelsHe[r.status] || r.status}</span>
+                </div>
+            `).join('');
+        }
+
+        // === SAVED DESTINATIONS ===
+        async function loadSavedDests() {
+            const { data } = await sb.from('saved_destinations')
+                .select('id, destination_id, destinations(title_he, image_url, tag_he)')
+                .eq('user_id', currentUser.id);
+
+            const grid = document.getElementById('savedDestGrid');
+            if (!data || data.length === 0) {
+                grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><p>No saved destinations yet</p><a href="index.html#destinations" class="btn-admin-primary" style="text-decoration:none;display:inline-block">Browse Destinations</a></div>';
+                return;
+            }
+
+            grid.innerHTML = data.map(s => `
+                <div class="saved-card">
+                    <img src="${s.destinations?.image_url}" alt="${s.destinations?.title_he}">
+                    <div class="saved-card-info">
+                        <h4>${s.destinations?.title_he}</h4>
+                        <p>${s.destinations?.tag_he}</p>
+                        <button class="unsave-btn" onclick="unsaveDest('${s.id}')">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function unsaveDest(id) {
+            await sb.from('saved_destinations').delete().eq('id', id);
+            loadSavedDests();
+        }
+
+        // === PROFILE ===
+        async function saveProfile() {
+            const name = document.getElementById('profileName').value;
+            const phone = document.getElementById('profilePhone').value;
+            await sb.from('user_profiles').upsert({
+                id: currentUser.id,
+                full_name: name,
+                phone: phone,
+                updated_at: new Date().toISOString()
+            });
+            document.getElementById('profileMsg').textContent = 'Profile saved!';
+            document.getElementById('dashName').textContent = name;
+            document.getElementById('dashAvatar').textContent = name.charAt(0).toUpperCase();
+            setTimeout(() => document.getElementById('profileMsg').textContent = '', 3000);
+        }
+    </script>
+</body>
+</html>

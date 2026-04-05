@@ -782,6 +782,18 @@ function initStickyBar() {
 }
 initStickyBar();
 
+/* --- Affiliate Click Tracking --- */
+function trackAffiliate(linkName, linkUrl) {
+    if (!sb) return;
+    sb.from('affiliate_clicks').insert({
+        link_name: linkName,
+        link_url: linkUrl,
+        session_id: SESSION_ID,
+        referrer: document.referrer || '',
+    }).catch(() => {});
+    trackEvent('affiliate_click', { link: linkName, url: linkUrl });
+}
+
 /* --- Accessibility & Dark Mode --- */
 let fontSizeLevel = 0;
 

@@ -73,6 +73,10 @@ function switchTab(tab) {
             actions.innerHTML = '<button class="btn-add" onclick="openBlogModal()">+ New Post</button>';
             loadBlogPosts(); break;
         case 'analytics': loadAnalytics(); break;
+        case 'quotes':
+            actions.innerHTML = '<button class="btn-add" onclick="openQuoteModal()">+ New Quote</button>';
+            loadQuotes(); break;
+        case 'affiliates': loadAffiliates(); break;
         case 'chatlog': loadChatLogs(); break;
     }
 }
@@ -505,6 +509,122 @@ async function loadChatLogs() {
                 </tr>`).join('')}
             </tbody>
         </table>` : '<p style="color:#999;padding:20px">No chat logs yet</p>';
+}
+
+// === QUOTES ===
+async function loadQuotes() {
+    const { data } = await sb.from('quotes').select('*').order('created_at', { ascending: false });
+    const statusColors = { draft: 'new', sent: 'contacted', viewed: 'contacted', accepted: 'booked', rejected: 'closed', expired: 'closed' };
+
+    document.getElementById('quotesTable').innerHTML = (data && data.length > 0) ? `
+        <table class="admin-table">
+            <thead><tr><th>Date</th><th>Customer</th><th>Description</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>${data.map(q => `
+                <tr>
+                    <td>${new Date(q.created_at).toLocaleDateString('he-IL')}</td>
+                    <td><strong>${q.customer_name}</strong><br><small>${q.customer_email}</small></td>
+                    <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis">${q.description}</td>
+                    <td><strong>₪${Number(q.total_amount).toLocaleString()}</strong></td>
+                    <td><span class="status-badge status-${statusColors[q.status] || 'new'}">${q.status}</span></td>
+                    <td>
+                        <button class="btn-small-admin btn-edit" onclick="editQuote('${q.id}')">Edit</button>
+                        <button class="btn-small-admin btn-delete" onclick="deleteQuote('${q.id}')">Delete</button>
+                    </td>
+                </tr>`).join('')}
+            </tbody>
+        </table>` : '<p style="color:#999;padding:20px">No quotes yet. Click + New Quote to create one.</p>';
+}
+
+function openQuoteModal(data) {
+    document.getElementById('quoteModalTitle').textContent = data ? 'Edit Quote' : 'New Quote';
+    document.getElementById('quoteId').value = data?.id || '';
+    document.getElementById('quoteRequestId').value = data?.request_id || '';
+    document.getElementById('quoteName').value = data?.customer_name || '';
+    document.getElementById('quoteEmail').value = data?.customer_email || '';
+    document.getElementById('quotePhone').value = data?.customer_phone || '';
+    document.getElementById('quoteDesc').value = data?.description || '';
+    document.getElementById('quoteTotal').value = data?.total_amount || '';
+    document.getElementById('quoteStatus').value = data?.status || 'draft';
+    document.getElementById('quoteNotes').value = data?.notes || '';
+    document.getElementById('quoteValid').value = data?.valid_until ? data.valid_until.split('T')[0] : '';
+
+    // Parse items
+    const items = data?.items || [];
+    document.getElementById('quoteItems').value = items.map(i => `${i.description} | ${i.amount}`).join('\n');
+
+    document.getElementById('quoteModal').style.display = 'flex';
+}
+
+async function editQuote(id) {
+    const { data } = await sb.from('quotes').select('*').eq('id', id).single();
+    if (data) openQuoteModal(data);
+}
+
+async function saveQuote(e) {
+    e.preventDefault();
+    const id = document.getElementById('quoteId').value;
+    const itemsText = document.getElementById('quoteItems').value;
+    const items = itemsText.split('\n').filter(Boolean).map(line => {
+        const parts = line.split('|').map(s => s.trim());
+        return { description: parts[0] || '', amount: parseFloat(parts[1]) || 0 };
+    });
+
+    const record = {
+        customer_name: document.getElementById('quoteName').value,
+        customer_email: document.getElementById('quoteEmail').value,
+        customer_phone: document.getElementById('quotePhone').value,
+        description: document.getElementById('quoteDesc').value,
+        items: items,
+        total_amount: parseFloat(document.getElementById('quoteTotal').value) || 0,
+        status: document.getElementById('quoteStatus').value,
+        notes: document.getElementById('quoteNotes').value,
+        valid_until: document.getElementById('quoteValid').value || null,
+        updated_at: new Date().toISOString(),
+    };
+
+    if (id) await sb.from('quotes').update(record).eq('id', id);
+    else {
+        const { data: { user } } = await sb.auth.getUser();
+        record.created_by = user?.id;
+        await sb.from('quotes').insert(record);
+    }
+
+    closeModal('quoteModal');
+    loadQuotes();
+}
+
+async function deleteQuote(id) {
+    if (!confirm('Delete this quote?')) return;
+    await sb.from('quotes').delete().eq('id', id);
+    loadQuotes();
+}
+
+// === AFFILIATES ===
+async function loadAffiliates() {
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 86400000).toISOString();
+    const { data } = await sb.from('affiliate_clicks').select('*').gte('created_at', thirtyDaysAgo).order('created_at', { ascending: false });
+
+    const clicks = data || [];
+    const dubaiClicks = clicks.filter(c => c.link_name === 'dubai_attractions').length;
+    const hotelClicks = clicks.filter(c => c.link_name === 'zenhotels').length;
+    const gygClicks = clicks.filter(c => c.link_name === 'getyourguide').length;
+
+    document.getElementById('statTotalClicks').textContent = clicks.length;
+    document.getElementById('statDubaiClicks').textContent = dubaiClicks;
+    document.getElementById('statHotelClicks').textContent = hotelClicks;
+    document.getElementById('statGYGClicks').textContent = gygClicks;
+
+    document.getElementById('affiliateClicksTable').innerHTML = clicks.length > 0 ? `
+        <table class="admin-table">
+            <thead><tr><th>Time</th><th>Link</th><th>Session</th></tr></thead>
+            <tbody>${clicks.slice(0, 30).map(c => `
+                <tr>
+                    <td>${new Date(c.created_at).toLocaleString('he-IL')}</td>
+                    <td><strong>${c.link_name}</strong></td>
+                    <td><small>${c.session_id}</small></td>
+                </tr>`).join('')}
+            </tbody>
+        </table>` : '<p style="color:#999;padding:20px">No affiliate clicks yet</p>';
 }
 
 // === HELPERS ===
