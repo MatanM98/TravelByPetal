@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel By Petal — Trip Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #5ba4c9; --primary-dark: #3d8ab3; --accent: #c9a84c; --bg: #f0f4f8; --card: #fff; --text: #2d3748; --text-light: #718096; --border: #e2e8f0; --success: #48bb78; --radius: 12px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* Header */
+        .tb-header { background: white; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 1px 4px rgba(0,0,0,0.06); position: sticky; top: 0; z-index: 100; }
+        .tb-header-right { display: flex; align-items: center; gap: 12px; }
+        .tb-logo { font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: var(--primary); font-weight: 700; text-decoration: none; }
+        .tb-back { color: var(--primary); text-decoration: none; font-size: 0.88rem; font-weight: 500; }
+
+        /* Layout */
+        .tb-layout { display: grid; grid-template-columns: 1fr 320px; max-width: 1200px; margin: 0 auto; padding: 24px; gap: 24px; min-height: calc(100vh - 64px); }
+
+        /* Days Panel */
+        .tb-days { display: flex; flex-direction: column; gap: 20px; }
+        .tb-setup { background: var(--card); border-radius: var(--radius); padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .tb-setup h2 { font-size: 1.3rem; margin-bottom: 16px; }
+        .tb-setup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .tb-field label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 4px; color: var(--text-light); }
+        .tb-field input, .tb-field select { width: 100%; padding: 10px 12px; border: 2px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.9rem; }
+        .tb-field input:focus, .tb-field select:focus { outline: none; border-color: var(--primary); }
+        .tb-gen-btn { grid-column: span 2; background: var(--primary); color: white; border: none; padding: 12px; border-radius: 10px; font-family: inherit; font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+        .tb-gen-btn:hover { background: var(--primary-dark); }
+
+        /* Day Card */
+        .tb-day { background: var(--card); border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.06); overflow: hidden; }
+        .tb-day-header { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .tb-day-header h3 { font-size: 1rem; }
+        .tb-day-date { font-size: 0.82rem; opacity: 0.85; }
+        .tb-day-body { padding: 16px 20px; }
+
+        /* Activity Item */
+        .tb-activity { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+        .tb-activity:last-child { border-bottom: none; }
+        .tb-act-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+        .tb-act-icon.hotel { background: #ebf8ff; }
+        .tb-act-icon.activity { background: #fefcbf; }
+        .tb-act-icon.food { background: #fed7e2; }
+        .tb-act-icon.transport { background: #e9d8fd; }
+        .tb-act-info { flex: 1; }
+        .tb-act-info h4 { font-size: 0.9rem; margin-bottom: 2px; }
+        .tb-act-info p { font-size: 0.8rem; color: var(--text-light); }
+        .tb-act-price { font-weight: 700; color: var(--accent); font-size: 0.9rem; white-space: nowrap; }
+        .tb-act-remove { background: none; border: none; color: #e53e3e; cursor: pointer; font-size: 1.1rem; padding: 4px; }
+
+        /* Add Activity */
+        .tb-add-act { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .tb-add-btn { padding: 6px 14px; border: 1.5px dashed var(--border); border-radius: 20px; background: none; font-family: inherit; font-size: 0.8rem; cursor: pointer; color: var(--text-light); transition: all 0.2s; }
+        .tb-add-btn:hover { border-color: var(--primary); color: var(--primary); background: #ebf8ff; }
+
+        /* Sidebar */
+        .tb-sidebar { position: sticky; top: 88px; height: fit-content; }
+        .tb-summary { background: var(--card); border-radius: var(--radius); padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .tb-summary h3 { font-size: 1.1rem; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .tb-summary-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.88rem; border-bottom: 1px solid var(--border); }
+        .tb-summary-row:last-of-type { border-bottom: none; }
+        .tb-summary-total { display: flex; justify-content: space-between; padding: 16px 0 0; margin-top: 8px; border-top: 2px solid var(--primary); font-size: 1.2rem; font-weight: 700; }
+        .tb-summary-total span:last-child { color: var(--primary); }
+        .tb-summary-actions { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        .tb-summary-actions a, .tb-summary-actions button { display: block; width: 100%; padding: 12px; border-radius: 10px; font-family: inherit; font-size: 0.9rem; font-weight: 600; text-align: center; cursor: pointer; text-decoration: none; border: none; transition: all 0.2s; }
+        .tb-btn-primary { background: var(--primary); color: white; }
+        .tb-btn-primary:hover { background: var(--primary-dark); }
+        .tb-btn-wa { background: #25D366; color: white; }
+        .tb-btn-wa:hover { background: #1da851; }
+        .tb-btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary) !important; }
+
+        /* Add modal */
+        .tb-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(4px); }
+        .tb-modal-content { background: white; border-radius: 16px; padding: 28px; width: 90%; max-width: 450px; max-height: 80vh; overflow-y: auto; }
+        .tb-modal-content h3 { margin-bottom: 16px; }
+        .tb-modal-close { float: left; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--text-light); }
+        .tb-option { padding: 12px; border: 2px solid var(--border); border-radius: 10px; margin-bottom: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s; }
+        .tb-option:hover { border-color: var(--primary); background: #f7fafc; }
+        .tb-option-info { flex: 1; }
+        .tb-option-info h4 { font-size: 0.9rem; }
+        .tb-option-info p { font-size: 0.78rem; color: var(--text-light); }
+        .tb-option-price { font-weight: 700; color: var(--accent); }
+
+        .tb-empty { text-align: center; padding: 40px; color: var(--text-light); }
+        .tb-empty p { margin-bottom: 12px; }
+
+        @media (max-width: 768px) {
+            .tb-layout { grid-template-columns: 1fr; }
+            .tb-sidebar { position: static; }
+            .tb-setup-grid { grid-template-columns: 1fr; }
+            .tb-gen-btn { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="tb-header">
+        <div class="tb-header-right">
+            <a href="index.html" class="tb-logo">Travel by Petal ✈️</a>
+        </div>
+        <a href="index.html" class="tb-back">← חזרה לאתר</a>
+    </header>
+
+    <div class="tb-layout">
+        <!-- Main Panel -->
+        <div class="tb-days">
+            <!-- Setup -->
+            <div class="tb-setup">
+                <h2>🗺️ Build Your Trip</h2>
+                <div class="tb-setup-grid">
+                    <div class="tb-field">
+                        <label>Destination</label>
+                        <select id="tbDest">
+                            <option value="dubai">Dubai 🏙️</option>
+                            <option value="india">India 🕌</option>
+                            <option value="athens">Athens 🏛️</option>
+                            <option value="rome">Rome 🏟️</option>
+                            <option value="barcelona">Barcelona 🎭</option>
+                            <option value="london">London 🇬🇧</option>
+                            <option value="vietnam">Vietnam 🌴</option>
+                        </select>
+                    </div>
+                    <div class="tb-field">
+                        <label>Number of Days</label>
+                        <select id="tbDays">
+                            <option value="3">3 Days</option>
+                            <option value="4">4 Days</option>
+                            <option value="5" selected>5 Days</option>
+                            <option value="7">7 Days</option>
+                            <option value="10">10 Days</option>
+                        </select>
+                    </div>
+                    <div class="tb-field">
+                        <label>Start Date</label>
+                        <input type="date" id="tbStartDate">
+                    </div>
+                    <div class="tb-field">
+                        <label>Travelers</label>
+                        <select id="tbTravelers">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5+ People</option>
+                        </select>
+                    </div>
+                    <button class="tb-gen-btn" onclick="generateTrip()">✨ Generate Trip Plan</button>
+                </div>
+            </div>
+
+            <!-- Days will be generated here -->
+            <div id="tbDaysContainer">
+                <div class="tb-empty">
+                    <p style="font-size:2rem">✈️</p>
+                    <p>Select your destination and click "Generate Trip Plan"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="tb-sidebar">
+            <div class="tb-summary">
+                <h3>💰 Trip Summary</h3>
+                <div id="tbSummaryRows">
+                    <p style="color:var(--text-light);font-size:0.88rem">Generate a trip to see pricing</p>
+                </div>
+                <div class="tb-summary-total" id="tbTotal" style="display:none">
+                    <span>Total</span>
+                    <span id="tbTotalAmount">₪0</span>
+                </div>
+                <div class="tb-summary-actions" id="tbActions" style="display:none">
+                    <a href="#" id="tbWhatsAppLink" class="tb-btn-wa" target="_blank">📱 Send to WhatsApp</a>
+                    <a href="index.html#trip-form" class="tb-btn-primary">📝 Request Official Quote</a>
+                    <button class="tb-btn-outline" onclick="exportTrip()">📄 Export as Text</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Activity Modal -->
+    <div class="tb-modal" id="addModal" style="display:none">
+        <div class="tb-modal-content">
+            <button class="tb-modal-close" onclick="closeAddModal()">&times;</button>
+            <h3 id="addModalTitle">Add Activity</h3>
+            <div id="addModalOptions"></div>
+        </div>
+    </div>
+
+    <script>
+    // === TRIP DATA ===
+    const destinations = {
+        dubai: {
+            name: 'Dubai', emoji: '🏙️',
+            hotels: [
+                { name: 'Atlantis The Palm', price: 1200, desc: '5-star luxury resort' },
+                { name: 'JW Marriott Marquis', price: 800, desc: '5-star city center' },
+                { name: 'Rove Downtown', price: 400, desc: '3-star modern hotel' },
+                { name: 'Premier Inn', price: 250, desc: 'Budget-friendly' },
+            ],
+            activities: [
+                { name: 'Desert Safari & BBQ', price: 180, desc: '4x4 dunes, camel ride, dinner', icon: '🏜️' },
+                { name: 'Burj Khalifa At The Top', price: 150, desc: '148th floor observation', icon: '🏢' },
+                { name: 'Dubai Mall & Aquarium', price: 80, desc: 'Shopping + underwater zoo', icon: '🛍️' },
+                { name: 'Dhow Cruise Dinner', price: 120, desc: 'Marina dinner cruise', icon: '🚢' },
+                { name: 'Abu Dhabi Day Trip', price: 200, desc: 'Grand Mosque, Louvre', icon: '🕌' },
+                { name: 'Dubai Frame Visit', price: 60, desc: 'Iconic frame structure', icon: '🖼️' },
+                { name: 'Jet Ski Experience', price: 250, desc: '30 min around Palm', icon: '🏄' },
+                { name: 'Dubai Miracle Garden', price: 50, desc: 'World\'s largest flower garden', icon: '🌸' },
+            ],
+            restaurants: [
+                { name: 'Al Mahara (Burj Al Arab)', price: 500, desc: 'Underwater dining', icon: '🍽️' },
+                { name: 'Pierchic', price: 350, desc: 'Seafood over the sea', icon: '🦞' },
+                { name: 'Arabian Tea House', price: 80, desc: 'Traditional Emirati', icon: '🫖' },
+                { name: 'Street Food Tour', price: 100, desc: 'Local flavors walking tour', icon: '🥙' },
+            ],
+            transport: [
+                { name: 'Airport Transfer (Private)', price: 150, desc: 'Door to door', icon: '🚐' },
+                { name: 'Metro Day Pass', price: 30, desc: 'Unlimited metro rides', icon: '🚇' },
+                { name: 'Car Rental (1 day)', price: 200, desc: 'Economy car', icon: '🚗' },
+            ]
+        },
+        rome: {
+            name: 'Rome', emoji: '🏟️',
+            hotels: [
+                { name: 'Hotel de Russie', price: 1500, desc: '5-star luxury' },
+                { name: 'Hotel Artemide', price: 700, desc: '4-star central' },
+                { name: 'Hotel Lancelot', price: 400, desc: '3-star charming' },
+                { name: 'Generator Rome', price: 180, desc: 'Modern hostel' },
+            ],
+            activities: [
+                { name: 'Colosseum & Forum Tour', price: 60, desc: 'Skip-the-line guided', icon: '🏛️' },
+                { name: 'Vatican & Sistine Chapel', price: 70, desc: 'Guided museum tour', icon: '⛪' },
+                { name: 'Trastevere Food Walk', price: 90, desc: '3-hour food tasting', icon: '🍕' },
+                { name: 'Amalfi Coast Day Trip', price: 150, desc: 'Full day excursion', icon: '🏖️' },
+                { name: 'Pasta Making Class', price: 80, desc: 'Cook like a Roman', icon: '🍝' },
+                { name: 'Borghese Gallery', price: 40, desc: 'Art masterpieces', icon: '🎨' },
+            ],
+            restaurants: [
+                { name: 'La Pergola (3 Michelin)', price: 400, desc: 'Rooftop fine dining', icon: '🍽️' },
+                { name: 'Roscioli', price: 120, desc: 'Famous deli & wine', icon: '🍷' },
+                { name: 'Pizzeria Da Baffetto', price: 40, desc: 'Best Roman pizza', icon: '🍕' },
+            ],
+            transport: [
+                { name: 'Airport Transfer', price: 80, desc: 'Fiumicino to center', icon: '🚐' },
+                { name: 'Roma Pass (2 days)', price: 50, desc: 'Metro + museums', icon: '🎫' },
+            ]
+        },
+        barcelona: {
+            name: 'Barcelona', emoji: '🎭',
+            hotels: [
+                { name: 'W Barcelona', price: 900, desc: '5-star beachfront' },
+                { name: 'Hotel 1898', price: 500, desc: '4-star La Rambla' },
+                { name: 'Hotel Jazz', price: 300, desc: '3-star central' },
+                { name: 'Generator Barcelona', price: 150, desc: 'Modern hostel' },
+            ],
+            activities: [
+                { name: 'Sagrada Familia Tour', price: 50, desc: 'Skip-the-line + guide', icon: '⛪' },
+                { name: 'Park Güell', price: 30, desc: 'Gaudi\'s colorful park', icon: '🎨' },
+                { name: 'La Boqueria Market', price: 0, desc: 'Free to walk, food to buy', icon: '🥘' },
+                { name: 'Gothic Quarter Walk', price: 25, desc: 'Guided walking tour', icon: '🏰' },
+                { name: 'Montserrat Day Trip', price: 80, desc: 'Mountain monastery', icon: '⛰️' },
+                { name: 'Flamenco Show', price: 45, desc: 'Traditional performance', icon: '💃' },
+                { name: 'Sailing Sunset', price: 70, desc: 'Catamaran with drinks', icon: '⛵' },
+            ],
+            restaurants: [
+                { name: 'Tickets (Adrià)', price: 200, desc: 'Creative tapas', icon: '🍽️' },
+                { name: 'Cal Pep', price: 80, desc: 'Famous seafood tapas', icon: '🦐' },
+                { name: 'La Boqueria Lunch', price: 30, desc: 'Market fresh food', icon: '🥗' },
+            ],
+            transport: [
+                { name: 'Airport Transfer', price: 70, desc: 'BCN to center', icon: '🚐' },
+                { name: 'T-Casual (10 rides)', price: 15, desc: 'Metro & bus', icon: '🚇' },
+            ]
+        },
+        london: { name: 'London', emoji: '🇬🇧', hotels: [{ name: 'The Ritz', price: 2000, desc: '5-star iconic' }, { name: 'Strand Palace', price: 600, desc: '4-star West End' }, { name: 'Point A Hotel', price: 300, desc: '3-star modern' }, { name: 'Generator London', price: 150, desc: 'Modern hostel' }], activities: [{ name: 'Tower of London', price: 45, desc: 'Crown Jewels tour', icon: '🏰' }, { name: 'West End Show', price: 80, desc: 'Theatre performance', icon: '🎭' }, { name: 'London Eye', price: 40, desc: 'River views', icon: '🎡' }, { name: 'Stonehenge Day Trip', price: 100, desc: 'Full day excursion', icon: '🪨' }, { name: 'Harry Potter Studio', price: 65, desc: 'Warner Bros tour', icon: '⚡' }, { name: 'Thames River Cruise', price: 30, desc: 'Sightseeing cruise', icon: '🚢' }], restaurants: [{ name: 'The Ledbury', price: 300, desc: '2 Michelin stars', icon: '🍽️' }, { name: 'Dishoom', price: 50, desc: 'Indian-inspired', icon: '🍛' }, { name: 'Borough Market', price: 25, desc: 'Street food', icon: '🥙' }], transport: [{ name: 'Heathrow Express', price: 40, desc: 'Airport to Paddington', icon: '🚂' }, { name: 'Oyster Card (day)', price: 20, desc: 'All transport', icon: '🎫' }] },
+        india: { name: 'India', emoji: '🕌', hotels: [{ name: 'Taj Palace Delhi', price: 600, desc: '5-star luxury' }, { name: 'ITC Mughal Agra', price: 400, desc: '5-star near Taj' }, { name: 'Zostel', price: 50, desc: 'Budget hostel' }, { name: 'OYO Rooms', price: 80, desc: 'Budget hotel' }], activities: [{ name: 'Taj Mahal Sunrise Tour', price: 40, desc: 'Guide + skip line', icon: '🕌' }, { name: 'Kerala Backwaters', price: 80, desc: 'Houseboat cruise', icon: '🚣' }, { name: 'Rajasthan Palace Tour', price: 60, desc: 'Jaipur palaces', icon: '🏰' }, { name: 'Yoga Retreat (day)', price: 30, desc: 'Rishikesh session', icon: '🧘' }, { name: 'Street Food Tour', price: 20, desc: 'Delhi flavors', icon: '🍛' }, { name: 'Varanasi Boat Ride', price: 15, desc: 'Ganges sunrise', icon: '🚣' }], restaurants: [{ name: 'Indian Accent', price: 100, desc: 'Modern Indian fine dining', icon: '🍽️' }, { name: 'Karim\'s Delhi', price: 15, desc: 'Legendary Mughlai', icon: '🍖' }], transport: [{ name: 'Airport Transfer', price: 20, desc: 'Delhi airport', icon: '🚐' }, { name: 'Train Ticket', price: 15, desc: 'Between cities', icon: '🚂' }] },
+        athens: { name: 'Athens', emoji: '🏛️', hotels: [{ name: 'Hotel Grande Bretagne', price: 800, desc: '5-star Syntagma' }, { name: 'Electra Palace', price: 400, desc: '4-star Plaka' }, { name: 'Athens Studios', price: 150, desc: 'Budget central' }], activities: [{ name: 'Acropolis Tour', price: 40, desc: 'Guided + skip line', icon: '🏛️' }, { name: 'Santorini Day Trip', price: 200, desc: 'Flight + tour', icon: '🏝️' }, { name: 'Plaka Food Walk', price: 60, desc: 'Taverna tasting', icon: '🥗' }, { name: 'Temple of Poseidon', price: 50, desc: 'Sunset at Cape Sounion', icon: '🌅' }, { name: 'Cooking Class', price: 70, desc: 'Greek cuisine', icon: '👨‍🍳' }], restaurants: [{ name: 'Funky Gourmet', price: 150, desc: '2 Michelin stars', icon: '🍽️' }, { name: 'Taverna Psaras', price: 30, desc: 'Classic Greek', icon: '🐟' }], transport: [{ name: 'Airport Transfer', price: 50, desc: 'ATH to center', icon: '🚐' }, { name: 'Metro Ticket', price: 5, desc: 'Single ride', icon: '🚇' }] },
+        vietnam: { name: 'Vietnam', emoji: '🌴', hotels: [{ name: 'Sofitel Legend', price: 500, desc: '5-star Hanoi' }, { name: 'La Siesta', price: 200, desc: '4-star Old Quarter' }, { name: 'Hanoi Backpackers', price: 30, desc: 'Budget hostel' }], activities: [{ name: 'Ha Long Bay Cruise', price: 150, desc: '1-day cruise', icon: '🚢' }, { name: 'Old Quarter Walk', price: 0, desc: 'Self-guided exploration', icon: '🚶' }, { name: 'Mekong Delta Tour', price: 60, desc: 'Full day boat trip', icon: '🚣' }, { name: 'Cooking Class', price: 35, desc: 'Pho & spring rolls', icon: '🍜' }, { name: 'Cu Chi Tunnels', price: 40, desc: 'Historical tour', icon: '🕳️' }, { name: 'Motorbiking Tour', price: 50, desc: 'City on two wheels', icon: '🏍️' }], restaurants: [{ name: 'La Maison 1888', price: 120, desc: 'French-Vietnamese fine dining', icon: '🍽️' }, { name: 'Bun Cha Huong Lien', price: 5, desc: 'Obama\'s pho spot', icon: '🍜' }], transport: [{ name: 'Airport Transfer', price: 15, desc: 'Hanoi airport', icon: '🚐' }, { name: 'Grab Ride', price: 3, desc: 'Local taxi app', icon: '🛺' }] },
+    };
+
+    let tripDays = [];
+    let currentDayIndex = -1;
+    let currentCategory = '';
+
+    // === GENERATE TRIP ===
+    function generateTrip() {
+        const dest = document.getElementById('tbDest').value;
+        const numDays = parseInt(document.getElementById('tbDays').value);
+        const startDate = document.getElementById('tbStartDate').value;
+        const destData = destinations[dest];
+
+        tripDays = [];
+        for (let i = 0; i < numDays; i++) {
+            let dateStr = '';
+            if (startDate) {
+                const d = new Date(startDate);
+                d.setDate(d.getDate() + i);
+                dateStr = d.toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
+            }
+            tripDays.push({
+                dayNum: i + 1,
+                date: dateStr,
+                hotel: i === 0 ? destData.hotels[1] : null, // Auto-add mid-range hotel on day 1
+                activities: [],
+                restaurants: [],
+                transport: i === 0 ? [destData.transport[0]] : [], // Auto-add airport transfer day 1
+            });
+        }
+
+        renderTrip();
+        updateSummary();
+    }
+
+    // === RENDER ===
+    function renderTrip() {
+        const container = document.getElementById('tbDaysContainer');
+        const dest = document.getElementById('tbDest').value;
+        const destData = destinations[dest];
+
+        container.innerHTML = tripDays.map((day, i) => `
+            <div class="tb-day">
+                <div class="tb-day-header">
+                    <h3>Day ${day.dayNum} — ${destData.name} ${destData.emoji}</h3>
+                    <span class="tb-day-date">${day.date || ''}</span>
+                </div>
+                <div class="tb-day-body">
+                    ${day.hotel ? `
+                    <div class="tb-activity">
+                        <div class="tb-act-icon hotel">🏨</div>
+                        <div class="tb-act-info"><h4>${day.hotel.name}</h4><p>${day.hotel.desc}</p></div>
+                        <span class="tb-act-price">₪${day.hotel.price}/night</span>
+                        <button class="tb-act-remove" onclick="removeItem(${i},'hotel')">&times;</button>
+                    </div>` : ''}
+                    ${day.transport.map((t, ti) => `
+                    <div class="tb-activity">
+                        <div class="tb-act-icon transport">${t.icon || '🚐'}</div>
+                        <div class="tb-act-info"><h4>${t.name}</h4><p>${t.desc}</p></div>
+                        <span class="tb-act-price">₪${t.price}</span>
+                        <button class="tb-act-remove" onclick="removeItem(${i},'transport',${ti})">&times;</button>
+                    </div>`).join('')}
+                    ${day.activities.map((a, ai) => `
+                    <div class="tb-activity">
+                        <div class="tb-act-icon activity">${a.icon || '🎫'}</div>
+                        <div class="tb-act-info"><h4>${a.name}</h4><p>${a.desc}</p></div>
+                        <span class="tb-act-price">₪${a.price}</span>
+                        <button class="tb-act-remove" onclick="removeItem(${i},'activities',${ai})">&times;</button>
+                    </div>`).join('')}
+                    ${day.restaurants.map((r, ri) => `
+                    <div class="tb-activity">
+                        <div class="tb-act-icon food">${r.icon || '🍽️'}</div>
+                        <div class="tb-act-info"><h4>${r.name}</h4><p>${r.desc}</p></div>
+                        <span class="tb-act-price">₪${r.price}</span>
+                        <button class="tb-act-remove" onclick="removeItem(${i},'restaurants',${ri})">&times;</button>
+                    </div>`).join('')}
+                    <div class="tb-add-act">
+                        ${!day.hotel ? `<button class="tb-add-btn" onclick="openAddModal(${i},'hotels')">+ Hotel</button>` : ''}
+                        <button class="tb-add-btn" onclick="openAddModal(${i},'activities')">+ Activity</button>
+                        <button class="tb-add-btn" onclick="openAddModal(${i},'restaurants')">+ Restaurant</button>
+                        <button class="tb-add-btn" onclick="openAddModal(${i},'transport')">+ Transport</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // === ADD/REMOVE ITEMS ===
+    function openAddModal(dayIndex, category) {
+        currentDayIndex = dayIndex;
+        currentCategory = category;
+        const dest = document.getElementById('tbDest').value;
+        const destData = destinations[dest];
+        const items = category === 'hotels' ? destData.hotels : destData[category];
+
+        document.getElementById('addModalTitle').textContent =
+            category === 'hotels' ? '🏨 Choose Hotel' :
+            category === 'activities' ? '🎫 Add Activity' :
+            category === 'restaurants' ? '🍽️ Add Restaurant' : '🚐 Add Transport';
+
+        document.getElementById('addModalOptions').innerHTML = items.map((item, idx) => `
+            <div class="tb-option" onclick="addItem(${idx})">
+                <span style="font-size:1.5rem">${item.icon || (category === 'hotels' ? '🏨' : '🎫')}</span>
+                <div class="tb-option-info"><h4>${item.name}</h4><p>${item.desc}</p></div>
+                <span class="tb-option-price">₪${item.price}${category === 'hotels' ? '/night' : ''}</span>
+            </div>
+        `).join('');
+
+        document.getElementById('addModal').style.display = 'flex';
+    }
+
+    function addItem(itemIdx) {
+        const dest = document.getElementById('tbDest').value;
+        const destData = destinations[dest];
+
+        if (currentCategory === 'hotels') {
+            tripDays[currentDayIndex].hotel = destData.hotels[itemIdx];
+        } else {
+            const item = destData[currentCategory][itemIdx];
+            tripDays[currentDayIndex][currentCategory].push({ ...item });
+        }
+
+        closeAddModal();
+        renderTrip();
+        updateSummary();
+    }
+
+    function removeItem(dayIdx, category, itemIdx) {
+        if (category === 'hotel') {
+            tripDays[dayIdx].hotel = null;
+        } else {
+            tripDays[dayIdx][category].splice(itemIdx, 1);
+        }
+        renderTrip();
+        updateSummary();
+    }
+
+    function closeAddModal() {
+        document.getElementById('addModal').style.display = 'none';
+    }
+
+    // === SUMMARY ===
+    function updateSummary() {
+        let hotelTotal = 0, actTotal = 0, foodTotal = 0, transportTotal = 0;
+        const travelers = parseInt(document.getElementById('tbTravelers').value) || 1;
+
+        tripDays.forEach(day => {
+            if (day.hotel) hotelTotal += day.hotel.price;
+            day.activities.forEach(a => actTotal += a.price);
+            day.restaurants.forEach(r => foodTotal += r.price);
+            day.transport.forEach(t => transportTotal += t.price);
+        });
+
+        // Activities and food multiply by travelers
+        const perPersonCosts = (actTotal + foodTotal + transportTotal) * travelers;
+        const total = hotelTotal + perPersonCosts;
+
+        document.getElementById('tbSummaryRows').innerHTML = `
+            <div class="tb-summary-row"><span>🏨 Hotels (${tripDays.length} nights)</span><span>₪${hotelTotal.toLocaleString()}</span></div>
+            <div class="tb-summary-row"><span>🎫 Activities</span><span>₪${(actTotal * travelers).toLocaleString()}</span></div>
+            <div class="tb-summary-row"><span>🍽️ Restaurants</span><span>₪${(foodTotal * travelers).toLocaleString()}</span></div>
+            <div class="tb-summary-row"><span>🚐 Transport</span><span>₪${(transportTotal * travelers).toLocaleString()}</span></div>
+            <div class="tb-summary-row" style="color:var(--text-light);font-size:0.8rem"><span>× ${travelers} travelers</span><span></span></div>
+        `;
+
+        document.getElementById('tbTotal').style.display = 'flex';
+        document.getElementById('tbTotalAmount').textContent = '₪' + total.toLocaleString();
+        document.getElementById('tbActions').style.display = 'flex';
+
+        // WhatsApp link
+        const dest = destinations[document.getElementById('tbDest').value];
+        const msg = `היי! בניתי טיול ל${dest.name} באתר:\n${tripDays.length} ימים, ${travelers} מטיילים\nסה"כ משוער: ₪${total.toLocaleString()}\nאשמח להצעת מחיר רשמית!`;
+        document.getElementById('tbWhatsAppLink').href = `https://wa.me/972545581269?text=${encodeURIComponent(msg)}`;
+    }
+
+    // === EXPORT ===
+    function exportTrip() {
+        const dest = destinations[document.getElementById('tbDest').value];
+        const travelers = document.getElementById('tbTravelers').value;
+        let text = `✈️ Trip Plan — ${dest.name} ${dest.emoji}\n`;
+        text += `${tripDays.length} Days | ${travelers} Travelers\n`;
+        text += '─'.repeat(40) + '\n\n';
+
+        tripDays.forEach(day => {
+            text += `📅 Day ${day.dayNum} ${day.date ? '— ' + day.date : ''}\n`;
+            if (day.hotel) text += `  🏨 ${day.hotel.name} — ₪${day.hotel.price}/night\n`;
+            day.transport.forEach(t => text += `  🚐 ${t.name} — ₪${t.price}\n`);
+            day.activities.forEach(a => text += `  🎫 ${a.name} — ₪${a.price}\n`);
+            day.restaurants.forEach(r => text += `  🍽️ ${r.name} — ₪${r.price}\n`);
+            text += '\n';
+        });
+
+        text += '─'.repeat(40) + '\n';
+        text += `💰 Total: ${document.getElementById('tbTotalAmount').textContent}\n`;
+        text += `\n📱 Travel By Petal — 054-558-1269\n🌐 https://matanm98.github.io/TravelByPetal/`;
+
+        // Copy to clipboard
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Trip plan copied to clipboard!');
+        }).catch(() => {
+            // Fallback
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+            alert('Trip plan copied to clipboard!');
+        });
+    }
+
+    // Set default start date to next week
+    const nextWeek = new Date();
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    document.getElementById('tbStartDate').value = nextWeek.toISOString().split('T')[0];
+    </script>
+</body>
+</html>

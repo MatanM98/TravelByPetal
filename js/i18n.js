@@ -16,6 +16,7 @@ const translations = {
         'nav.quiz': 'מצא את הטיול שלי',
         'nav.calculator': 'מחשבון תקציב',
         'nav.about': 'אודות',
+        'nav.builder': 'בנה טיול',
         'nav.account': 'החשבון שלי',
         'nav.contact': 'צרו קשר',
 
