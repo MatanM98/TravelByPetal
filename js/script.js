@@ -952,74 +952,8 @@ async function handleUserMessage() {
 
     chatHistory.push({ role: 'user', content: text });
 
-    // Try AI chatbot via Gemini API
+    // Smart rule-based chatbot (AI-ready when Edge Function is deployed)
     let aiResponse = null;
-    try {
-        const GEMINI_KEY = 'AIzaSyDwEcSVh8ESB31LeE8FWGi4WCgr10iLzBI';
-        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
-
-        const systemPrompt = `You are Petal (פטל), the AI travel assistant for Travel By Petal, a boutique travel agency in Ra'anana, Israel.
-
-SERVICES:
-1. A La Carte Booking: flights, hotels, airport transfers, trains, cruises, restaurants, guided tours, excursions, car rental
-2. Full Itinerary Planning: complete day-by-day trip planning
-
-POPULAR DESTINATIONS: Dubai, India, Athens, Rome, Barcelona, London, Vietnam
-CONTACT: WhatsApp 054-558-1269 | Hours: Sun-Thu 9-18, Fri 9-13
-
-RULES:
-- Respond in the SAME language the user writes in (Hebrew or English)
-- Be warm, professional, enthusiastic about travel
-- Keep responses concise (2-4 sentences)
-- NEVER invent specific prices — say "prices vary" and offer a personalized quote
-- For booking requests, suggest the trip form or WhatsApp
-- You can recommend destinations based on preferences
-- Always end with a call-to-action`;
-
-        const contents = [
-            { role: 'user', parts: [{ text: systemPrompt }] },
-            { role: 'model', parts: [{ text: 'Understood! I am Petal, ready to help plan amazing trips.' }] },
-        ];
-
-        // Add conversation history
-        for (const msg of chatHistory.slice(-8)) {
-            contents.push({
-                role: msg.role === 'user' ? 'user' : 'model',
-                parts: [{ text: msg.content }],
-            });
-        }
-
-        const geminiRes = await fetch(GEMINI_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents,
-                generationConfig: { temperature: 0.7, maxOutputTokens: 300, topP: 0.9 },
-            }),
-        });
-
-        if (geminiRes.ok) {
-            const data = await geminiRes.json();
-            const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
-            if (reply) {
-                aiResponse = reply;
-                chatHistory.push({ role: 'assistant', content: aiResponse });
-
-                // Log to Supabase
-                if (sb) {
-                    sb.from('chatbot_logs').insert({
-                        session_id: SESSION_ID,
-                        user_message: text,
-                        bot_response: aiResponse.substring(0, 500),
-                        was_ai: true,
-                        lang: chatLang,
-                    }).catch(() => {});
-                }
-            }
-        }
-    } catch (e) {
-        console.warn('Gemini API error, falling back to rule-based:', e);
-    }
 
     removeTyping();
 
