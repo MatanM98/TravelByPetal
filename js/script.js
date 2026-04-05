@@ -952,8 +952,34 @@ async function handleUserMessage() {
 
     chatHistory.push({ role: 'user', content: text });
 
-    // Smart rule-based chatbot (AI-ready when Edge Function is deployed)
+    // Try AI chatbot via proxy server
+    const AI_PROXY_URL = 'https://travel-by-petal-bot.onrender.com/api/chat';
     let aiResponse = null;
+    try {
+        const aiRes = await fetch(AI_PROXY_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: text,
+                history: chatHistory.slice(-8),
+                lang: chatLang,
+            }),
+        });
+        if (aiRes.ok) {
+            const aiData = await aiRes.json();
+            if (aiData.reply && !aiData.fallback) {
+                aiResponse = aiData.reply;
+                chatHistory.push({ role: 'assistant', content: aiResponse });
+                if (sb) {
+                    sb.from('chatbot_logs').insert({
+                        session_id: SESSION_ID, user_message: text,
+                        bot_response: aiResponse.substring(0, 500),
+                        was_ai: true, lang: chatLang,
+                    }).catch(() => {});
+                }
+            }
+        }
+    } catch (e) { /* fall through to rule-based */ }
 
     removeTyping();
 

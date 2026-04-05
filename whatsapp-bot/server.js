@@ -217,9 +217,104 @@ async function sendMessage(to, response) {
     }
 }
 
+// === GEMINI AI CHATBOT PROXY ===
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
+const SYSTEM_PROMPT = `You are Petal (פטל), the AI travel assistant for Travel By Petal, a boutique travel agency in Ra'anana, Israel.
+
+SERVICES:
+1. A La Carte Booking: flights, hotels, airport transfers, trains, cruises, restaurants, guided tours, excursions, car rental
+2. Full Itinerary Planning: complete day-by-day trip planning
+
+POPULAR DESTINATIONS: Dubai, India, Athens, Rome, Barcelona, London, Vietnam
+CONTACT: WhatsApp 054-558-1269 | Hours: Sun-Thu 9-18, Fri 9-13
+WEBSITE: https://matanm98.github.io/TravelByPetal/
+
+RULES:
+- Respond in the SAME language the user writes in (Hebrew or English)
+- Be warm, professional, enthusiastic about travel
+- Keep responses concise (2-4 sentences)
+- NEVER invent specific prices — say "prices vary" and offer a personalized quote
+- For booking requests, suggest the trip form or WhatsApp
+- You can recommend destinations based on preferences
+- Always end with a call-to-action
+- You can answer general questions too, but always relate back to travel when possible`;
+
+app.options('/api/chat', (req, res) => {
+    res.set({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+    });
+    res.sendStatus(200);
+});
+
+app.post('/api/chat', async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*');
+
+    const { message, history = [], lang = 'he' } = req.body;
+
+    if (!message) {
+        return res.status(400).json({ error: 'No message' });
+    }
+
+    if (!GEMINI_API_KEY) {
+        return res.json({ reply: 'AI is not configured yet.', fallback: true });
+    }
+
+    try {
+        const contents = [
+            { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+            { role: 'model', parts: [{ text: 'Understood! I am Petal, ready to help.' }] },
+        ];
+
+        for (const msg of history.slice(-8)) {
+            contents.push({
+                role: msg.role === 'user' ? 'user' : 'model',
+                parts: [{ text: msg.content }],
+            });
+        }
+
+        contents.push({ role: 'user', parts: [{ text: message }] });
+
+        const geminiRes = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents,
+                    generationConfig: { temperature: 0.7, maxOutputTokens: 300, topP: 0.9 },
+                }),
+            }
+        );
+
+        if (!geminiRes.ok) {
+            const errData = await geminiRes.json();
+            console.error('Gemini error:', errData);
+            throw new Error('Gemini API error');
+        }
+
+        const data = await geminiRes.json();
+        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        if (reply) {
+            return res.json({ reply, ai: true });
+        }
+        throw new Error('Empty response');
+    } catch (err) {
+        console.error('Chat error:', err.message);
+        return res.json({
+            reply: lang === 'he'
+                ? 'מצטערת, יש בעיה טכנית כרגע. דברו איתי בוואטסאפ: 054-558-1269 💬'
+                : 'Sorry, technical issue. Chat with me on WhatsApp: 054-558-1269 💬',
+            fallback: true
+        });
+    }
+});
+
 // === HEALTH CHECK ===
 app.get('/', (req, res) => {
-    res.send('Travel By Petal WhatsApp Bot is running! 🌸✈️');
+    res.send('Travel By Petal WhatsApp Bot + AI Chat is running! 🌸✈️');
 });
 
 // === START SERVER ===
