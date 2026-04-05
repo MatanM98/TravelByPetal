@@ -2664,30 +2664,43 @@ body.highlight-links a {
     gap: 16px;
 }
 
-.insta-placeholder {
+.insta-card {
     aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    transition: all var(--transition);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
 }
 
-.insta-placeholder:hover {
-    transform: scale(1.05);
+.insta-card:hover {
+    transform: scale(1.06);
     box-shadow: var(--shadow-lg);
 }
 
-.insta-overlay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+.insta-card-text {
     color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.insta-card:hover .insta-card-text {
+    opacity: 1;
+}
+
+.insta-follow-card {
+    background: linear-gradient(135deg, #E1306C, #F77737, #FCAF45);
+    flex-direction: column;
+    gap: 10px;
+}
+
+.insta-follow-card .insta-card-text {
+    opacity: 1;
 }
 
 /* --- Exit Popup --- */

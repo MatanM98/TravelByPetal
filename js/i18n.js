@@ -638,6 +638,87 @@ function applyHebrewTranslations() {
     if (formTitle) formTitle.textContent = t['form.title'];
     if (formSubtitle) formSubtitle.textContent = t['form.subtitle'];
 
+    // Tools section
+    const toolsTitle = document.querySelector('.tools-section .section-title');
+    const toolsSubtitle = document.querySelector('.tools-section .section-subtitle');
+    if (toolsTitle) toolsTitle.textContent = 'כלי טיול';
+    if (toolsSubtitle) toolsSubtitle.textContent = 'כלים חכמים שיעזרו לכם להתכונן לטיול';
+
+    const toolCards = document.querySelectorAll('.tool-card h3');
+    if (toolCards[0]) toolCards[0].textContent = 'בדיקת מזג אוויר';
+    if (toolCards[1]) toolCards[1].textContent = 'המרת מטבע';
+    if (toolCards[2]) toolCards[2].textContent = 'רשימת אריזה';
+    if (toolCards[3]) toolCards[3].textContent = 'סטטוס טיסה';
+
+    // Weather select
+    const weatherSelect = document.getElementById('weatherCity');
+    if (weatherSelect) {
+        weatherSelect.options[0].textContent = 'בחרו יעד...';
+        weatherSelect.options[1].textContent = 'דובאי';
+        weatherSelect.options[2].textContent = 'הודו (דלהי)';
+        weatherSelect.options[3].textContent = 'אתונה';
+        weatherSelect.options[4].textContent = 'רומא';
+        weatherSelect.options[5].textContent = 'ברצלונה';
+        weatherSelect.options[6].textContent = 'לונדון';
+        weatherSelect.options[7].textContent = 'וייטנאם (האנוי)';
+        weatherSelect.options[8].textContent = 'פריז';
+        weatherSelect.options[9].textContent = 'בנגקוק';
+        weatherSelect.options[10].textContent = 'ניו יורק';
+    }
+
+    // Currency
+    const currLabel = document.querySelector('.currency-label');
+    if (currLabel) currLabel.textContent = '₪ שקלים';
+    const currNote = document.querySelector('.currency-note');
+    if (currNote) currNote.textContent = 'שערים משוערים, מתעדכנים מעת לעת';
+
+    // Packing
+    const packDest = document.getElementById('packDest');
+    if (packDest) {
+        packDest.options[0].textContent = 'חוף / טרופי';
+        packDest.options[1].textContent = 'סיטי בריק';
+        packDest.options[2].textContent = 'חורף / קור';
+        packDest.options[3].textContent = 'הרפתקה / טרקים';
+    }
+    const packDuration = document.getElementById('packDuration');
+    if (packDuration) {
+        packDuration.options[0].textContent = '3-5 ימים';
+        packDuration.options[1].textContent = '6-10 ימים';
+        packDuration.options[2].textContent = '11+ ימים';
+    }
+    const packBtn = document.querySelector('.packing-widget .btn-small');
+    if (packBtn) packBtn.textContent = 'צרו רשימה';
+
+    // Flight
+    const flightDesc = document.querySelector('.flight-desc');
+    if (flightDesc) flightDesc.textContent = 'בדקו את סטטוס הטיסה שלכם בזמן אמת';
+    const flightBtns = document.querySelectorAll('.flight-widget a');
+    if (flightBtns[1]) flightBtns[1].textContent = 'טיסות נתב"ג';
+
+    // Instagram section
+    const instaTitle = document.querySelector('.instagram-section .section-title');
+    const instaSubtitle = document.querySelector('.instagram-section .section-subtitle');
+    if (instaTitle) instaTitle.textContent = 'עקבו אחרי ההרפתקאות שלנו';
+    if (instaSubtitle) instaSubtitle.textContent = '@Travel.by.petal באינסטגרם';
+    const instaFollowBtn = document.querySelector('.instagram-section .btn-primary');
+    if (instaFollowBtn) instaFollowBtn.textContent = 'עקבו באינסטגרם';
+
+    // Exit popup
+    const exitH3 = document.querySelector('.exit-popup-content h3');
+    const exitP = document.querySelector('.exit-popup-content p');
+    const exitBtn1 = document.querySelector('.exit-popup-content .btn-primary');
+    const exitBtn2 = document.querySelector('.exit-popup-content .btn-outline');
+    if (exitH3) exitH3.textContent = 'חדשים כאן?';
+    if (exitP) exitP.textContent = 'בואו אעזור לכם לתכנן את הטיול המושלם! מלאו טופס קצר ואשלח לכם הצעת מחיר מותאמת — ללא התחייבות.';
+    if (exitBtn1) exitBtn1.textContent = 'קבלו הצעת מחיר חינם';
+    if (exitBtn2) exitBtn2.textContent = 'שוחחו בוואטסאפ';
+
+    // Sticky bar
+    const stickyText = document.querySelector('.sticky-bar-text');
+    const stickyBtn = document.querySelector('.sticky-bar-btn');
+    if (stickyText) stickyText.textContent = 'מוכנים לתכנן את טיול החלומות?';
+    if (stickyBtn) stickyBtn.textContent = 'הצעת מחיר חינם';
+
     // Reset chatbot to Hebrew
     switchChatbotLanguage('he');
 
