@@ -2,6 +2,132 @@
    Travel By Petal - Main Script
    ============================================ */
 
+// === SUPABASE INIT ===
+const SUPABASE_URL = 'https://audtbcwgkaybqvixfjnf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1ZHRiY3dna2F5YnF2aXhmam5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzNDYzNDYsImV4cCI6MjA5MDkyMjM0Nn0.OlxAEW_3vt5ykzdU9_PIxJGZMC4QM9RIdf7ahVTMW84';
+let sb = null;
+const SESSION_ID = 'ses_' + Math.random().toString(36).substring(2, 10);
+
+try {
+    if (window.supabase) {
+        sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+} catch (e) {
+    console.warn('Supabase not available, using fallback');
+}
+
+// === ANALYTICS TRACKING ===
+function trackEvent(eventType, eventData = {}) {
+    if (!sb) return;
+    sb.from('analytics_events').insert({
+        event_type: eventType,
+        event_data: eventData,
+        page: window.location.pathname,
+        session_id: SESSION_ID,
+    }).then(() => {}).catch(() => {});
+}
+
+// === DYNAMIC CONTENT LOADING ===
+async function loadDynamicContent() {
+    if (!sb) return;
+
+    try {
+        // Load destinations from Supabase
+        const { data: dests } = await sb.from('destinations')
+            .select('*')
+            .eq('is_active', true)
+            .order('sort_order');
+
+        if (dests && dests.length > 0) {
+            const grid = document.getElementById('destinationsGrid');
+            if (grid) {
+                const lang = currentLang || 'he';
+                grid.innerHTML = dests.map(d => buildDestCard(d, lang)).join('');
+                // Re-init effects
+                initDestCardEffects();
+            }
+        }
+
+        // Load testimonials from Supabase
+        const { data: tests } = await sb.from('testimonials')
+            .select('*')
+            .eq('is_active', true)
+            .order('sort_order');
+
+        if (tests && tests.length > 0) {
+            const track = document.getElementById('testimonialTrack');
+            if (track) {
+                track.innerHTML = tests.map(t => buildTestimonialCard(t)).join('');
+                testimonialIndex = 0;
+            }
+        }
+    } catch (e) {
+        console.warn('Failed to load dynamic content:', e);
+    }
+}
+
+function buildDestCard(d, lang) {
+    const title = lang === 'he' ? d.title_he : d.title_en;
+    const tag = lang === 'he' ? d.tag_he : d.tag_en;
+    const highlights = lang === 'he' ? d.highlights_he : d.highlights_en;
+    const bestTime = lang === 'he' ? d.best_time_he : d.best_time_en;
+    const ctaText = lang === 'he' ? d.cta_text_he : d.cta_text_en;
+    const bestTimeLabel = lang === 'he' ? 'הזמן הטוב ביותר:' : 'Best time:';
+
+    return `
+    <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped');trackEvent('dest_click',{destination:'${d.slug}'})" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+        <div class="dest-card-inner">
+            <div class="dest-card-front" style="background: ${d.gradient || ''}, url('${d.image_url}') center/cover">
+                <div class="dest-info">
+                    <span class="dest-tag">${tag}</span>
+                    <h3>${title}</h3>
+                </div>
+            </div>
+            <div class="dest-card-back">
+                <h3>${title}</h3>
+                <ul>${(highlights || []).map(h => `<li>${h}</li>`).join('')}</ul>
+                <p class="dest-weather">${bestTimeLabel} ${bestTime}</p>
+                <a href="${d.cta_url || '#trip-form'}" class="btn btn-small">${ctaText || 'Book Now'}</a>
+            </div>
+        </div>
+    </div>`;
+}
+
+function buildTestimonialCard(t) {
+    return `
+    <div class="testimonial-card" style="direction:rtl; text-align:right">
+        <div class="testimonial-stars" role="img" aria-label="${t.stars} out of 5 stars">${'★'.repeat(t.stars)}</div>
+        <p>"${t.review_text}"</p>
+        <div class="testimonial-author" style="flex-direction:row-reverse">
+            <div class="author-avatar">${t.author_initials}</div>
+            <div style="text-align:right">
+                <strong>${t.author_name}</strong>
+                <span>${t.trip_label || t.source}</span>
+            </div>
+        </div>
+    </div>`;
+}
+
+function initDestCardEffects() {
+    document.querySelectorAll('.dest-card-front').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `perspective(600px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+}
+
+// Add ID to destinations grid for dynamic loading
+document.addEventListener('DOMContentLoaded', () => {
+    const destGrid = document.querySelector('.destinations-grid');
+    if (destGrid && !destGrid.id) destGrid.id = 'destinationsGrid';
+    const testTrack = document.querySelector('.testimonial-track');
+    if (testTrack && !testTrack.id) testTrack.id = 'testimonialTrack';
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     initPetals();
     initNavbar();
@@ -9,6 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initChatbot();
     calculateBudget();
     initScrollAnimations();
+    // Track page view
+    trackEvent('page_view', { url: window.location.href });
+    // Load dynamic content from Supabase
+    loadDynamicContent();
     // Apply Hebrew as default language (unless user switched to English)
     const savedLang = sessionStorage.getItem('lang');
     if (savedLang === 'en') {
@@ -696,6 +826,7 @@ document.addEventListener('click', (e) => {
 
 /* --- Custom Form Multi-Step --- */
 function nextFormStep(step) {
+    if (step === 2) trackEvent('form_start'); // Track when user goes to step 2
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
     document.querySelector(`.form-step[data-form-step="${step}"]`).classList.add('active');
 
@@ -710,29 +841,66 @@ function nextFormStep(step) {
     document.getElementById('trip-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function submitTripForm(e) {
+async function submitTripForm(e) {
     e.preventDefault();
     const form = document.getElementById('tripForm');
     const formData = new FormData(form);
 
-    // Submit to Google Forms
-    const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/formResponse';
+    // Track form completion
+    trackEvent('form_complete', { destination: formData.get('entry.1749388622') });
 
-    fetch(googleFormUrl, {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-    }).then(() => {
-        // Show success
-        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-        document.querySelector('.form-steps-indicator').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-    }).catch(() => {
-        // Still show success (no-cors won't return readable response)
-        document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-        document.querySelector('.form-steps-indicator').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-    });
+    // Build data object for Supabase
+    const tripData = {
+        full_name: formData.get('entry.1883151446') || '',
+        phone: formData.get('entry.195224141') || '',
+        email: formData.get('emailAddress') || '',
+        ages: formData.get('entry.1984006419') || '',
+        passport_valid: formData.get('entry.1643179041') || '',
+        destination: formData.get('entry.1749388622') || '',
+        travel_dates: formData.get('entry.1056874049') || '',
+        date_flexibility: formData.get('entry.1499261677') || '',
+        service_type: formData.get('entry.1169236923') || '',
+        budget: formData.get('entry.617714780') || '',
+        support_level: formData.get('entry.953177635') || '',
+        flight_pref: formData.get('entry.1864061787') || '',
+        airline_pref: formData.get('entry.741895817') || '',
+        luggage_type: formData.get('entry.1085495667') || '',
+        cancel_policy: formData.get('entry.776037380') || '',
+        hotel_level: formData.get('entry.11084784') || '',
+        bed_type: formData.get('entry.935151483') || '',
+        meals: formData.get('entry.611868580') || '',
+        hotel_cancel: formData.get('entry.1421429188') || '',
+        shabbat_kosher: formData.get('entry.1036689062') || '',
+        special_notes: formData.get('entry.180413487') || '',
+    };
+
+    // Try Supabase first
+    let supabaseOk = false;
+    if (sb) {
+        try {
+            const { error } = await sb.from('trip_requests').insert(tripData);
+            if (!error) supabaseOk = true;
+        } catch (e) { console.warn('Supabase insert failed, falling back to Google Forms'); }
+    }
+
+    // Fallback: also send to Google Forms
+    if (!supabaseOk) {
+        try {
+            await fetch('https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/formResponse', {
+                method: 'POST', body: formData, mode: 'no-cors'
+            });
+        } catch (e) { /* ignore */ }
+    }
+
+    // Show success
+    showFormSuccess();
+}
+
+function showFormSuccess() {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    const indicator = document.querySelector('.form-steps-indicator');
+    if (indicator) indicator.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
 }
 
 let chatLang = 'he';
@@ -758,7 +926,9 @@ function switchChatbotLanguage(lang) {
     }
 }
 
-function handleUserMessage() {
+let chatHistory = []; // AI conversation history
+
+async function handleUserMessage() {
     const input = document.getElementById('chatbotInput');
     const text = input.value.trim();
     if (!text) return;
@@ -766,23 +936,76 @@ function handleUserMessage() {
     addUserMessage(text);
     input.value = '';
     clearQuickReplies();
-
-    // Show typing indicator
     showTyping();
 
-    // Process and respond after delay
-    setTimeout(() => {
-        removeTyping();
+    chatHistory.push({ role: 'user', content: text });
+
+    // Try AI chatbot via Supabase Edge Function
+    let aiResponse = null;
+    if (sb) {
+        try {
+            const res = await fetch(`${SUPABASE_URL}/functions/v1/chat`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                },
+                body: JSON.stringify({
+                    message: text,
+                    history: chatHistory.slice(-10),
+                    lang: chatLang,
+                }),
+            });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.reply) {
+                    aiResponse = data.reply;
+                    chatHistory.push({ role: 'assistant', content: aiResponse });
+
+                    // Log to Supabase
+                    sb.from('chatbot_logs').insert({
+                        session_id: SESSION_ID,
+                        user_message: text,
+                        bot_response: aiResponse,
+                        was_ai: true,
+                        lang: chatLang,
+                    }).catch(() => {});
+                }
+            }
+        } catch (e) { /* fall through to rule-based */ }
+    }
+
+    removeTyping();
+
+    if (aiResponse) {
+        addBotMessage(aiResponse);
+        // Show default quick replies for AI
+        const defaultQR = chatLang === 'he'
+            ? ['יעדים פופולריים', 'הצעת מחיר', 'וואטסאפ']
+            : ['Popular destinations', 'Get a quote', 'Chat on WhatsApp'];
+        showQuickReplies(defaultQR);
+    } else {
+        // Fallback to rule-based chatbot
+        let response;
         if (chatLang === 'he') {
-            const response = generateHebrewResponse(text);
-            addBotMessage(response.message);
-            if (response.quickReplies) showQuickReplies(response.quickReplies);
+            response = generateHebrewResponse(text);
         } else {
-            const response = generateResponse(text);
-            addBotMessage(response.message);
-            if (response.quickReplies) showQuickReplies(response.quickReplies);
+            response = generateResponse(text);
         }
-    }, 800 + Math.random() * 700);
+        addBotMessage(response.message);
+        if (response.quickReplies) showQuickReplies(response.quickReplies);
+
+        // Log fallback response
+        if (sb) {
+            sb.from('chatbot_logs').insert({
+                session_id: SESSION_ID,
+                user_message: text,
+                bot_response: response.message.substring(0, 500),
+                was_ai: false,
+                lang: chatLang,
+            }).catch(() => {});
+        }
+    }
 }
 
 function generateResponse(input) {
