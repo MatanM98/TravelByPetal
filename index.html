@@ -83,14 +83,13 @@
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="#destinations" data-i18n="nav.destinations">Destinations</a></li>
-                <li><a href="#quiz" data-i18n="nav.quiz">Find My Trip</a></li>
-                <li><a href="trip-builder.html" data-i18n="nav.builder">Trip Builder</a></li>
-                <li><a href="#calculator" data-i18n="nav.calculator">Budget Planner</a></li>
                 <li><a href="#about" data-i18n="nav.about">About</a></li>
-                <li><a href="dashboard.html" class="nav-account" data-i18n="nav.account">My Account</a></li>
-                <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact Us</a></li>
+                <li><a href="trip-builder.html" data-i18n="nav.builder">Trip Builder</a></li>
+                <li><a href="#trip-form" data-i18n="nav.findtrip">Find My Trip</a></li>
+                <li><a href="#testimonials" data-i18n="nav.reviews">Reviews</a></li>
+                <li><a href="#destinations" data-i18n="nav.destinations">Popular Destinations</a></li>
+                <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
+                <li><a href="#affiliate-tools" data-i18n="nav.tools">Self-Service Tools</a></li>
                 <li>
                     <button class="lang-toggle" id="langToggle" aria-label="Switch language" onclick="toggleLanguage()">
                         <span class="lang-flag" id="langFlag">&#127468;&#127463;</span>
@@ -109,7 +108,7 @@
                 <span class="hero-sub">Welcome to</span>
                 Travel By Petal
             </h1>
-            <p class="hero-text">Anyone can book online — but when something goes wrong, you need a real travel agent. Someone who knows the laws, the regulations, and has your back. I'm with you every step of the way.</p>
+            <p class="hero-text">If you're looking for personalized travel planning, a seamless travel experience, and support every step of the way — you've come to the right place. With the training and experience I've gained over the years, I turn travel dreams into reality. No need to worry about the small details — visas, baggage, ticket conditions, last-minute changes, complex connections, or bureaucracy — I take care of everything, so you can enjoy the journey.</p>
             <p class="hero-quote" id="heroQuote">"The world is a book, and those who do not travel read only one page."</p>
             <div class="hero-buttons">
                 <a href="#trip-form" class="btn btn-primary">Start Planning Your Trip</a>
@@ -134,538 +133,17 @@
 
     <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60Z" fill="var(--white)"/></svg></div>
 
-    <!-- Services Section -->
-    <section class="services" id="services" aria-label="Our Services">
-        <div class="float-decor" aria-hidden="true" style="width:200px;height:200px;background:var(--primary);top:10%;right:-60px;animation-delay:0s"></div>
-        <div class="float-decor" aria-hidden="true" style="width:120px;height:120px;background:var(--accent);bottom:15%;left:-40px;animation-delay:3s"></div>
-        <div class="container">
-            <h2 class="section-title">How I Can Help</h2>
-            <p class="section-subtitle">You can cook at home — but sometimes you want a chef. Same with travel. Let a professional handle the details while you sit back and relax.</p>
-            <div class="services-grid services-two">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#5ba4c9" stroke-width="2"/><path d="M18 38 L28 18 L32 28 L36 16 L46 38" fill="none" stroke="#5ba4c9" stroke-width="2" stroke-linejoin="round"/><path d="M18 38 L46 38" stroke="#89c4e1" stroke-width="1.5"/><circle cx="32" cy="44" r="3" fill="#c9a84c"/></svg>
-                    </div>
-                    <h3>A La Carte Booking</h3>
-                    <p>I'll book exactly what you need — mix and match any combination:</p>
-                    <ul class="service-list">
-                        <li>Flights</li>
-                        <li>Hotels</li>
-                        <li>Airport transfers</li>
-                        <li>Trains</li>
-                        <li>Cruises</li>
-                        <li>Restaurants</li>
-                        <li>Guided day tours</li>
-                        <li>Excursions</li>
-                        <li>Car rental</li>
-                    </ul>
-                    <a href="#trip-form" class="btn btn-small">Get a Quote</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#5ba4c9" stroke-width="2"/><rect x="20" y="16" width="24" height="32" rx="3" fill="none" stroke="#5ba4c9" stroke-width="2"/><line x1="24" y1="24" x2="40" y2="24" stroke="#89c4e1" stroke-width="1.5"/><line x1="24" y1="30" x2="40" y2="30" stroke="#89c4e1" stroke-width="1.5"/><line x1="24" y1="36" x2="40" y2="36" stroke="#89c4e1" stroke-width="1.5"/><circle cx="26" cy="24" r="1.5" fill="#c9a84c"/><circle cx="26" cy="30" r="1.5" fill="#c9a84c"/><circle cx="26" cy="36" r="1.5" fill="#c9a84c"/></svg>
-                    </div>
-                    <h3>Full Itinerary Planning</h3>
-                    <p>Your entire trip, planned day by day. Every morning, afternoon, and evening organized so you don't have to think about a thing. I handle all the bookings, logistics, and timing — you just enjoy.</p>
-                    <a href="#trip-form" class="btn btn-small">Plan My Trip</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C300,55 600,0 900,40 C1050,55 1150,20 1200,25 L1200,60 L0,60Z" fill="var(--bg-alt)"/></svg></div>
-
-    <!-- Popular Destinations -->
-    <section class="destinations" id="destinations" aria-label="Popular Destinations">
-        <div class="float-decor" aria-hidden="true" style="width:160px;height:160px;background:var(--accent);top:5%;left:-50px;animation-delay:1s"></div>
-        <div class="float-decor" aria-hidden="true" style="width:100px;height:100px;background:var(--primary);bottom:10%;right:-30px;animation-delay:4s"></div>
-        <div class="container">
-            <h2 class="section-title">Popular Destinations</h2>
-            <p class="section-subtitle">Click to flip and discover more about each destination</p>
-            <div class="destinations-grid" id="destinationsGrid">
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #4facfe33, #00f2fe33), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Luxury</span>
-                                <h3>Dubai, UAE</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Dubai, UAE</h3>
-                            <ul>
-                                <li>Desert safari & BBQ dinner</li>
-                                <li>Burj Khalifa observation deck</li>
-                                <li>Dubai Mall & souks</li>
-                                <li>Dhow cruise dinner</li>
-                                <li>Beach resorts & water parks</li>
-                            </ul>
-                            <p class="dest-weather">Best time: Nov-Mar</p>
-                            <a href="https://tic.dubai.co.il/affiliate/" class="btn btn-small" target="_blank" rel="noopener">Browse Dubai Attractions</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f5af1933, #f1293333), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Adventure</span>
-                                <h3>India</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>India</h3>
-                            <ul>
-                                <li>Taj Mahal & Golden Triangle</li>
-                                <li>Kerala backwaters cruise</li>
-                                <li>Rajasthan palace tours</li>
-                                <li>Street food experiences</li>
-                                <li>Spiritual & yoga retreats</li>
-                            </ul>
-                            <p class="dest-weather">Best time: Oct-Mar</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20India!" class="btn btn-small" target="_blank" rel="noopener">Plan My India Trip</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #667eea33, #764ba233), url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">History</span>
-                                <h3>Athens, Greece</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Athens, Greece</h3>
-                            <ul>
-                                <li>Acropolis & Parthenon tour</li>
-                                <li>Plaka neighborhood walk</li>
-                                <li>Greek island day trips</li>
-                                <li>Traditional taverna dining</li>
-                                <li>Ancient Agora exploration</li>
-                            </ul>
-                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Athens!" class="btn btn-small" target="_blank" rel="noopener">Plan My Athens Trip</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #ffecd233, #fcb69f33), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Culture</span>
-                                <h3>Rome, Italy</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Rome, Italy</h3>
-                            <ul>
-                                <li>Colosseum & Vatican tour</li>
-                                <li>Trastevere food walk</li>
-                                <li>Day trip to Amalfi Coast</li>
-                                <li>Pasta making class</li>
-                                <li>Trevi Fountain & Piazzas</li>
-                            </ul>
-                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Rome!" class="btn btn-small" target="_blank" rel="noopener">Plan My Rome Trip</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f093fb33, #f5576c33), url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Vibrant</span>
-                                <h3>Barcelona, Spain</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Barcelona, Spain</h3>
-                            <ul>
-                                <li>Sagrada Familia & Gaudi tour</li>
-                                <li>La Boqueria market visit</li>
-                                <li>Gothic Quarter walking tour</li>
-                                <li>Beach & tapas experience</li>
-                                <li>Montserrat day trip</li>
-                            </ul>
-                            <p class="dest-weather">Best time: May-Jun, Sep-Oct</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Barcelona!" class="btn btn-small" target="_blank" rel="noopener">Plan My Barcelona Trip</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #a18cd133, #6190e833), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Classic</span>
-                                <h3>London, UK</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>London, UK</h3>
-                            <ul>
-                                <li>Big Ben & Parliament tour</li>
-                                <li>Tower of London visit</li>
-                                <li>West End theatre show</li>
-                                <li>Camden & Borough markets</li>
-                                <li>Day trip to Stonehenge</li>
-                            </ul>
-                            <p class="dest-weather">Best time: May-Sep</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20London!" class="btn btn-small" target="_blank" rel="noopener">Plan My London Trip</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
-                    <div class="dest-card-inner">
-                        <div class="dest-card-front" style="background: linear-gradient(135deg, #11998e33, #38ef7d33), url('https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80') center/cover">
-                            <div class="dest-info">
-                                <span class="dest-tag">Exotic</span>
-                                <h3>Vietnam</h3>
-                            </div>
-                        </div>
-                        <div class="dest-card-back">
-                            <h3>Vietnam</h3>
-                            <ul>
-                                <li>Ha Long Bay cruise</li>
-                                <li>Hanoi Old Quarter tour</li>
-                                <li>Ho Chi Minh City exploration</li>
-                                <li>Mekong Delta boat trip</li>
-                                <li>Vietnamese cooking class</li>
-                            </ul>
-                            <p class="dest-weather">Best time: Feb-Apr, Oct-Dec</p>
-                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Vietnam!" class="btn btn-small" target="_blank" rel="noopener">Plan My Vietnam Trip</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Affiliate Tools -->
-            <div class="affiliate-tools">
-                <h3 class="section-title" style="font-size:1.6rem; margin-top:48px">Self-Service Tools</h3>
-                <p class="section-subtitle">Want to browse on your own? Use these helpful tools</p>
-                <div class="affiliate-grid">
-                    <a href="https://tic.dubai.co.il/affiliate/" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('dubai_attractions','https://tic.dubai.co.il/affiliate/')">
-                        <span class="affiliate-emoji">🏙️</span>
-                        <strong>Dubai Attractions</strong>
-                        <span>Browse & book in Hebrew, pay in Shekels with Tashlumim</span>
-                    </a>
-                    <a href="https://www.zenhotels.com/?cur=ILS&lang=he&partner_extra=Website&partner_slug=108573.affiliate.3022&utm_campaign=he-he%2C+deeplink%2C+affiliate&utm_medium=api2&utm_source=108573.affiliate.3022&utm_term=None" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('zenhotels','https://www.zenhotels.com')">
-                        <span class="affiliate-emoji">🏨</span>
-                        <strong>Search Hotels</strong>
-                        <span>Find and compare hotels worldwide in Hebrew & Shekels</span>
-                    </a>
-                    <a href="https://www.getyourguide.com/?partner_id=BGGPE3N&utm_medium=online_publisher" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('getyourguide','https://www.getyourguide.com')">
-                        <span class="affiliate-emoji">🎫</span>
-                        <strong>Book Attractions</strong>
-                        <span>Tours, tickets & experiences in every city worldwide</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,40 C150,10 350,55 600,25 C850,0 1050,50 1200,20 L1200,60 L0,60Z" fill="var(--white)"/></svg></div>
-
-    <!-- Dream Trip Quiz -->
-    <section class="quiz-section" id="quiz" aria-label="Dream Trip Quiz">
-        <div class="container">
-            <h2 class="section-title">Find Your Dream Trip</h2>
-            <p class="section-subtitle">Answer 4 quick questions and we'll match you with your perfect destination</p>
-            <div class="quiz-container" id="quizContainer">
-                <div class="quiz-progress">
-                    <div class="quiz-progress-bar" id="quizProgress"></div>
-                </div>
-                <div class="quiz-step active" data-step="1">
-                    <h3>What's your travel vibe?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-option" data-value="relax" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">🏖️</span>
-                            <span>Relax & Unwind</span>
-                        </button>
-                        <button class="quiz-option" data-value="adventure" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">🏔️</span>
-                            <span>Adventure & Thrills</span>
-                        </button>
-                        <button class="quiz-option" data-value="culture" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">🏛️</span>
-                            <span>Culture & History</span>
-                        </button>
-                        <button class="quiz-option" data-value="romance" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">💕</span>
-                            <span>Romance & Luxury</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="quiz-step" data-step="2">
-                    <h3>What's your ideal climate?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-option" data-value="tropical" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">☀️</span>
-                            <span>Hot & Tropical</span>
-                        </button>
-                        <button class="quiz-option" data-value="mild" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">🌤️</span>
-                            <span>Warm & Mild</span>
-                        </button>
-                        <button class="quiz-option" data-value="cool" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">🍂</span>
-                            <span>Cool & Breezy</span>
-                        </button>
-                        <button class="quiz-option" data-value="cold" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">❄️</span>
-                            <span>Cold & Snowy</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="quiz-step" data-step="3">
-                    <h3>Who are you traveling with?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-option" data-value="solo" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">🧳</span>
-                            <span>Solo Explorer</span>
-                        </button>
-                        <button class="quiz-option" data-value="couple" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">💑</span>
-                            <span>With My Partner</span>
-                        </button>
-                        <button class="quiz-option" data-value="family" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">👨‍👩‍👧‍👦</span>
-                            <span>Family Trip</span>
-                        </button>
-                        <button class="quiz-option" data-value="friends" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">👯</span>
-                            <span>With Friends</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="quiz-step" data-step="4">
-                    <h3>What's your budget per person?</h3>
-                    <div class="quiz-options">
-                        <button class="quiz-option" data-value="budget" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">💰</span>
-                            <span>Under $1,000</span>
-                        </button>
-                        <button class="quiz-option" data-value="mid" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">💰💰</span>
-                            <span>$1,000 - $2,000</span>
-                        </button>
-                        <button class="quiz-option" data-value="premium" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">💰💰💰</span>
-                            <span>$2,000 - $4,000</span>
-                        </button>
-                        <button class="quiz-option" data-value="luxury" onclick="selectQuizOption(this)">
-                            <span class="quiz-emoji">👑</span>
-                            <span>$4,000+ (Luxury)</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="quiz-result" id="quizResult" style="display:none">
-                    <div class="result-card">
-                        <h3>Your Perfect Match</h3>
-                        <div id="resultContent"></div>
-                        <a id="resultWhatsApp" href="#" class="btn btn-primary" target="_blank" rel="noopener">Book This Trip on WhatsApp</a>
-                        <button class="btn btn-outline" onclick="resetQuiz()">Retake Quiz</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Budget Calculator -->
-    <section class="calculator-section" id="calculator" aria-label="Budget Planner">
-        <div class="container">
-            <h2 class="section-title">Trip Budget Planner</h2>
-            <p class="section-subtitle">Slide the controls to estimate your dream trip cost</p>
-            <div class="calc-container">
-                <div class="calc-inputs">
-                    <div class="calc-group">
-                        <label>Destination Region</label>
-                        <select id="calcRegion" onchange="calculateBudget()">
-                            <option value="europe">Europe</option>
-                            <option value="asia">Asia</option>
-                            <option value="americas">Americas</option>
-                            <option value="africa">Africa</option>
-                            <option value="oceania">Oceania</option>
-                            <option value="middleeast">Middle East</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Number of Travelers: <span id="travelersValue">2</span></label>
-                        <input type="range" id="calcTravelers" min="1" max="8" value="2" oninput="calculateBudget()">
-                    </div>
-                    <div class="calc-group">
-                        <label>Trip Duration: <span id="daysValue">7</span> days</label>
-                        <input type="range" id="calcDays" min="3" max="21" value="7" oninput="calculateBudget()">
-                    </div>
-                    <div class="calc-group">
-                        <label>Hotel Level</label>
-                        <select id="calcHotel" onchange="calculateBudget()">
-                            <option value="budget">Budget (2-3 star)</option>
-                            <option value="mid" selected>Mid-Range (3-4 star)</option>
-                            <option value="premium">Premium (4-5 star)</option>
-                            <option value="luxury">Luxury (5 star+)</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Activities Level</label>
-                        <select id="calcActivities" onchange="calculateBudget()">
-                            <option value="light">Light (mostly self-guided)</option>
-                            <option value="moderate" selected>Moderate (some tours)</option>
-                            <option value="full">Full (daily activities)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="calc-result">
-                    <div class="calc-total">
-                        <span class="calc-label">Estimated Total</span>
-                        <span class="calc-amount" id="calcTotal">$4,200</span>
-                        <span class="calc-per-person">(<span id="calcPerPerson">$2,100</span> per person)</span>
-                    </div>
-                    <div class="calc-breakdown">
-                        <div class="breakdown-item">
-                            <span>Flights</span>
-                            <span id="breakFlights">$1,200</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span>Hotels</span>
-                            <span id="breakHotels">$1,680</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span>Activities</span>
-                            <span id="breakActivities">$560</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span>Food & Transport</span>
-                            <span id="breakFood">$760</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/972545581269?text=Hi!%20I%20used%20the%20budget%20planner%20and%20I'm%20interested%20in%20a%20trip.%20Can%20you%20help?" class="btn btn-primary calc-cta" target="_blank" rel="noopener">Get an Exact Quote on WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C200,55 500,5 750,35 C950,55 1100,15 1200,30 L1200,60 L0,60Z" fill="var(--white)"/></svg></div>
-
-    <!-- Testimonials - Real Google Reviews -->
-    <section class="testimonials" id="testimonials" aria-label="Customer Reviews">
-        <div class="container">
-            <h2 class="section-title">Google Reviews</h2>
-            <p class="section-subtitle" style="direction:rtl">5.0 ★★★★★ &mdash; ביקורות אמיתיות מגוגל</p>
-            <div class="testimonial-slider" id="testimonialSlider">
-                <div class="testimonial-track" id="testimonialTrack">
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"אני אישית סגרתי אצל פטל המקסימה לפחות כבר 10 טיולים ואני חייב לציין שכל טיול היה יותר טוב מהשני. היא מקצועית מאוד, מדריכה ברמה הכי טובה שיש, זמינה ונותנת את המקסימום כדי שתהנו. ממליץ בחום ללא ספק כי הסוכנת נסיעות הכי טובה שיש, יורדת לפרטים קטנים, מקצועית ברמות!!!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">YL</div>
-                            <div style="text-align:right">
-                                <strong>Yuval Levy</strong>
-                                <span>10+ טיולים עם פטל</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"סגנו לדובאי כל המשפחה עם פטל. שהיתה קשובה לנו מהתחילה הראשונה של תכנון הנסיעה, היעד, הזמנים, האטרקציות ועד הרגע הנחיתה חזרה הביתה. תמיד בדקה שאנחנו מסודרים, היתה זמינה עבורנו בכל שלב גם בארץ וגם בחו״ל. ממליצים בחום רב לנסוע עם פטל!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">IG</div>
-                            <div style="text-align:right">
-                                <strong>Irit Ganon</strong>
-                                <span>טיול משפחתי לדובאי</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"אני רוצה לשתף על פטל הסוכנת שעזרה לי להזמין את הטיסה לארצות הברית עם קונקשן דרך לונדון. ההזמנה הזאת לא הייתה פשוטה בכלל. היו פרטים קטנים, עניינים טכניים ושינויים שהתעוררו בדרך, והיא פשוט הייתה שם לכל דבר. זמינה, מקצועית, סבלנית ומדויקת. ממליצה מכל הלב!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">TK</div>
-                            <div style="text-align:right">
-                                <strong>טל קרן כץ</strong>
-                                <span>טיסה לארה״ב דרך לונדון</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"בכל הנסיעות שלי עם פטל תמיד ידעתי שיש על מי לסמוך, היא הייתה זמינה מעל שעה מכל מקום בעולם ובכל צרה מצאה עבורי פתרון! ממליצה כל כך על השירות הנהדר, הנחמדות והפתרונות המהירים לכל בעיה!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">AC</div>
-                            <div style="text-align:right">
-                                <strong>Aviya Cohen</strong>
-                                <span>מטיילת קבועה</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"שירות מספר אחד, אין שני לאישה הזאת! זמינה 24/7 ולא סתם כמו כל החרטטנים בחוץ, באמת זמינה תמיד כל הזמן להכל. אין דברים כאלו, מומלץ ביותר!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">AK</div>
-                            <div style="text-align:right">
-                                <strong>אביתר כהן</strong>
-                                <span>Google Review</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"פטל אירגנה לנו את הטיול לזנזיבר לפני שנה בצורה הטובה ביותר. מקצועית ברמה מדהימה, חוויה הכי טובה לנסוע כשיש מישהו שאתה סומך עליו!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">EH</div>
-                            <div style="text-align:right">
-                                <strong>עת הדולר</strong>
-                                <span>טיול לזנזיבר</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"פוך נהדרת, שירות מצוין, אכפתיות וזמינות בכל שעה. שווה לגמרי את העמלה. ונותן שקט בכל נסיעה. מומלץ בחום."</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">AB</div>
-                            <div style="text-align:right">
-                                <strong>Avri Bareket</strong>
-                                <span>Google Review</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card" style="direction:rtl; text-align:right">
-                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                        <p>"סוכנת נסיעות מקסימה, עונה במהירות ודואגת להכל!"</p>
-                        <div class="testimonial-author" style="flex-direction:row-reverse">
-                            <div class="author-avatar">EM</div>
-                            <div style="text-align:right">
-                                <strong>Einav Maler</strong>
-                                <span>Google Review</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-nav">
-                    <button class="testimonial-btn" onclick="slideTestimonial(-1)" aria-label="Previous">&#10094;</button>
-                    <button class="testimonial-btn" onclick="slideTestimonial(1)" aria-label="Next">&#10095;</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about" aria-label="About Travel By Petal">
+<!-- About Section -->
+    <section class="about" id="about" aria-label="About">
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
-                    <h2 class="section-title" style="text-align:left">About Travel By Petal</h2>
-                    <p>Based in <strong>Ra'anana, Israel</strong> — I believe that everyone can book online, but when something goes wrong, that's when you really need a travel agent. Someone who knows all the laws and regulations.</p>
-                    <p>Think of it like dining out — you can cook for yourself, but sometimes you want a professional to handle it so you can just sit back and relax. That's exactly what I do for your travels.</p>
-                    <p>I'm with you through the whole trip, every step of the way. From the first idea to the last flight home.</p>
+                    <h2 class="section-title" style="text-align:left">About</h2>
+                    <p>My name is Petal, an English-speaking travel agent and travel content writer based in <strong>Ra'anana, Israel</strong>.</p>
+                    <p>I genuinely love what I do — and that's what makes all the difference. I plan every trip as if it were my own, taking care of every detail so you don't have to worry.</p>
+                    <p>I've traveled to around 40 countries, experiencing everything from backpacking adventures to luxury travel. This gives me a deep understanding of different travel styles, destinations, and what truly makes a trip work.</p>
+                    <p>With a diploma from the Israel School of Tourism, hotel experience, and a BA, I bring both professional knowledge and real-world experience — but my biggest strength is my patience and attention to detail.</p>
+                    <p>I can't wait to start planning your next trip.</p>
                     <div class="about-features">
                         <div class="about-feature">
                             <span class="feature-check">✓</span>
@@ -719,142 +197,64 @@
         </div>
     </section>
 
-    <!-- Travel Tools Section -->
-    <section class="tools-section" id="tools" aria-label="Travel Tools">
+    
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C300,55 600,0 900,40 C1050,55 1150,20 1200,25 L1200,60 L0,60Z" fill="var(--bg-alt)"/></svg></div>
+
+<!-- Services Section -->
+    <section class="services" id="services" aria-label="My Services">
+        <div class="float-decor" aria-hidden="true" style="width:200px;height:200px;background:var(--primary);top:10%;right:-60px;animation-delay:0s"></div>
+        <div class="float-decor" aria-hidden="true" style="width:120px;height:120px;background:var(--accent);bottom:15%;left:-40px;animation-delay:3s"></div>
         <div class="container">
-            <h2 class="section-title">Travel Tools</h2>
-            <p class="section-subtitle">Smart tools to help you prepare for your trip</p>
-            <div class="tools-grid">
-
-                <!-- Weather Widget -->
-                <div class="tool-card">
-                    <div class="tool-icon">🌤️</div>
-                    <h3>Weather Check</h3>
-                    <div class="weather-widget">
-                        <select id="weatherCity" onchange="getWeather()">
-                            <option value="">Select destination...</option>
-                            <option value="Dubai">Dubai</option>
-                            <option value="Delhi">India (Delhi)</option>
-                            <option value="Athens">Athens</option>
-                            <option value="Rome">Rome</option>
-                            <option value="Barcelona">Barcelona</option>
-                            <option value="London">London</option>
-                            <option value="Hanoi">Vietnam (Hanoi)</option>
-                            <option value="Paris">Paris</option>
-                            <option value="Bangkok">Bangkok</option>
-                            <option value="New York">New York</option>
-                        </select>
-                        <div id="weatherResult" class="weather-result"></div>
+            <h2 class="section-title">How I Can Help</h2>
+            <p class="section-subtitle">You can cook at home — but sometimes you want a chef. Same with travel. Let a professional handle the details while you sit back and relax.</p>
+            <div class="services-grid services-two">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#5ba4c9" stroke-width="2"/><path d="M18 38 L28 18 L32 28 L36 16 L46 38" fill="none" stroke="#5ba4c9" stroke-width="2" stroke-linejoin="round"/><path d="M18 38 L46 38" stroke="#89c4e1" stroke-width="1.5"/><circle cx="32" cy="44" r="3" fill="#c9a84c"/></svg>
                     </div>
+                    <h3>Booking &amp; Coordination Services</h3>
+                    <p>I search, compare and filter travel services until finding the option that best suits you. Booking services are provided at no additional cost and I am also available along the way for any questions or assistance.</p>
+                    <ul class="service-list">
+                        <li>Flights</li>
+                        <li>Hotels</li>
+                        <li>Airport transfers</li>
+                        <li>Trains</li>
+                        <li>Cruises</li>
+                        <li>Guided day tours</li>
+                        <li>Excursions</li>
+                        <li>Car rental</li>
+                    </ul>
+                    <a href="#trip-form" class="btn btn-small">Get a Quote</a>
                 </div>
-
-                <!-- Currency Converter -->
-                <div class="tool-card">
-                    <div class="tool-icon">💱</div>
-                    <h3>Currency Converter</h3>
-                    <div class="currency-widget">
-                        <div class="currency-row">
-                            <input type="number" id="currencyAmount" value="1000" placeholder="Amount" oninput="convertCurrency()">
-                            <span class="currency-label">ILS ₪</span>
-                        </div>
-                        <div class="currency-arrow">↓</div>
-                        <div class="currency-row">
-                            <select id="currencyTo" onchange="convertCurrency()">
-                                <option value="USD">USD $</option>
-                                <option value="EUR">EUR €</option>
-                                <option value="GBP">GBP £</option>
-                                <option value="THB">THB ฿</option>
-                                <option value="AED">AED د.إ</option>
-                                <option value="INR">INR ₹</option>
-                                <option value="JPY">JPY ¥</option>
-                                <option value="VND">VND ₫</option>
-                            </select>
-                            <span class="currency-result" id="currencyResult">≈ 275 $</span>
-                        </div>
-                        <p class="currency-note">Approximate rates, updated periodically</p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="30" fill="none" stroke="#5ba4c9" stroke-width="2"/><rect x="20" y="16" width="24" height="32" rx="3" fill="none" stroke="#5ba4c9" stroke-width="2"/><line x1="24" y1="24" x2="40" y2="24" stroke="#89c4e1" stroke-width="1.5"/><line x1="24" y1="30" x2="40" y2="30" stroke="#89c4e1" stroke-width="1.5"/><line x1="24" y1="36" x2="40" y2="36" stroke="#89c4e1" stroke-width="1.5"/><circle cx="26" cy="24" r="1.5" fill="#c9a84c"/><circle cx="26" cy="30" r="1.5" fill="#c9a84c"/><circle cx="26" cy="36" r="1.5" fill="#c9a84c"/></svg>
                     </div>
+                    <h3>Full Itinerary Planning</h3>
+                    <p>Your entire trip, planned day by day. Every morning, afternoon, and evening organized so you don't have to think about a thing. I handle all the bookings, logistics, and timing — you just enjoy.</p>
+                    <p class="service-pricing"><strong>The price for creating a detailed travel itinerary is calculated based on the number of travel days, the number of travelers, and the destination. Prices start from 100 NIS per travel day.</strong></p>
+                    <a href="#trip-form" class="btn btn-small">Plan My Trip</a>
                 </div>
-
-                <!-- Packing Checklist -->
-                <div class="tool-card">
-                    <div class="tool-icon">🧳</div>
-                    <h3>Packing Checklist</h3>
-                    <div class="packing-widget">
-                        <div class="packing-selects">
-                            <select id="packDest">
-                                <option value="beach">Beach / Tropical</option>
-                                <option value="city">City Break</option>
-                                <option value="cold">Cold / Winter</option>
-                                <option value="adventure">Adventure / Hiking</option>
-                            </select>
-                            <select id="packDuration">
-                                <option value="short">3-5 days</option>
-                                <option value="week">6-10 days</option>
-                                <option value="long">11+ days</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-small" onclick="generatePackingList()">Generate List</button>
-                        <div id="packingResult" class="packing-result"></div>
-                    </div>
-                </div>
-
-                <!-- Flight Status -->
-                <div class="tool-card">
-                    <div class="tool-icon">✈️</div>
-                    <h3>Flight Status</h3>
-                    <div class="flight-widget">
-                        <p class="flight-desc">Check your flight status in real-time</p>
-                        <a href="https://www.flightradar24.com/" target="_blank" rel="noopener" class="btn btn-small">FlightRadar24</a>
-                        <a href="https://www.iaa.gov.il/he/passengers/flight-board/" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.85rem;padding:8px 16px;margin-top:8px">Ben Gurion Flights</a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Instagram Feed -->
-    <section class="instagram-section" id="instagram" aria-label="Instagram Feed">
+    
+    <!-- Trip Builder CTA -->
+    <section class="trip-builder-cta" id="trip-builder-cta" aria-label="Trip Builder">
         <div class="container">
-            <h2 class="section-title">Follow Our Adventures</h2>
-            <p class="section-subtitle">@Travel.by.petal on Instagram</p>
-            <div class="instagram-grid" id="instaGrid">
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=75') center/cover">
-                    <span class="insta-card-text">Dubai 🏙️</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=75') center/cover">
-                    <span class="insta-card-text">India 🕌</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=75') center/cover">
-                    <span class="insta-card-text">Athens 🏛️</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=75') center/cover">
-                    <span class="insta-card-text">Rome 🏟️</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&q=75') center/cover">
-                    <span class="insta-card-text">Barcelona 🎭</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=75') center/cover">
-                    <span class="insta-card-text">London 🇬🇧</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1528127269322-539801943592?w=400&q=75') center/cover">
-                    <span class="insta-card-text">Vietnam 🌴</span>
-                </a>
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card insta-follow-card">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                    <span class="insta-card-text">Follow Us</span>
-                </a>
-            </div>
-            <div style="text-align:center;margin-top:24px">
-                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="btn btn-primary" style="background:#E1306C;border:none">Follow on Instagram</a>
+            <h2 class="section-title">Trip Builder</h2>
+            <p class="section-subtitle">Build your own custom day-by-day trip with my interactive Trip Builder tool</p>
+            <div style="text-align:center; margin-top:24px">
+                <a href="trip-builder.html" class="btn btn-primary">Open Trip Builder</a>
             </div>
         </div>
     </section>
 
-    <!-- Trip Request Form Section -->
+<!-- Trip Request Form Section -->
     <section class="form-section" id="trip-form" aria-label="Trip Request Form">
         <div class="container">
-            <h2 class="section-title">Tell Me About Your Trip</h2>
+            <h2 class="section-title">Planning your trip starts here</h2>
             <p class="section-subtitle">Fill out this quick form and I'll get back to you with a personalized quote</p>
             <div class="form-wrapper">
                 <form id="tripForm" class="custom-form" dir="rtl" onsubmit="submitTripForm(event)">
@@ -1069,11 +469,296 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 C200,55 500,5 750,35 C950,55 1100,15 1200,30 L1200,60 L0,60Z" fill="var(--white)"/></svg></div>
+
+<!-- Testimonials - Real Google Reviews -->
+    <section class="testimonials" id="testimonials" aria-label="Customer Reviews">
+        <div class="container">
+            <h2 class="section-title">Google Reviews</h2>
+            <p class="section-subtitle" style="direction:rtl">5.0 ★★★★★ &mdash; ביקורות אמיתיות מגוגל</p>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"אני אישית סגרתי אצל פטל המקסימה לפחות כבר 10 טיולים ואני חייב לציין שכל טיול היה יותר טוב מהשני. היא מקצועית מאוד, מדריכה ברמה הכי טובה שיש, זמינה ונותנת את המקסימום כדי שתהנו. ממליץ בחום ללא ספק כי הסוכנת נסיעות הכי טובה שיש, יורדת לפרטים קטנים, מקצועית ברמות!!!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">YL</div>
+                            <div style="text-align:right">
+                                <strong>Yuval Levy</strong>
+                                <span>10+ טיולים עם פטל</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"סגנו לדובאי כל המשפחה עם פטל. שהיתה קשובה לנו מהתחילה הראשונה של תכנון הנסיעה, היעד, הזמנים, האטרקציות ועד הרגע הנחיתה חזרה הביתה. תמיד בדקה שאנחנו מסודרים, היתה זמינה עבורנו בכל שלב גם בארץ וגם בחו״ל. ממליצים בחום רב לנסוע עם פטל!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">IG</div>
+                            <div style="text-align:right">
+                                <strong>Irit Ganon</strong>
+                                <span>טיול משפחתי לדובאי</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"אני רוצה לשתף על פטל הסוכנת שעזרה לי להזמין את הטיסה לארצות הברית עם קונקשן דרך לונדון. ההזמנה הזאת לא הייתה פשוטה בכלל. היו פרטים קטנים, עניינים טכניים ושינויים שהתעוררו בדרך, והיא פשוט הייתה שם לכל דבר. זמינה, מקצועית, סבלנית ומדויקת. ממליצה מכל הלב!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">TK</div>
+                            <div style="text-align:right">
+                                <strong>טל קרן כץ</strong>
+                                <span>טיסה לארה״ב דרך לונדון</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"בכל הנסיעות שלי עם פטל תמיד ידעתי שיש על מי לסמוך, היא הייתה זמינה מעל שעה מכל מקום בעולם ובכל צרה מצאה עבורי פתרון! ממליצה כל כך על השירות הנהדר, הנחמדות והפתרונות המהירים לכל בעיה!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">AC</div>
+                            <div style="text-align:right">
+                                <strong>Aviya Cohen</strong>
+                                <span>מטיילת קבועה</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"שירות מספר אחד, אין שני לאישה הזאת! זמינה 24/7 ולא סתם כמו כל החרטטנים בחוץ, באמת זמינה תמיד כל הזמן להכל. אין דברים כאלו, מומלץ ביותר!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">AK</div>
+                            <div style="text-align:right">
+                                <strong>אביתר כהן</strong>
+                                <span>Google Review</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"פטל אירגנה לנו את הטיול לזנזיבר לפני שנה בצורה הטובה ביותר. מקצועית ברמה מדהימה, חוויה הכי טובה לנסוע כשיש מישהו שאתה סומך עליו!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">EH</div>
+                            <div style="text-align:right">
+                                <strong>עת הדולר</strong>
+                                <span>טיול לזנזיבר</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"פוך נהדרת, שירות מצוין, אכפתיות וזמינות בכל שעה. שווה לגמרי את העמלה. ונותן שקט בכל נסיעה. מומלץ בחום."</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">AB</div>
+                            <div style="text-align:right">
+                                <strong>Avri Bareket</strong>
+                                <span>Google Review</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" style="direction:rtl; text-align:right">
+                        <div class="testimonial-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"סוכנת נסיעות מקסימה, עונה במהירות ודואגת להכל!"</p>
+                        <div class="testimonial-author" style="flex-direction:row-reverse">
+                            <div class="author-avatar">EM</div>
+                            <div style="text-align:right">
+                                <strong>Einav Maler</strong>
+                                <span>Google Review</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-btn" onclick="slideTestimonial(-1)" aria-label="Previous">&#10094;</button>
+                    <button class="testimonial-btn" onclick="slideTestimonial(1)" aria-label="Next">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,20 C300,55 600,0 900,40 C1050,55 1150,20 1200,25 L1200,60 L0,60Z" fill="var(--bg-alt)"/></svg></div>
+
+<!-- Popular Destinations -->
+    <section class="destinations" id="destinations" aria-label="Popular Destinations">
+        <div class="float-decor" aria-hidden="true" style="width:160px;height:160px;background:var(--accent);top:5%;left:-50px;animation-delay:1s"></div>
+        <div class="float-decor" aria-hidden="true" style="width:100px;height:100px;background:var(--primary);bottom:10%;right:-30px;animation-delay:4s"></div>
+        <div class="container">
+            <h2 class="section-title">Popular Destinations</h2>
+            <p class="section-subtitle">Click to flip and discover more about each destination</p>
+            <div class="destinations-grid" id="destinationsGrid">
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #4facfe33, #00f2fe33), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Luxury</span>
+                                <h3>Dubai, UAE</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Dubai, UAE</h3>
+                            <ul>
+                                <li>Desert safari & BBQ dinner</li>
+                                <li>Burj Khalifa observation deck</li>
+                                <li>Dubai Mall & souks</li>
+                                <li>Dhow cruise dinner</li>
+                                <li>Beach resorts & water parks</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Nov-Mar</p>
+                            <a href="https://tic.dubai.co.il/?sld=625" class="btn btn-small" target="_blank" rel="noopener">Browse Dubai Attractions</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f5af1933, #f1293333), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Adventure</span>
+                                <h3>India</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>India</h3>
+                            <ul>
+                                <li>Taj Mahal & Golden Triangle</li>
+                                <li>Kerala backwaters cruise</li>
+                                <li>Rajasthan palace tours</li>
+                                <li>Street food experiences</li>
+                                <li>Spiritual & yoga retreats</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Oct-Mar</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20India!" class="btn btn-small" target="_blank" rel="noopener">Plan My India Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #667eea33, #764ba233), url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">History</span>
+                                <h3>Athens, Greece</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Athens, Greece</h3>
+                            <ul>
+                                <li>Acropolis & Parthenon tour</li>
+                                <li>Plaka neighborhood walk</li>
+                                <li>Greek island day trips</li>
+                                <li>Traditional taverna dining</li>
+                                <li>Ancient Agora exploration</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Athens!" class="btn btn-small" target="_blank" rel="noopener">Plan My Athens Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #ffecd233, #fcb69f33), url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Culture</span>
+                                <h3>Rome, Italy</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Rome, Italy</h3>
+                            <ul>
+                                <li>Colosseum & Vatican tour</li>
+                                <li>Trastevere food walk</li>
+                                <li>Day trip to Amalfi Coast</li>
+                                <li>Pasta making class</li>
+                                <li>Trevi Fountain & Piazzas</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Apr-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Rome!" class="btn btn-small" target="_blank" rel="noopener">Plan My Rome Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #f093fb33, #f5576c33), url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Vibrant</span>
+                                <h3>Barcelona, Spain</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Barcelona, Spain</h3>
+                            <ul>
+                                <li>Sagrada Familia & Gaudi tour</li>
+                                <li>La Boqueria market visit</li>
+                                <li>Gothic Quarter walking tour</li>
+                                <li>Beach & tapas experience</li>
+                                <li>Montserrat day trip</li>
+                            </ul>
+                            <p class="dest-weather">Best time: May-Jun, Sep-Oct</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Barcelona!" class="btn btn-small" target="_blank" rel="noopener">Plan My Barcelona Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #a18cd133, #6190e833), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Classic</span>
+                                <h3>London, UK</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>London, UK</h3>
+                            <ul>
+                                <li>Big Ben & Parliament tour</li>
+                                <li>Tower of London visit</li>
+                                <li>West End theatre show</li>
+                                <li>Camden & Borough markets</li>
+                                <li>Day trip to Stonehenge</li>
+                            </ul>
+                            <p class="dest-weather">Best time: May-Sep</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20London!" class="btn btn-small" target="_blank" rel="noopener">Plan My London Trip</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card" role="button" tabindex="0" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter')this.classList.toggle('flipped')">
+                    <div class="dest-card-inner">
+                        <div class="dest-card-front" style="background: linear-gradient(135deg, #11998e33, #38ef7d33), url('https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80') center/cover">
+                            <div class="dest-info">
+                                <span class="dest-tag">Exotic</span>
+                                <h3>Vietnam</h3>
+                            </div>
+                        </div>
+                        <div class="dest-card-back">
+                            <h3>Vietnam</h3>
+                            <ul>
+                                <li>Ha Long Bay cruise</li>
+                                <li>Hanoi Old Quarter tour</li>
+                                <li>Ho Chi Minh City exploration</li>
+                                <li>Mekong Delta boat trip</li>
+                                <li>Vietnamese cooking class</li>
+                            </ul>
+                            <p class="dest-weather">Best time: Feb-Apr, Oct-Dec</p>
+                            <a href="https://wa.me/972545581269?text=Hi!%20I'm%20interested%20in%20a%20trip%20to%20Vietnam!" class="btn btn-small" target="_blank" rel="noopener">Plan My Vietnam Trip</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,40 C150,10 350,55 600,25 C850,0 1050,50 1200,20 L1200,60 L0,60Z" fill="var(--white)"/></svg></div>
+
+<!-- Contact Section -->
     <section class="contact" id="contact" aria-label="Contact Information">
         <div class="container">
-            <h2 class="section-title">Let's Plan Your Trip</h2>
-            <p class="section-subtitle">Reach out on WhatsApp — we usually reply within minutes!</p>
+            <h2 class="section-title">Let's Talk</h2>
+            <p class="section-subtitle">Reach out on WhatsApp — I usually reply within minutes!</p>
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -1111,13 +796,356 @@
                             <span>Start Planning on WhatsApp</span>
                         </a>
                     </div>
-                    <p class="contact-note">We typically respond within 15 minutes during business hours</p>
+                    <p class="contact-note">I typically respond within 15 minutes during business hours</p>
                 </div>
             </div>
         </div>
     </section>
 
-    </main>
+
+    <!-- Self-Service Tools -->
+    <section class="affiliate-section" id="affiliate-tools" aria-label="Self-Service Tools">
+        <div class="container">
+            <div class="affiliate-tools">
+                <h2 class="section-title">Self-Service Tools</h2>
+                <p class="section-subtitle">Want to browse on your own? Use these helpful tools</p>
+                <div class="affiliate-grid">
+                    <a href="https://tic.dubai.co.il/?sld=625" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('dubai_attractions','https://tic.dubai.co.il/?sld=625')">
+                        <span class="affiliate-emoji">🏙️</span>
+                        <strong>Dubai Attractions</strong>
+                        <span>Browse &amp; book in Hebrew, pay in Shekels with Tashlumim</span>
+                    </a>
+                    <a href="https://www.zenhotels.com/?cur=ILS&amp;lang=he&amp;partner_extra=Website&amp;partner_slug=108573.affiliate.3022&amp;utm_campaign=he-he%2C+deeplink%2C+affiliate&amp;utm_medium=api2&amp;utm_source=108573.affiliate.3022&amp;utm_term=None" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('zenhotels','https://www.zenhotels.com')">
+                        <span class="affiliate-emoji">🏨</span>
+                        <strong>Search Hotels</strong>
+                        <span>Find and compare hotels worldwide in Hebrew &amp; Shekels</span>
+                    </a>
+                    <a href="https://www.getyourguide.com/?partner_id=BGGPE3N&amp;utm_medium=online_publisher" class="affiliate-card" target="_blank" rel="noopener" onclick="trackAffiliate('getyourguide','https://www.getyourguide.com')">
+                        <span class="affiliate-emoji">🎫</span>
+                        <strong>Book Attractions</strong>
+                        <span>Tours, tickets &amp; experiences in every city worldwide</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Dream Trip Quiz -->
+    <section class="quiz-section" id="quiz" aria-label="Dream Trip Quiz">
+        <div class="container">
+            <h2 class="section-title">Find Your Dream Trip</h2>
+            <p class="section-subtitle">Answer 4 quick questions and I'll match you with your perfect destination</p>
+            <div class="quiz-container" id="quizContainer">
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="quizProgress"></div>
+                </div>
+                <div class="quiz-step active" data-step="1">
+                    <h3>What's your travel vibe?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="relax" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🏖️</span>
+                            <span>Relax & Unwind</span>
+                        </button>
+                        <button class="quiz-option" data-value="adventure" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🏔️</span>
+                            <span>Adventure & Thrills</span>
+                        </button>
+                        <button class="quiz-option" data-value="culture" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🏛️</span>
+                            <span>Culture & History</span>
+                        </button>
+                        <button class="quiz-option" data-value="romance" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💕</span>
+                            <span>Romance & Luxury</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="2">
+                    <h3>What's your ideal climate?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="tropical" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">☀️</span>
+                            <span>Hot & Tropical</span>
+                        </button>
+                        <button class="quiz-option" data-value="mild" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🌤️</span>
+                            <span>Warm & Mild</span>
+                        </button>
+                        <button class="quiz-option" data-value="cool" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🍂</span>
+                            <span>Cool & Breezy</span>
+                        </button>
+                        <button class="quiz-option" data-value="cold" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">❄️</span>
+                            <span>Cold & Snowy</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="3">
+                    <h3>Who are you traveling with?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="solo" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">🧳</span>
+                            <span>Solo Explorer</span>
+                        </button>
+                        <button class="quiz-option" data-value="couple" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💑</span>
+                            <span>With My Partner</span>
+                        </button>
+                        <button class="quiz-option" data-value="family" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">👨‍👩‍👧‍👦</span>
+                            <span>Family Trip</span>
+                        </button>
+                        <button class="quiz-option" data-value="friends" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">👯</span>
+                            <span>With Friends</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-step" data-step="4">
+                    <h3>What's your budget per person?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option" data-value="budget" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💰</span>
+                            <span>Under $1,000</span>
+                        </button>
+                        <button class="quiz-option" data-value="mid" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💰💰</span>
+                            <span>$1,000 - $2,000</span>
+                        </button>
+                        <button class="quiz-option" data-value="premium" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">💰💰💰</span>
+                            <span>$2,000 - $4,000</span>
+                        </button>
+                        <button class="quiz-option" data-value="luxury" onclick="selectQuizOption(this)">
+                            <span class="quiz-emoji">👑</span>
+                            <span>$4,000+ (Luxury)</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-result" id="quizResult" style="display:none">
+                    <div class="result-card">
+                        <h3>Your Perfect Match</h3>
+                        <div id="resultContent"></div>
+                        <a id="resultWhatsApp" href="#" class="btn btn-primary" target="_blank" rel="noopener">Book This Trip on WhatsApp</a>
+                        <button class="btn btn-outline" onclick="resetQuiz()">Retake Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Budget Calculator -->
+    <section class="calculator-section" id="calculator" aria-label="Budget Planner">
+        <div class="container">
+            <h2 class="section-title">Trip Budget Planner</h2>
+            <p class="section-subtitle">Slide the controls to estimate your dream trip cost</p>
+            <div class="calc-container">
+                <div class="calc-inputs">
+                    <div class="calc-group">
+                        <label>Destination Region</label>
+                        <select id="calcRegion" onchange="calculateBudget()">
+                            <option value="europe">Europe</option>
+                            <option value="asia">Asia</option>
+                            <option value="americas">Americas</option>
+                            <option value="africa">Africa</option>
+                            <option value="oceania">Oceania</option>
+                            <option value="middleeast">Middle East</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Number of Travelers: <span id="travelersValue">2</span></label>
+                        <input type="range" id="calcTravelers" min="1" max="8" value="2" oninput="calculateBudget()">
+                    </div>
+                    <div class="calc-group">
+                        <label>Trip Duration: <span id="daysValue">7</span> days</label>
+                        <input type="range" id="calcDays" min="3" max="21" value="7" oninput="calculateBudget()">
+                    </div>
+                    <div class="calc-group">
+                        <label>Hotel Level</label>
+                        <select id="calcHotel" onchange="calculateBudget()">
+                            <option value="budget">Budget (2-3 star)</option>
+                            <option value="mid" selected>Mid-Range (3-4 star)</option>
+                            <option value="premium">Premium (4-5 star)</option>
+                            <option value="luxury">Luxury (5 star+)</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label>Activities Level</label>
+                        <select id="calcActivities" onchange="calculateBudget()">
+                            <option value="light">Light (mostly self-guided)</option>
+                            <option value="moderate" selected>Moderate (some tours)</option>
+                            <option value="full">Full (daily activities)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="calc-result">
+                    <div class="calc-total">
+                        <span class="calc-label">Estimated Total</span>
+                        <span class="calc-amount" id="calcTotal">$4,200</span>
+                        <span class="calc-per-person">(<span id="calcPerPerson">$2,100</span> per person)</span>
+                    </div>
+                    <div class="calc-breakdown">
+                        <div class="breakdown-item">
+                            <span>Flights</span>
+                            <span id="breakFlights">$1,200</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Hotels</span>
+                            <span id="breakHotels">$1,680</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Activities</span>
+                            <span id="breakActivities">$560</span>
+                        </div>
+                        <div class="breakdown-item">
+                            <span>Food & Transport</span>
+                            <span id="breakFood">$760</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/972545581269?text=Hi!%20I%20used%20the%20budget%20planner%20and%20I'm%20interested%20in%20a%20trip.%20Can%20you%20help?" class="btn btn-primary calc-cta" target="_blank" rel="noopener">Get an Exact Quote on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Travel Tools Section -->
+    <section class="tools-section" id="tools" aria-label="Travel Tools">
+        <div class="container">
+            <h2 class="section-title">Travel Tools</h2>
+            <p class="section-subtitle">Smart tools to help you prepare for your trip</p>
+            <div class="tools-grid">
+
+                <!-- Weather Widget -->
+                <div class="tool-card">
+                    <div class="tool-icon">🌤️</div>
+                    <h3>Weather Check</h3>
+                    <div class="weather-widget">
+                        <select id="weatherCity" onchange="getWeather()">
+                            <option value="">Select destination...</option>
+                            <option value="Dubai">Dubai</option>
+                            <option value="Delhi">India (Delhi)</option>
+                            <option value="Athens">Athens</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Barcelona">Barcelona</option>
+                            <option value="London">London</option>
+                            <option value="Hanoi">Vietnam (Hanoi)</option>
+                            <option value="Paris">Paris</option>
+                            <option value="Bangkok">Bangkok</option>
+                            <option value="New York">New York</option>
+                        </select>
+                        <div id="weatherResult" class="weather-result"></div>
+                    </div>
+                </div>
+
+                <!-- Currency Converter -->
+                <div class="tool-card">
+                    <div class="tool-icon">💱</div>
+                    <h3>Currency Converter</h3>
+                    <div class="currency-widget">
+                        <div class="currency-row">
+                            <input type="number" id="currencyAmount" value="1000" placeholder="Amount" oninput="convertCurrency()">
+                            <span class="currency-label">ILS ₪</span>
+                        </div>
+                        <div class="currency-arrow">↓</div>
+                        <div class="currency-row">
+                            <select id="currencyTo" onchange="convertCurrency()">
+                                <option value="USD">USD $</option>
+                                <option value="EUR">EUR €</option>
+                                <option value="GBP">GBP £</option>
+                                <option value="THB">THB ฿</option>
+                                <option value="AED">AED د.إ</option>
+                                <option value="INR">INR ₹</option>
+                                <option value="JPY">JPY ¥</option>
+                                <option value="VND">VND ₫</option>
+                            </select>
+                            <span class="currency-result" id="currencyResult">≈ 275 $</span>
+                        </div>
+                        <p class="currency-note">Approximate rates, updated periodically</p>
+                    </div>
+                </div>
+
+                <!-- Packing Checklist -->
+                <div class="tool-card">
+                    <div class="tool-icon">🧳</div>
+                    <h3>Packing Checklist</h3>
+                    <div class="packing-widget">
+                        <div class="packing-selects">
+                            <select id="packDest">
+                                <option value="beach">Beach / Tropical</option>
+                                <option value="city">City Break</option>
+                                <option value="cold">Cold / Winter</option>
+                                <option value="adventure">Adventure / Hiking</option>
+                            </select>
+                            <select id="packDuration">
+                                <option value="short">3-5 days</option>
+                                <option value="week">6-10 days</option>
+                                <option value="long">11+ days</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-small" onclick="generatePackingList()">Generate List</button>
+                        <div id="packingResult" class="packing-result"></div>
+                    </div>
+                </div>
+
+                <!-- Flight Status -->
+                <div class="tool-card">
+                    <div class="tool-icon">✈️</div>
+                    <h3>Flight Status</h3>
+                    <div class="flight-widget">
+                        <p class="flight-desc">Check your flight status in real-time</p>
+                        <a href="https://www.flightradar24.com/" target="_blank" rel="noopener" class="btn btn-small">FlightRadar24</a>
+                        <a href="https://www.iaa.gov.il/he/passengers/flight-board/" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.85rem;padding:8px 16px;margin-top:8px">Ben Gurion Flights</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+<!-- Instagram Feed -->
+    <section class="instagram-section" id="instagram" aria-label="Instagram Feed">
+        <div class="container">
+            <h2 class="section-title">Follow My Adventures</h2>
+            <p class="section-subtitle">@Travel.by.petal on Instagram</p>
+            <div class="instagram-grid" id="instaGrid">
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=75') center/cover">
+                    <span class="insta-card-text">Dubai 🏙️</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=75') center/cover">
+                    <span class="insta-card-text">India 🕌</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=400&q=75') center/cover">
+                    <span class="insta-card-text">Athens 🏛️</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=75') center/cover">
+                    <span class="insta-card-text">Rome 🏟️</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=400&q=75') center/cover">
+                    <span class="insta-card-text">Barcelona 🎭</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=75') center/cover">
+                    <span class="insta-card-text">London 🇬🇧</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card" style="background:linear-gradient(135deg,rgba(0,0,0,0.2),rgba(0,0,0,0.4)),url('https://images.unsplash.com/photo-1528127269322-539801943592?w=400&q=75') center/cover">
+                    <span class="insta-card-text">Vietnam 🌴</span>
+                </a>
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="insta-card insta-follow-card">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    <span class="insta-card-text">Follow Us</span>
+                </a>
+            </div>
+            <div style="text-align:center;margin-top:24px">
+                <a href="https://www.instagram.com/Travel.by.petal" target="_blank" rel="noopener" class="btn btn-primary" style="background:#E1306C;border:none">Follow on Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    
+        </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1130,11 +1158,13 @@
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#destinations">Destinations</a></li>
-                        <li><a href="#quiz">Find My Trip</a></li>
-                        <li><a href="#calculator">Budget Planner</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="trip-builder.html">Trip Builder</a></li>
+                        <li><a href="#trip-form">Find My Trip</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#destinations">Popular Destinations</a></li>
                         <li><a href="#contact">Contact</a></li>
+                        <li><a href="#affiliate-tools">Self-Service Tools</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
@@ -1237,8 +1267,4 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/script.js"></script>
-</body>
-</html>
+    <script src="https://cdn.jsdel

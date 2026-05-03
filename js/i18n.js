@@ -12,17 +12,20 @@ const translations = {
 
         // Nav
         'nav.home': 'דף הבית',
-        'nav.destinations': 'יעדים',
+        'nav.destinations': 'יעדים פופולריים',
         'nav.quiz': 'מצא את הטיול שלי',
+        'nav.findtrip': 'מצא את הטיול שלי',
+        'nav.reviews': 'ביקורות',
         'nav.calculator': 'מחשבון תקציב',
         'nav.about': 'אודות',
         'nav.builder': 'בנה טיול',
         'nav.account': 'החשבון שלי',
         'nav.contact': 'צרו קשר',
+        'nav.tools': 'כלים לשירות עצמי',
 
         // Hero
         'hero.welcome': 'ברוכים הבאים ל',
-        'hero.text': 'כולם יכולים להזמין באינטרנט — אבל כשמשהו משתבש, צריכים סוכנת נסיעות אמיתית. מישהי שמכירה את כל החוקים והתקנות, ויש לה את הגב שלכם. אני איתכם בכל צעד בדרך.',
+        'hero.text': 'אם אתה מחפש תכנון נסיעות מותאם אישית, חוויית נסיעה חלקה וליווי לאורך כל הדרך — הגעת למקום הנכון. עם ההכשרה והניסיון שצברתי לאורך השנים, אני הופכת חלומות טיול למציאות. אין צורך לדאוג לפרטים הקטנים — ויזה, כבודה, תנאי כרטיסים, שינויים של הרגע האחרון, קונקשנים מורכבים או בירוקרטיה — אני דואגת להכול, כדי שאתה תוכל ליהנות מהדרך.',
         'hero.cta1': 'התחילו לתכנן את הטיול',
         'hero.cta2': 'שוחחו בוואטסאפ',
         'hero.stat1': 'מטיילים מרוצים',
@@ -201,7 +204,7 @@ const translations = {
         'calc.cta': 'קבלו הצעת מחיר מדויקת בוואטסאפ',
 
         // Testimonials
-        'test.title': 'מה המטיילים שלנו אומרים',
+        'test.title': 'מה המטיילים שלי אומרים',
         'test.1.text': '"Travel By Petal הפכו את ירח הדבש שלנו לקסום ממש. כל פרט היה מושלם — משדרוג החדר המפתיע ועד ארוחת הערב בשקיעה על החוף. לעולם לא נזמין אצל אף אחד אחר!"',
         'test.1.name': 'שרה ודוד',
         'test.1.trip': 'ירח דבש במלדיביים',
@@ -213,25 +216,27 @@ const translations = {
         'test.3.trip': 'טיול חסכוני לאירופה',
 
         // About
-        'about.title': 'אודות Travel By Petal',
-        'about.p1': 'ממוקמת ב<strong>רעננה, ישראל</strong> — אני מאמינה שכולם יכולים להזמין באינטרנט, אבל כשמשהו משתבש, אז באמת צריכים סוכנת נסיעות. מישהי שמכירה את כל החוקים והתקנות.',
-        'about.p2': 'תחשבו על זה כמו לאכול במסעדה — אתם יכולים לבשל בעצמכם, אבל לפעמים רוצים שמקצוענית תטפל בזה כדי שתוכלו פשוט לשבת ולהנות.',
-        'about.p3': 'אני איתכם לאורך כל הטיול, בכל צעד בדרך. מהרעיון הראשון ועד הטיסה האחרונה הביתה.',
+        'about.title': 'אודות',
+        'about.p1': 'שמי פטל, סוכנת נסיעות וכותבת תוכן בתחום התיירות בשפה האנגלית, המתגוררת ב<strong>רעננה, ישראל</strong>.',
+        'about.p2': 'אני באמת אוהבת את מה שאני עושה — וזה מה שעושה את כל ההבדל. אני מתכננת כל טיול כאילו היה שלי, ודואגת לכל פרט קטן כדי שאתם לא תצטרכו לדאוג לכלום.',
+        'about.p3': 'ביקרתי בכ-40 מדינות, וחוויתי הכול — מטיולי תרמילאים ועד נסיעות יוקרה. זה מעניק לי הבנה עמוקה של סגנונות טיול שונים, יעדים, ומה באמת הופך טיול למוצלח.',
+        'about.p4': 'עם דיפלומה מבית הספר לתיירות בישראל, ניסיון בעבודה במלון ותואר ראשון, אני מביאה גם ידע מקצועי וגם ניסיון מהשטח — אבל היתרון הגדול ביותר שלי הוא הסבלנות והקפדה על הפרטים הקטנים.',
+        'about.p5': 'אני כבר לא יכולה לחכות להתחיל לתכנן את הטיול הבא שלך.',
         'about.f1': 'איתכם בכל צעד בדרך',
         'about.f2': 'תמיכה 24/7 בוואטסאפ',
         'about.f3': 'מכירה את החוקים והתקנות',
         'about.f4': 'תכנון מותאם אישית יום אחרי יום',
 
         // Contact
-        'contact.title': 'בואו נתכנן את הטיול שלכם',
-        'contact.subtitle': 'פנו אלינו בוואטסאפ — אנחנו בדרך כלל עונים תוך דקות!',
+        'contact.title': 'בואו נדבר',
+        'contact.subtitle': 'פנו אליי בוואטסאפ — אני בדרך כלל עונה תוך דקות!',
         'contact.location.title': 'מיקום',
         'contact.location.value': 'רעננה, ישראל',
         'contact.whatsapp.title': 'וואטסאפ',
         'contact.hours.title': 'שעות פעילות',
         'contact.hours.value': 'א-ה: 9:00 - 18:00<br>ו: 9:00 - 13:00',
         'contact.cta': 'התחילו לתכנן בוואטסאפ',
-        'contact.note': 'אנחנו בדרך כלל עונים תוך 15 דקות בשעות הפעילות',
+        'contact.note': 'אני בדרך כלל עונה תוך 15 דקות בשעות הפעילות',
 
         // Footer
         'footer.brand': 'סוכנות התיירות הבוטיק שלכם ברעננה, ישראל. מעצבים מסעות בלתי נשכחים מ-2018.',
@@ -248,10 +253,11 @@ const translations = {
         // Services (updated)
         'services.title': 'איך אני יכולה לעזור',
         'services.subtitle': 'אתם יכולים לבשל בבית — אבל לפעמים רוצים שף. אותו דבר עם טיולים. תנו למקצוענית לטפל בפרטים בזמן שאתם נהנים.',
-        'services.1.title': 'הזמנה א-לה קארט',
-        'services.1.desc': 'אזמין בדיוק מה שאתם צריכים — שילוב של כל מה שתרצו:',
+        'services.1.title': 'שירותי הזמנה ותיאום',
+        'services.1.desc': 'חיפוש, השוואה וסינון של שירותי נסיעה עד למציאת האפשרות המתאימה ביותר עבורכם. שירות ההזמנות ניתן ללא עלות נוספת ואני זמינה גם לאורך הדרך לכל שאלה.',
         'services.2.title': 'תכנון מסלול מלא',
         'services.2.desc': 'כל הטיול שלכם, מתוכנן יום אחרי יום. כל בוקר, צהריים וערב מאורגנים כדי שלא תצטרכו לחשוב על כלום. אני מטפלת בכל ההזמנות, הלוגיסטיקה והתזמון — אתם פשוט נהנים.',
+        'services.2.pricing': 'המחיר לתכנון מסלול טיול מפורט מחושב לפי מספר ימי הטיול, מספר המטיילים והיעד. המחיר מתחיל מ־100 ש״ח לכל יום טיול.',
 
         // Updated destinations
         'dest.luxury': 'יוקרה',
@@ -271,7 +277,7 @@ const translations = {
         'dest.vietnam.title': 'וייטנאם',
 
         // Booking form section
-        'form.title': 'ספרו לי על הטיול שלכם',
+        'form.title': 'תכנון הטיול שלכם מתחיל כאן',
         'form.subtitle': 'מלאו את הטופס הקצר ואחזור אליכם עם הצעת מחיר מותאמת אישית',
     }
 };
@@ -285,12 +291,12 @@ const hebrewChatbot = {
     ],
     quickReplies: ['יעדים פופולריים', 'אילו שירותים?', 'מסלול מלא', 'הצעת מחיר'],
     responses: {
-        destinations: "היעדים הפופולריים שלנו: דובאי, הודו, אתונה, רומא, ברצלונה, לונדון ווייטנאם. אני יכולה להזמין טיסות, מלונות, העברות, סיורים — או לתכנן מסלול מלא. מה מעניין אתכם?",
+        destinations: "היעדים הפופולריים שלי: דובאי, הודו, אתונה, רומא, ברצלונה, לונדון ווייטנאם. אני יכולה להזמין טיסות, מלונות, העברות, סיורים — או לתכנן מסלול מלא. מה מעניין אתכם?",
         services: "אני מציעה שני שירותים:<br><br><strong>1. הזמנה א-לה קארט</strong> — אזמין בדיוק מה שאתם צריכים: טיסות, מלונות, העברות משדה תעופה, רכבות, שייטים, מסעדות, סיורים מודרכים, אטרקציות או השכרת רכב.<br><br><strong>2. תכנון מסלול מלא</strong> — כל הטיול שלכם מתוכנן יום אחרי יום!<br><br>מה מתאים לכם?",
         itinerary: "אני מתכננת מסלולים מלאים יום אחרי יום! כל בוקר, צהריים וערב מתוכננים. כל ההזמנות, הלוגיסטיקה והתזמון — אני מטפלת בהכל. אתם פשוט נהנים. רוצים להתחיל?",
-        quote: "מלאו את טופס בקשת הטיול שלנו ואחזור אליכם עם הצעת מחיר מותאמת! <a href='#trip-form' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>לחצו כאן למילוי הטופס</a>",
+        quote: "מלאו את טופס בקשת הטיול שלי ואחזור אליכם עם הצעת מחיר מותאמת! <a href='#trip-form' onclick='document.getElementById(\"trip-form\").scrollIntoView({behavior:\"smooth\"})' style='color:var(--primary);font-weight:600'>לחצו כאן למילוי הטופס</a>",
         whatsapp: "בטח! אפשר לדבר ישירות בוואטסאפ: <a href='https://wa.me/972545581269?text=היי!%20אני%20מעוניין/ת%20לתכנן%20טיול!' target='_blank' rel='noopener' style='color:#25D366;font-weight:600'>לחצו כאן לוואטסאפ</a>. אני בדרך כלל עונה תוך 15 דקות!",
-        dubai: "דובאי זה מדהים! ספארי מדברי, קניות יוקרה, בורג' חליפה ואוכל מטורף. הזמן הטוב ביותר: נוב-מרץ. אני יכולה להזמין הכל. גם אפשר <a href='https://tic.dubai.co.il/affiliate/' target='_blank' style='color:var(--primary);font-weight:600'>לצפות באטרקציות דובאי כאן</a> (בעברית, בשקלים, בתשלומים!)",
+        dubai: "דובאי זה מדהים! ספארי מדברי, קניות יוקרה, בורג' חליפה ואוכל מטורף. הזמן הטוב ביותר: נוב-מרץ. אני יכולה להזמין הכל. גם אפשר <a href='https://tic.dubai.co.il/?sld=625' target='_blank' style='color:var(--primary);font-weight:600'>לצפות באטרקציות דובאי כאן</a> (בעברית, בשקלים, בתשלומים!)",
         india: "הודו זו חוויה משנה חיים! טאג' מאהל, קראלה, ארמונות רג'סטאן ואוכל מדהים. הזמן הטוב ביותר: אוק-מרץ. אני יכולה לתכנן מסלול מלא יום אחרי יום!",
         rome: "רומא היא מוזיאון חי! קולוסיאום, הוותיקן, סיורי אוכל בטרסטווארה וחוף אמלפי בקרבת מקום. הזמן הטוב ביותר: אפר-יוני, ספט-אוק.",
         athens: "אתונה היא המקום שבו ההיסטוריה חיה! אקרופוליס, פרתנון, אוכל יווני מדהים וטיולי יום לאיים. הזמן הטוב ביותר: אפר-יוני, ספט-אוק.",
@@ -390,13 +396,19 @@ function applyHebrewTranslations() {
     serviceCards.forEach((card, i) => {
         const num = i + 1;
         const h3 = card.querySelector('h3');
-        const p = card.querySelector('p');
+        const ps = card.querySelectorAll('p');
         if (h3 && t[`services.${num}.title`]) h3.textContent = t[`services.${num}.title`];
-        if (p && t[`services.${num}.desc`]) p.textContent = t[`services.${num}.desc`];
+        if (ps[0] && t[`services.${num}.desc`]) ps[0].textContent = t[`services.${num}.desc`];
+
+        // Translate pricing paragraph for card 2
+        const pricingP = card.querySelector('.service-pricing');
+        if (pricingP && t[`services.${num}.pricing`]) {
+            pricingP.innerHTML = '<strong>' + t[`services.${num}.pricing`] + '</strong>';
+        }
 
         // Translate service list items
         const listItems = card.querySelectorAll('.service-list li');
-        const hebrewItems = ['טיסות', 'מלונות', 'העברות משדה תעופה', 'רכבות', 'שייטים', 'מסעדות', 'סיורים מודרכים', 'אטרקציות', 'השכרת רכב'];
+        const hebrewItems = ['טיסות', 'מלונות', 'העברות משדה תעופה', 'רכבות', 'שייטים', 'סיורים מודרכים', 'אטרקציות', 'השכרת רכב'];
         listItems.forEach((li, j) => {
             if (hebrewItems[j]) li.textContent = hebrewItems[j];
         });
@@ -563,6 +575,8 @@ function applyHebrewTranslations() {
     if (aboutPs[0]) aboutPs[0].innerHTML = t['about.p1'];
     if (aboutPs[1]) aboutPs[1].textContent = t['about.p2'];
     if (aboutPs[2]) aboutPs[2].textContent = t['about.p3'];
+    if (aboutPs[3]) aboutPs[3].textContent = t['about.p4'];
+    if (aboutPs[4]) aboutPs[4].textContent = t['about.p5'];
 
     const aboutFeatures = document.querySelectorAll('.about-feature span:last-child');
     if (aboutFeatures[0]) aboutFeatures[0].textContent = t['about.f1'];
@@ -700,7 +714,7 @@ function applyHebrewTranslations() {
     // Instagram section
     const instaTitle = document.querySelector('.instagram-section .section-title');
     const instaSubtitle = document.querySelector('.instagram-section .section-subtitle');
-    if (instaTitle) instaTitle.textContent = 'עקבו אחרי ההרפתקאות שלנו';
+    if (instaTitle) instaTitle.textContent = 'עקבו אחרי ההרפתקאות שלי';
     if (instaSubtitle) instaSubtitle.textContent = '@Travel.by.petal באינסטגרם';
     const instaFollowBtn = document.querySelector('.instagram-section .btn-primary');
     if (instaFollowBtn) instaFollowBtn.textContent = 'עקבו באינסטגרם';

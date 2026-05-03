@@ -566,7 +566,7 @@ const chatbotKnowledge = {
         "Welcome! I'm Petal, your personal travel guide. Whether you need just flights or a full day-by-day itinerary, I'm here to help!"
     ],
     destinations: {
-        dubai: "Dubai is incredible! Desert safaris, luxury shopping, Burj Khalifa, and amazing dining. Best Nov-Mar. I can book flights, hotels, transfers, and attractions. You can also <a href='https://tic.dubai.co.il/affiliate/' target='_blank' style='color:var(--primary);font-weight:600'>browse Dubai attractions here</a> (Hebrew, Shekels, Tashlumim!).",
+        dubai: "Dubai is incredible! Desert safaris, luxury shopping, Burj Khalifa, and amazing dining. Best Nov-Mar. I can book flights, hotels, transfers, and attractions. You can also <a href='https://tic.dubai.co.il/?sld=625' target='_blank' style='color:var(--primary);font-weight:600'>browse Dubai attractions here</a> (Hebrew, Shekels, Tashlumim!).",
         india: "India is a life-changing experience! Taj Mahal, Kerala backwaters, Rajasthan palaces, and incredible food. Best Oct-Mar. I can plan your full itinerary day by day. Want me to help?",
         athens: "Athens is where history comes alive! Acropolis, Parthenon, Greek islands, and amazing tavernas. Best Apr-Jun or Sep-Oct. I can handle flights, hotels, tours — everything!",
         rome: "Rome is a living museum! Colosseum, Vatican, Trastevere food walks, and the Amalfi Coast nearby. Best Apr-Jun or Sep-Oct. Want me to plan your trip?",
