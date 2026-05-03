@@ -605,7 +605,7 @@ const chatbotKnowledge = {
 };
 
 // Global state used by the inline onclick fallback so the toggle still works
-// even if initChatbot hasn't bound a listener yet (e.g. during a slow load).
+// even if initChatbot hasn't bound a listener yet.
 let __chatbotIsOpen = false;
 let __chatbotInited = false;
 
@@ -664,8 +664,6 @@ function initChatbot() {
         console.warn('[chatbot] toggle or window element missing');
         return;
     }
-
-    // Inline onclick="toggleChatbot()" on the button is the primary handler now.
     if (sendBtn) sendBtn.addEventListener('click', handleUserMessage);
     if (input) {
         input.addEventListener('keypress', (e) => {
@@ -887,10 +885,8 @@ async function submitTripForm(e) {
     const form = document.getElementById('tripForm');
     const formData = new FormData(form);
 
-    // Track form completion
     trackEvent('form_complete', { destination: formData.get('entry.1749388622') });
 
-    // Build data object for Supabase
     const tripData = {
         full_name: formData.get('entry.1883151446') || '',
         phone: formData.get('entry.195224141') || '',
@@ -915,7 +911,41 @@ async function submitTripForm(e) {
         special_notes: formData.get('entry.180413487') || '',
     };
 
-    // ALWAYS send to Google Forms (this is Petal's primary inbox)
+    // Build a human-readable WhatsApp message so Petal always gets the request
+    // even if Google Forms rejects the submission (e.g. sign-in required).
+    const lines = [
+        'בקשת טיול חדשה מהאתר',
+        '',
+        'שם: ' + tripData.full_name,
+        'טלפון: ' + tripData.phone,
+        'אימייל: ' + tripData.email,
+        'גילאים: ' + tripData.ages,
+        'דרכון בתוקף: ' + tripData.passport_valid,
+        '',
+        'יעד: ' + tripData.destination,
+        'תאריכים: ' + tripData.travel_dates,
+        'גמישות: ' + tripData.date_flexibility,
+        'שירות: ' + tripData.service_type,
+        'תקציב: ' + tripData.budget,
+        'רמת ליווי: ' + tripData.support_level,
+        '',
+        'העדפת טיסה: ' + tripData.flight_pref,
+        'חברת תעופה: ' + tripData.airline_pref,
+        'מטען: ' + tripData.luggage_type,
+        'ביטול טיסה: ' + tripData.cancel_policy,
+        '',
+        'רמת מלון: ' + tripData.hotel_level,
+        'סוג מיטות: ' + tripData.bed_type,
+        'ארוחות: ' + tripData.meals,
+        'ביטול מלון: ' + tripData.hotel_cancel,
+        '',
+        'כשרות/שבת: ' + tripData.shabbat_kosher,
+        'הערות: ' + tripData.special_notes,
+    ];
+    const whatsappText = lines.join('\n');
+    const whatsappUrl = 'https://wa.me/972545581269?text=' + encodeURIComponent(whatsappText);
+
+    // 1) Try Google Forms via hidden iframe (works only if form allows public submission).
     try {
         let iframe = document.getElementById('hiddenGformFrame');
         if (!iframe) {
@@ -943,20 +973,25 @@ async function submitTripForm(e) {
         } catch (e2) { /* ignore */ }
     }
 
+    // 2) Also store in Supabase (analytics record).
     if (sb) {
-        try {
-            await sb.from('trip_requests').insert(tripData);
-        } catch (e) { /* ignore */ }
+        try { await sb.from('trip_requests').insert(tripData); } catch (e) { /* ignore */ }
     }
 
-    showFormSuccess();
+    showFormSuccess(whatsappUrl);
 }
 
-function showFormSuccess() {
+function showFormSuccess(whatsappUrl) {
     document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
     const indicator = document.querySelector('.form-steps-indicator');
     if (indicator) indicator.style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
+    const success = document.getElementById('formSuccess');
+    if (!success) return;
+    success.style.display = 'block';
+    if (whatsappUrl) {
+        const waBtn = success.querySelector('a.btn-primary');
+        if (waBtn) waBtn.href = whatsappUrl;
+    }
 }
 
 let chatLang = 'he';
@@ -1269,11 +1304,43 @@ function generateResponse(input) {
     };
 }
 
+// Convert raw URLs and Israeli phone numbers in text into clickable links.
+// Leaves existing <a> tags alone so we don't double-wrap.
+function linkifyChatHtml(html) {
+    if (!html) return html;
+    const parts = html.split(/(<a\b[^>]*>[\s\S]*?<\/a>)/gi);
+    const linkifyTextSegment = (seg) => {
+        seg = seg.replace(
+            /(https?:\/\/[^\s<>")]+)/g,
+            (url) => {
+                const cleaned = url.replace(/[.,!?;:)]+$/, '');
+                const trailing = url.slice(cleaned.length);
+                return '<a href="' + cleaned + '" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;text-decoration:underline">' + cleaned + '</a>' + trailing;
+            }
+        );
+        seg = seg.replace(
+            /(?<!\w)(\+?972[\s-]?\d[\d\s-]{6,12}\d|0\d[\s-]?\d{3}[\s-]?\d{4})(?!\w)/g,
+            (m) => {
+                const digits = m.replace(/\D/g, '');
+                let intl = digits;
+                if (intl.startsWith('0')) intl = '972' + intl.slice(1);
+                else if (!intl.startsWith('972')) intl = '972' + intl;
+                return '<a href="https://wa.me/' + intl + '" target="_blank" rel="noopener" style="color:#25D366;font-weight:600;text-decoration:underline">' + m + '</a>';
+            }
+        );
+        return seg;
+    };
+    for (let i = 0; i < parts.length; i++) {
+        if (i % 2 === 0) parts[i] = linkifyTextSegment(parts[i]);
+    }
+    return parts.join('');
+}
+
 function addBotMessage(html) {
     const container = document.getElementById('chatbotMessages');
     const msg = document.createElement('div');
     msg.className = 'chat-message bot';
-    msg.innerHTML = html;
+    msg.innerHTML = linkifyChatHtml(html);
     container.appendChild(msg);
     container.scrollTop = container.scrollHeight;
 }
