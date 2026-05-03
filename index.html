@@ -50,6 +50,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Heebo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modern.css">
 </head>
 <body>
 
@@ -1216,7 +1217,7 @@
 
     <!-- Chatbot -->
     <div class="chatbot" id="chatbot">
-        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat assistant">
+        <button type="button" class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat assistant" onclick="window.toggleChatbot && window.toggleChatbot()">
             <svg class="chatbot-icon-open" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/><circle cx="8" cy="10" r="1.2"/><circle cx="12" cy="10" r="1.2"/><circle cx="16" cy="10" r="1.2"/></svg>
             <svg class="chatbot-icon-close" width="28" height="28" viewBox="0 0 24 24" fill="white" style="display:none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
             <span class="chatbot-badge" id="chatbotBadge">1</span>
@@ -1267,4 +1268,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdel
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

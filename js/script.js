@@ -604,45 +604,74 @@ const chatbotKnowledge = {
     ]
 };
 
+// Global state used by the inline onclick fallback so the toggle still works
+// even if initChatbot hasn't bound a listener yet (e.g. during a slow load).
+let __chatbotIsOpen = false;
+let __chatbotInited = false;
+
+function __chatbotOpen() {
+    const win = document.getElementById('chatbotWindow');
+    const toggle = document.getElementById('chatbotToggle');
+    if (!win || !toggle) return;
+    __chatbotIsOpen = true;
+    win.classList.add('open');
+    const iconOpen = toggle.querySelector('.chatbot-icon-open');
+    const iconClose = toggle.querySelector('.chatbot-icon-close');
+    if (iconOpen) iconOpen.style.display = 'none';
+    if (iconClose) iconClose.style.display = 'block';
+    const badge = document.getElementById('chatbotBadge');
+    if (badge) badge.style.display = 'none';
+    const messages = document.getElementById('chatbotMessages');
+    if (messages && messages.children.length === 0) {
+        setTimeout(() => {
+            if (chatLang === 'he' && typeof hebrewChatbot !== 'undefined') {
+                addBotMessage(hebrewChatbot.greetings[Math.floor(Math.random() * hebrewChatbot.greetings.length)]);
+                showQuickReplies(hebrewChatbot.quickReplies);
+            } else if (typeof chatbotKnowledge !== 'undefined') {
+                addBotMessage(chatbotKnowledge.greetings[Math.floor(Math.random() * chatbotKnowledge.greetings.length)]);
+                showQuickReplies(['Popular destinations', 'What services?', 'Full itinerary', 'Get a quote']);
+            }
+        }, 200);
+    }
+    const input = document.getElementById('chatbotInput');
+    if (input) setTimeout(() => input.focus(), 350);
+}
+
+function __chatbotClose() {
+    const win = document.getElementById('chatbotWindow');
+    const toggle = document.getElementById('chatbotToggle');
+    if (!win || !toggle) return;
+    __chatbotIsOpen = false;
+    win.classList.remove('open');
+    const iconOpen = toggle.querySelector('.chatbot-icon-open');
+    const iconClose = toggle.querySelector('.chatbot-icon-close');
+    if (iconOpen) iconOpen.style.display = 'block';
+    if (iconClose) iconClose.style.display = 'none';
+}
+
+window.toggleChatbot = function () {
+    if (__chatbotIsOpen) __chatbotClose(); else __chatbotOpen();
+};
+
 function initChatbot() {
+    if (__chatbotInited) return;
+    __chatbotInited = true;
     const toggle = document.getElementById('chatbotToggle');
     const window_ = document.getElementById('chatbotWindow');
     const input = document.getElementById('chatbotInput');
     const sendBtn = document.getElementById('chatbotSend');
-    const badge = document.getElementById('chatbotBadge');
-    const iconOpen = toggle.querySelector('.chatbot-icon-open');
-    const iconClose = toggle.querySelector('.chatbot-icon-close');
-    let isOpen = false;
+    if (!toggle || !window_) {
+        console.warn('[chatbot] toggle or window element missing');
+        return;
+    }
 
-    toggle.addEventListener('click', () => {
-        isOpen = !isOpen;
-        window_.classList.toggle('open', isOpen);
-        iconOpen.style.display = isOpen ? 'none' : 'block';
-        iconClose.style.display = isOpen ? 'block' : 'none';
-        badge.style.display = 'none';
-
-        if (isOpen) {
-            // Send welcome message on first open (in current language)
-            const messages = document.getElementById('chatbotMessages');
-            if (messages.children.length === 0) {
-                setTimeout(() => {
-                    if (chatLang === 'he' && typeof hebrewChatbot !== 'undefined') {
-                        addBotMessage(hebrewChatbot.greetings[Math.floor(Math.random() * hebrewChatbot.greetings.length)]);
-                        showQuickReplies(hebrewChatbot.quickReplies);
-                    } else {
-                        addBotMessage(chatbotKnowledge.greetings[Math.floor(Math.random() * chatbotKnowledge.greetings.length)]);
-                        showQuickReplies(['Popular destinations', 'What services?', 'Full itinerary', 'Get a quote']);
-                    }
-                }, 300);
-            }
-            setTimeout(() => input.focus(), 400);
-        }
-    });
-
-    sendBtn.addEventListener('click', handleUserMessage);
-    input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleUserMessage();
-    });
+    // Inline onclick="toggleChatbot()" on the button is the primary handler now.
+    if (sendBtn) sendBtn.addEventListener('click', handleUserMessage);
+    if (input) {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleUserMessage();
+        });
+    }
 }
 
 /* --- Travel Quotes Rotator --- */
@@ -886,25 +915,40 @@ async function submitTripForm(e) {
         special_notes: formData.get('entry.180413487') || '',
     };
 
-    // Try Supabase first
-    let supabaseOk = false;
-    if (sb) {
-        try {
-            const { error } = await sb.from('trip_requests').insert(tripData);
-            if (!error) supabaseOk = true;
-        } catch (e) { console.warn('Supabase insert failed, falling back to Google Forms'); }
-    }
-
-    // Fallback: also send to Google Forms
-    if (!supabaseOk) {
+    // ALWAYS send to Google Forms (this is Petal's primary inbox)
+    try {
+        let iframe = document.getElementById('hiddenGformFrame');
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.id = 'hiddenGformFrame';
+            iframe.name = 'hiddenGformFrame';
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+        }
+        const originalAction = form.action;
+        const originalTarget = form.target;
+        const originalMethod = form.method;
+        form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/formResponse';
+        form.method = 'POST';
+        form.target = 'hiddenGformFrame';
+        form.submit();
+        form.action = originalAction;
+        form.target = originalTarget;
+        form.method = originalMethod;
+    } catch (err) {
         try {
             await fetch('https://docs.google.com/forms/d/e/1FAIpQLSd2-mPm93x14l9DAf0bqfRqyFtY-xLTmWPs5NIvfJGON-kl5Q/formResponse', {
                 method: 'POST', body: formData, mode: 'no-cors'
             });
+        } catch (e2) { /* ignore */ }
+    }
+
+    if (sb) {
+        try {
+            await sb.from('trip_requests').insert(tripData);
         } catch (e) { /* ignore */ }
     }
 
-    // Show success
     showFormSuccess();
 }
 
