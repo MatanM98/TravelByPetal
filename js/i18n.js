@@ -279,6 +279,11 @@ const translations = {
         // Booking form section
         'form.title': 'תכנון הטיול שלכם מתחיל כאן',
         'form.subtitle': 'מלאו את הטופס הקצר ואחזור אליכם עם הצעת מחיר מותאמת אישית',
+
+        // Trip Builder CTA
+        'tb.title': 'בנה את הטיול שלך',
+        'tb.subtitle': 'בנו טיול מותאם אישית, יום אחר יום, עם כלי בניית הטיולים האינטראקטיבי שלי',
+        'tb.cta': 'פתחו את בונה הטיולים',
     }
 };
 
@@ -653,6 +658,20 @@ function applyHebrewTranslations() {
     const formSubtitle = document.querySelector('.form-section .section-subtitle');
     if (formTitle) formTitle.textContent = t['form.title'];
     if (formSubtitle) formSubtitle.textContent = t['form.subtitle'];
+
+    // Trip Builder CTA
+    const tbTitle = document.querySelector('.trip-builder-cta .section-title');
+    const tbSubtitle = document.querySelector('.trip-builder-cta .section-subtitle');
+    const tbBtn = document.querySelector('.trip-builder-cta .btn-primary');
+    if (tbTitle) tbTitle.textContent = t['tb.title'];
+    if (tbSubtitle) tbSubtitle.textContent = t['tb.subtitle'];
+    if (tbBtn) tbBtn.textContent = t['tb.cta'];
+
+    // Self-Service Tools section title (now standalone section)
+    const affSectionTitle = document.querySelector('.affiliate-section .section-title');
+    const affSectionSubtitle = document.querySelector('.affiliate-section .section-subtitle');
+    if (affSectionTitle) affSectionTitle.textContent = 'כלים לשירות עצמי';
+    if (affSectionSubtitle) affSectionSubtitle.textContent = 'רוצים לחפש בעצמכם? השתמשו בכלים השימושיים האלה';
 
     // Tools section
     const toolsTitle = document.querySelector('.tools-section .section-title');
