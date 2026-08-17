@@ -5,11 +5,24 @@
 const SUPABASE_URL = 'https://audtbcwgkaybqvixfjnf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1ZHRiY3dna2F5YnF2aXhmam5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzNDYzNDYsImV4cCI6MjA5MDkyMjM0Nn0.OlxAEW_3vt5ykzdU9_PIxJGZMC4QM9RIdf7ahVTMW84';
 
-let sb;
+let sb = null;
 
 // === INIT ===
 document.addEventListener('DOMContentLoaded', async () => {
-    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    try {
+        if (window.supabase) {
+            sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
+    } catch (e) {
+        console.warn('Supabase not available', e);
+    }
+
+    if (!sb) {
+        const error = document.getElementById('loginError');
+        if (error) error.textContent = 'Could not connect to the server. Please check your connection and reload the page.';
+        return;
+    }
+
     const { data: { session } } = await sb.auth.getSession();
     if (session) {
         showAdmin();
@@ -22,6 +35,11 @@ async function adminLogin(e) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     const error = document.getElementById('loginError');
+
+    if (!sb) {
+        error.textContent = 'Could not connect to the server. Please check your connection and reload the page.';
+        return;
+    }
 
     const { data, error: err } = await sb.auth.signInWithPassword({ email, password });
     if (err) {

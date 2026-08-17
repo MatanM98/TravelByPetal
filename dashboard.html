@@ -148,13 +148,26 @@
     <script>
         const SUPABASE_URL = 'https://audtbcwgkaybqvixfjnf.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1ZHRiY3dna2F5YnF2aXhmam5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzNDYzNDYsImV4cCI6MjA5MDkyMjM0Nn0.OlxAEW_3vt5ykzdU9_PIxJGZMC4QM9RIdf7ahVTMW84';
-        const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        let sb = null;
+        try {
+            if (window.supabase) {
+                sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            }
+        } catch (e) {
+            console.warn('Supabase not available', e);
+        }
 
         let currentUser = null;
         let authMode = 'login';
 
         // === INIT ===
         document.addEventListener('DOMContentLoaded', async () => {
+            if (!sb) {
+                const error = document.getElementById('authError');
+                if (error) error.textContent = 'Could not connect to the server. Please check your connection and reload the page.';
+                return;
+            }
+
             const { data: { session } } = await sb.auth.getSession();
             if (session) {
                 currentUser = session.user;
@@ -182,6 +195,11 @@
             const name = document.getElementById('authName').value;
             const error = document.getElementById('authError');
 
+            if (!sb) {
+                error.textContent = 'Could not connect to the server. Please check your connection and reload the page.';
+                return;
+            }
+
             if (authMode === 'register') {
                 const { data, error: err } = await sb.auth.signUp({
                     email, password,
@@ -207,6 +225,10 @@
         }
 
         async function signInWithGoogle() {
+            if (!sb) {
+                document.getElementById('authError').textContent = 'Could not connect to the server. Please check your connection and reload the page.';
+                return;
+            }
             const { error } = await sb.auth.signInWithOAuth({
                 provider: 'google',
                 options: { redirectTo: window.location.href }

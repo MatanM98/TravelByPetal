@@ -422,11 +422,11 @@
 
     // === SUMMARY ===
     function updateSummary() {
-        let hotelTotal = 0, actTotal = 0, foodTotal = 0, transportTotal = 0;
+        let hotelTotal = 0, hotelNights = 0, actTotal = 0, foodTotal = 0, transportTotal = 0;
         const travelers = parseInt(document.getElementById('tbTravelers').value) || 1;
 
         tripDays.forEach(day => {
-            if (day.hotel) hotelTotal += day.hotel.price;
+            if (day.hotel) { hotelTotal += day.hotel.price; hotelNights++; }
             day.activities.forEach(a => actTotal += a.price);
             day.restaurants.forEach(r => foodTotal += r.price);
             day.transport.forEach(t => transportTotal += t.price);
@@ -437,7 +437,7 @@
         const total = hotelTotal + perPersonCosts;
 
         document.getElementById('tbSummaryRows').innerHTML = `
-            <div class="tb-summary-row"><span>🏨 Hotels (${tripDays.length} nights)</span><span>₪${hotelTotal.toLocaleString()}</span></div>
+            <div class="tb-summary-row"><span>🏨 Hotels (${hotelNights} ${hotelNights === 1 ? 'night' : 'nights'})</span><span>₪${hotelTotal.toLocaleString()}</span></div>
             <div class="tb-summary-row"><span>🎫 Activities</span><span>₪${(actTotal * travelers).toLocaleString()}</span></div>
             <div class="tb-summary-row"><span>🍽️ Restaurants</span><span>₪${(foodTotal * travelers).toLocaleString()}</span></div>
             <div class="tb-summary-row"><span>🚐 Transport</span><span>₪${(transportTotal * travelers).toLocaleString()}</span></div>
