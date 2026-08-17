@@ -289,7 +289,16 @@ app.post('/api/chat', async (req, res) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     contents,
-                    generationConfig: { temperature: 0.7, maxOutputTokens: 300, topP: 0.9 },
+                    generationConfig: {
+                        temperature: 0.7,
+                        maxOutputTokens: 500,
+                        topP: 0.9,
+                        // gemini-2.5-flash spends output tokens on hidden "thinking" by
+                        // default, which was eating most of the old 300-token budget and
+                        // leaving replies truncated mid-sentence. Disable it — this is a
+                        // short, concise customer-chat reply, not a reasoning task.
+                        thinkingConfig: { thinkingBudget: 0 },
+                    },
                 }),
             }
         );
