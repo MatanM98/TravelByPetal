@@ -101,7 +101,7 @@
         <div class="tb-header-right">
             <a href="index.html" class="tb-logo">Travel by Petal ✈️</a>
         </div>
-        <a href="index.html" class="tb-back">← חזרה לאתר</a>
+        <a href="index.html" class="tb-back" id="tbBackLink">← חזרה לאתר</a>
     </header>
 
     <div class="tb-layout">
@@ -285,6 +285,26 @@
     let currentDayIndex = -1;
     let currentCategory = '';
 
+    // === LANGUAGE ===
+    // The main site stores the visitor's choice in sessionStorage (see js/i18n.js).
+    // Follow it here so day dates aren't stuck in Hebrew on an English page.
+    function tbLang() {
+        return sessionStorage.getItem('lang') === 'en' ? 'en' : 'he';
+    }
+    function tbDateLocale() {
+        return tbLang() === 'en' ? 'en-GB' : 'he-IL';
+    }
+
+    // Match the document direction and chrome to that choice on load.
+    document.addEventListener('DOMContentLoaded', function applyTbLanguage() {
+        const lang = tbLang();
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === 'en' ? 'ltr' : 'rtl');
+
+        const back = document.getElementById('tbBackLink');
+        if (back) back.textContent = lang === 'en' ? '← Back to site' : '← חזרה לאתר';
+    });
+
     // === GENERATE TRIP ===
     function generateTrip() {
         const dest = document.getElementById('tbDest').value;
@@ -298,7 +318,7 @@
             if (startDate) {
                 const d = new Date(startDate);
                 d.setDate(d.getDate() + i);
-                dateStr = d.toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long' });
+                dateStr = d.toLocaleDateString(tbDateLocale(), { weekday: 'long', day: 'numeric', month: 'long' });
             }
             tripDays.push({
                 dayNum: i + 1,

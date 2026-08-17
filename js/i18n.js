@@ -250,6 +250,94 @@ const translations = {
         'chat.status': 'מחוברת',
         'chat.placeholder': 'הקלידו הודעה...',
 
+        // Trip request form — step 1
+        'form.step1.title': 'פרטים אישיים',
+        'form.fullname': 'שם מלא *',
+        'form.fullname.ph': 'הכניסו שם מלא',
+        'form.phone': 'מספר טלפון *',
+        'form.email': 'אימייל *',
+        'form.ages': 'גילאים בזמן הנסיעה',
+        'form.ages.ph': 'לדוגמה: 35, 33, 8, 5',
+        'form.passport': 'תוקף דרכון מעל 6 חודשים?',
+        'form.opt.yes': 'כן',
+        'form.opt.no': 'לא',
+        'form.opt.notsure': 'לא בטוח/ה',
+        'form.next': 'המשך ←',
+        'form.prev': '→ חזרה',
+
+        // Trip request form — step 2
+        'form.step2.title': 'פרטי הטיול',
+        'form.dest': 'לאן אתם רוצים לטוס? *',
+        'form.dest.ph': 'יעד הנסיעה',
+        'form.dates': 'תאריכי נסיעה מבוקשים',
+        'form.dates.ph': 'לדוגמה: 15-22 ביולי',
+        'form.flex': 'גמישות בתאריכים',
+        'form.flex.none': 'אין גמישות',
+        'form.flex.few': 'גמישות של כמה ימים',
+        'form.flex.open': 'פתוח להצעות',
+        'form.service': 'שירות נדרש *',
+        'form.service.flight': 'טיסה בלבד',
+        'form.service.hotel': 'מלון בלבד',
+        'form.service.both': 'טיסה + מלון',
+        'form.service.itinerary': 'תכנון מסלול',
+        'form.service.all': 'טיסה + מלון + תכנון',
+        'form.service.other': 'אחר',
+        'form.budget': 'תקציב משוער',
+        'form.budget.ph': 'לדוגמה: 10,000 ש״ח לזוג',
+        'form.support': 'רמת ליווי',
+        'form.support.booking': 'עזרה בהזמנות בלבד',
+        'form.support.full': 'תכנון מסלול מלא',
+
+        // Trip request form — step 3
+        'form.step3.title': 'העדפות טיסה ומלון',
+        'form.flight': 'העדפת טיסות',
+        'form.flight.direct': 'ישירות בלבד',
+        'form.flight.short': 'קונקשן קצר מקובל',
+        'form.flight.price': 'המחיר הכי טוב',
+        'form.airline': 'העדפת חברת תעופה',
+        'form.airline.ph': 'אין העדפה / אל-על וכו׳',
+        'form.luggage': 'סוג מטען',
+        'form.luggage.checked': 'מזוודה 23 ק״ג',
+        'form.luggage.carryon': 'עלייה למטוס 8-10 ק״ג',
+        'form.luggage.both': 'שניהם',
+        'form.cancel': 'תנאי ביטול גמישים',
+        'form.cancel.very': 'חשוב מאוד',
+        'form.cancel.pref': 'עדיף',
+        'form.cancel.price': 'מחיר בעדיפות',
+        'form.cancel.no': 'לא צריך',
+        'form.hotel': 'רמת מלון',
+        'form.hotel.best': 'הטוב ביותר בתקציב',
+        'form.hotel.45': '4-5 כוכבים',
+        'form.hotel.3': '3 כוכבים',
+        'form.hotel.apt': 'דירה/צימר',
+        'form.bed': 'סוג מיטות',
+        'form.bed.none': 'ללא העדפה',
+        'form.bed.double': 'מיטה זוגית',
+        'form.bed.separate': 'מיטות נפרדות',
+        'form.meals': 'ארוחות במלון',
+        'form.meals.all': 'הכל כלול',
+        'form.meals.full': 'פנסיון מלא',
+        'form.meals.half': 'חצי פנסיון',
+        'form.meals.breakfast': 'ארוחת בוקר בלבד',
+        'form.meals.room': 'לינה בלבד',
+        'form.meals.budget': 'תלוי תקציב',
+        'form.hotelcancel': 'ביטול חינם במלון?',
+        'form.hotelcancel.cheap': 'רק אם לא יקר',
+
+        // Trip request form — step 4 + success
+        'form.step4.title': 'העדפות מיוחדות ושליחה',
+        'form.shabbat': 'שבת / כשרות',
+        'form.shabbat.kosher': 'כשר בלבד',
+        'form.shabbat.noflight': 'לא לטוס בשבת',
+        'form.shabbat.pref': 'מעדיפים אבל לא חובה',
+        'form.notes': 'משהו נוסף שחשוב לך לציין?',
+        'form.notes.ph': 'בקשות מיוחדות, העדפות, הערות...',
+        'form.submit': 'שלחו בקשה',
+        'form.success.title': 'הבקשה התקבלה — שליחה אחרונה לוואטסאפ',
+        'form.success.text': 'לחצו על הכפתור למטה כדי לשלוח לי את כל הפרטים בוואטסאפ. ההודעה כבר מוכנה — רק ללחוץ "שלח".',
+        'form.success.btn': '📱 שלח את הפרטים בוואטסאפ',
+        'form.success.thanks': 'תודה רבה! אחזור אליכם בהקדם עם הצעת מחיר מותאמת אישית.',
+
         // Services (updated)
         'services.title': 'איך אני יכולה לעזור',
         'services.subtitle': 'אתם יכולים לבשל בבית — אבל לפעמים רוצים שף. אותו דבר עם טיולים. תנו למקצוענית לטפל בפרטים בזמן שאתם נהנים.',
@@ -366,6 +454,12 @@ function applyHebrewTranslations() {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key]) el.textContent = t[key];
+    });
+
+    // Placeholders (inputs / textareas)
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const key = el.getAttribute('data-i18n-ph');
+        if (t[key]) el.placeholder = t[key];
     });
 
     // Hero

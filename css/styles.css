@@ -686,6 +686,12 @@ img { max-width: 100%; display: block; }
     font-size: 0.9rem;
     background: var(--white);
     transition: border-color var(--transition);
+}
+
+/* Force RTL entry only in Hebrew; in English these inherit LTR from <html>. */
+[dir="rtl"] .form-field input,
+[dir="rtl"] .form-field select,
+[dir="rtl"] .form-field textarea {
     direction: rtl;
 }
 
